@@ -9,7 +9,7 @@
 
     function sendUpcData(data) {
       return $http({
-        url: '',
+        url: '/api/users',
         method: 'POST',
         header: {
           'Content-Type': 'application/json'

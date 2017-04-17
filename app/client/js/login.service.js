@@ -4,12 +4,12 @@
   angular.module('game').factory('LoginService', LoginService);
 
     LoginService.$inject = ['$http'];
-    
+
   function LoginService(){
 
     function sendLogin(email, password) {
       return $http({
-        url: '',
+        url: '/api/users',
         method: 'POST',
         header: {
           'Content-Type': 'application/json',
@@ -20,8 +20,8 @@
         }
       })
       .then(function handleResponse(response) {
-        localStorage.setItem('token', respsonse.data.id);
-        token = response.data.id;
+        localStorage.setItem('token', respsonse.data.auth_token);//auth_token
+        token = response.data.auth_token;
         return token;
       });
     }
