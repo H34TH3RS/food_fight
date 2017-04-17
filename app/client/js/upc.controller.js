@@ -7,7 +7,7 @@
 
   function UpcController($state, UpcService) {
 
-    let vm = this.;
+    let vm = this;
 
     vm.users = [];
     vm.user = {};
