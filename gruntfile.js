@@ -16,12 +16,20 @@ module.exports = function(grunt){
           dest:'public/',
           expand: true
         }]
+      },
+      templatesHtml: {
+        files: [{
+            cwd: 'app/client/templates/',
+            src: ['*.html'],
+            dest: 'public/templates/',
+            expand: true
+        }]
       }
     },
 
     angular:{
       files: [{
-          cwd:'node_modules/angualar/',
+          cwd:'node_modules/angular/',
           src:['angular.js'],
           dest:'public/js/',
           expand: true
@@ -38,12 +46,10 @@ module.exports = function(grunt){
       }
     }
 
-
   });
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
-
 
 
 };
