@@ -9,7 +9,6 @@ class Api::AuthorizationsController < ApplicationController
   end
 
   def destroy
-    @user.set_auth_token
-    @user.save
+    reset_auth_token!
   end
 end
