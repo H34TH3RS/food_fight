@@ -7,6 +7,8 @@
 
   function LoginService(){
 
+    let token = localStorage.getItem('token');
+
     function sendLogin(email, password) {
       return $http({
         url: '/api/users',
@@ -26,8 +28,14 @@
       });
     }
 
+    function getToken() {
+      return token;
+
+    }
+
 
     return {
+      getToken: getToken,
       sendLogin: sendLogin
     };
 
