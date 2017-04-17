@@ -19,13 +19,37 @@
         }
 
       })
-      .then(function handleResponse(response) {});
+      .then(function handleResponse(response) {
+        return response.data;
+      })
+      .catch();
     }
 
+    function createUser(user) {
+      return $http({
+        url: '/api/users',
+        method: 'POST',
+        header: {
+          'Content-Type': 'application/json',
+          'Authorization': LoginService.getToken()
+        },
+        data: {
+          email: user.email,
+          username: user.username,
+          password: user.password,
+          password_confirmation: user.password_confirmation
+        }
+      })
+      .then(function handleResponse(response) {
+        return response.data;
+      })
+      .catch();
+    }
 
     return {
       sendLogin: sendLogin,
       sendUpcData: sendUpcData,
+      createUser: createUser
     };
 
   }
