@@ -1,0 +1,15 @@
+
+<main ng-controller='LoginController as loginCrtl'>
+
+  <form name='loginform' ng-submit=''>
+
+    <label for='email'>Email</label>
+    <input ng-model='loginCtrl.userLogin.email' type='email' name='email' placeholder='game@game.com' required>
+    <label for='password'>Password</label>
+    <input ng-model='loginCtrl.userLogin.email' type='password' name='password' required>
+
+    <button type='submit' name='submitLogin'>Log In</button>
+
+  </form>
+
+</main>
