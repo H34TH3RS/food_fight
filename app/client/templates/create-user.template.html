@@ -1,0 +1,18 @@
+<form ng-submit name='createUserForm'>
+
+  <label for='email'>Email</label>
+  <input ng-model='upcCtrl.user.email' type='email' name='email' required placeholder='game@game.com'>
+
+  <label for='username'>Username</label>
+  <input ng-model='upcCrl.user.username' type='text' name='username' required placeholder='Choose a username'>
+
+  <label for='password'>Password</label>
+  <input ng-model='upcCtrl.user.password' type='password' name='password' required placeholder='********'>
+
+  <label for='password_confirmation'>Please re-enter your password</label>
+  <input ng-model='upcCtrl.user.password_confirmation' type='password' name='password_confirmation' required placeholder='********'>
+
+  <button type='submit' name='newUserSubmit'>Create Account</button>
+
+
+</form>
