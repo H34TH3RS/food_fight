@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+russell:
+  username: moose
+  email: moose@tiydc.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  auth_token: <%= SecureRandom.hex %>
+
+molly:
+  username: heather
+  email: heather@heathers.com
+  password_digest: <%= BCrypt::Password.create('heather') %>
+  auth_token: <%= SecureRandom.hex %>
