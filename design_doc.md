@@ -6,7 +6,7 @@
 
 
 
-##Basic Game Play
+## Basic Game Play
 
 The player enters food upc data to randomly generate a new character card.
 The character’s generated stats are based on the nutritional information provided ie,
@@ -24,7 +24,7 @@ moves on the gameboard, which is then followed by a chance enemy, npc, or treasu
 The goal is to make it to the end of a game board without the character card being killed off.
 
 
-##Enemy Battles
+## Enemy Battles
 When a player encounters an enemy, a basic menu will be presented with
 “Fight” and “Item”.
 
