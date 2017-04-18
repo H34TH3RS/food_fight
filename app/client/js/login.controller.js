@@ -18,6 +18,9 @@
       });
     };
 
+    vm.logout = function logout() {
+      LoginService.logout();
+    };
   }
 
 }());

@@ -28,18 +28,31 @@
       });
     }
 
-    function getToken() {
-      return token;
+    function logout() {
+      return $http({
+        url: '/api/users',
+        method: 'POST',
+        header: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        }
+      })
+      .then(function handleResponse(response) {
+        token = null;
+        localStorage.removeItem('token');
+      });
 
     }
 
+    function getToken() {
+      return token;
+    }
 
     return {
       getToken: getToken,
-      sendLogin: sendLogin
+      sendLogin: sendLogin,
+      logout: logout
     };
-
-
 
   }
 
