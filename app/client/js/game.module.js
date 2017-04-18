@@ -16,19 +16,19 @@
     .state({
       name: 'home',
       url: '',
-      templateUrl: '/templates/home.template.html'
+      templateUrl: 'templates/home.template.html'
     })
     .state({
       name: 'login',
       url: '/login',
-      templateUrl: '/templates/login.template.html',
+      templateUrl: 'templates/login.template.html',
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
     })
     .state({
       name: 'create-user',
       url: '/create-user',
-      templateUrl: '/templates/create_user.template.html',
+      templateUrl: 'templates/create_user.template.html',
       controller: 'UpcController',
       controllerAs: 'upcCtrl'
     });
