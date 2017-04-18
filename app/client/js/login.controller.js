@@ -22,10 +22,7 @@
   * @return {void}
   */
     vm.login = function login(userLogin){
-      LoginService.login(userLogin.email, userLogin.password)
-      .then(function testLog(){
-        console.log(userLogin);
-      });
+      return LoginService.login(userLogin.email, userLogin.password);
     };
 
 

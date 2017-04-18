@@ -3,14 +3,14 @@
 
   angular.module('game').factory('UserService', UserService);
 
-  UserService.$inject = ['$http'];
+  UserService.$inject = ['$http', 'LoginService'];
 
   /**
    * Creates the user service
    * @param {function} $http the service for ajax calls
    * @return {Object} contains functions for use in the user controller
    */
-  function UserService($http) {
+  function UserService($http, LoginService) {
 
     /**
      * Creates a new user account
@@ -18,6 +18,7 @@
      * @return {void}
      */
     function createUser(user) {
+      console.log('inside create user service');
       return $http({
         url: '/api/users',
         method: 'POST',
@@ -33,6 +34,7 @@
         }
       })
       .then(function handleResponse(response) {
+        console.log('in .then of create user service');
         return response.data;
       })
       .catch();
