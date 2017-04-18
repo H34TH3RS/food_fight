@@ -20,18 +20,18 @@ module.exports = function(grunt){
       },
       templatesHtml: {
         files: [{
-            cwd: 'app/client/templates/',
-            src: ['*.html'],
-            dest: 'public/templates/',
-            expand: true
+          cwd: 'app/client/templates/',
+          src: ['*.html'],
+          dest: 'public/templates/',
+          expand: true
         }]
       },
       angular:{
         files: [{
-            cwd:'node_modules/angular/',
-            src:['angular.min.js'],
-            dest:'public/',
-            expand: true
+          cwd:'node_modules/angular/',
+          src:['angular.min.js'],
+          dest:'public/',
+          expand: true
         }]
       }
     },
@@ -46,14 +46,21 @@ module.exports = function(grunt){
     },
 
     watch: {
-         scripts: {
-           files: ['app/client/js/**/*.js', 'app/client/**/*.html',     'app/client/templates/**/*.html'],
-           tasks: ['clean', 'copy', 'concat'],
-           options: {
-           spawn: false,
-         }
-       }
-     },
+      scripts: {
+        files: ['app/client/js/**/*.js', 'app/client/**/*.html',     'app/client/templates/**/*.html'],
+        tasks: ['clean', 'copy', 'concat', 'sass'],
+        options: {
+          spawn: false,
+        }
+      }
+    },
+    sass: {
+      SASS: {
+        files: {
+          'public/style.css': 'app/client/sass/main.scss'
+        }
+      }
+    },
 
     jshint:{
       source:{
@@ -61,7 +68,7 @@ module.exports = function(grunt){
           jshintrc:'.jshintrc'
         },
         files:{
-            src:['app/client/js/**/*.js']
+          src:['app/client/js/**/*.js']
         }
       }
     }
@@ -74,6 +81,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat']);
+  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat','sass']);
 };
