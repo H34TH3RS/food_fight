@@ -19,6 +19,7 @@
       vm.hasError = false;
 
       vm.createUser = function createUser(user) {
+        console.log('inside create user controller', user);
         return UserService.createUser(user)
         .then(function goHome() {
           $state.go('home');

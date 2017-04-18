@@ -1,4 +1,4 @@
-<form ng-submit name='createUserForm'>
+<form ng-submit='userCtrl.createUser(userCtrl.user)' name='createUserForm'>
 
   <label for='email'>Email</label>
   <input ng-model='userCtrl.user.email' type='email' name='email' required placeholder='game@game.com'>
