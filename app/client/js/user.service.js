@@ -36,8 +36,7 @@
       .then(function handleResponse(response) {
         console.log('in .then of create user service');
         return response.data;
-      })
-      .catch();
+      });
     }
 
     return {
