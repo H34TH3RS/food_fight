@@ -55,7 +55,7 @@ module.exports = function(grunt){
       }
     },
     sass: {
-      SASS: {
+      all: {
         files: {
           'public/style.css': 'app/client/sass/main.scss'
         }
