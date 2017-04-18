@@ -14,7 +14,7 @@
 
   <section class='errMsg'>
     <p ng-cloak ng-show='loginform.email.$touched && !loginform.email.$valid'>Please enter a valid email address.</p>
-    <p ng-clock ng-show='loginform.password.$touched && !loginform.email.$valid'>Please enter a valid password.</p>
+    <p ng-cloak ng-show='loginform.password.$touched && !loginform.email.$valid'>Please enter a valid password.</p>
     <p ng-cloak ng-show='loginCtrl.hasError'>{{loginCtrl.message}}</p>
     <!-- add alert for when email or password is wrong/not found in the db -->
   </section>
