@@ -55,20 +55,21 @@ module.exports = function(grunt){
        }
      },
 
-     jshint:{
-          source:{
-            options:{
-              jshintrc:'.jshintrc'
-            },
-              files:{
-                  src:['app/client/js/**/*.js']
-              }
-            }
-          }
+    jshint:{
+      source:{
+        options:{
+          jshintrc:'.jshintrc'
+        },
+        files:{
+            src:['app/client/js/**/*.js']
+        }
+      }
+    }
 
   });
 
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
