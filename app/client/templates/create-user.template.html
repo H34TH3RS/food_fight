@@ -1,18 +1,33 @@
 <form ng-submit name='createUserForm'>
 
   <label for='email'>Email</label>
-  <input ng-model='upcCtrl.user.email' type='email' name='email' required placeholder='game@game.com'>
+  <input ng-model='userCtrl.user.email' type='email' name='email' required placeholder='game@game.com'>
 
   <label for='username'>Username</label>
-  <input ng-model='upcCrl.user.username' type='text' name='username' required placeholder='Choose a username'>
+  <input ng-model='userCrl.user.username' type='text' name='username' required placeholder='Choose a username'>
 
   <label for='password'>Password</label>
-  <input ng-model='upcCtrl.user.password' type='password' name='password' required placeholder='********'>
+  <input ng-model='userCtrl.user.password' type='password' name='password' required placeholder='********'>
 
   <label for='password_confirmation'>Please re-enter your password</label>
-  <input ng-model='upcCtrl.user.password_confirmation' type='password' name='password_confirmation' required placeholder='********'>
+  <input ng-model='userCtrl.user.password_confirmation' type='password' name='password_confirmation' required placeholder='********'>
 
   <button type='submit' name='newUserSubmit'>Create Account</button>
 
 
 </form>
+
+<section class='errMsg'>
+  <p ng-cloak ng-show='createUserForm.email.$touched && !createUserForm.email.$valid'>
+    Please enter a valid email.
+  </p>
+  <p ng-cloak ng-show='createUserForm.username.$touched && !createUserForm.password.$valid'>
+    Please enter a valid username.
+  </p>
+  <p ng-cloak ng-show='createUserForm.password.$touched && !createUserForm.password.$valid'>
+    Please enter a valid password. Passwords must match.
+  </p>
+  <p ng-cloak ng-show='createUserForm.password_confirmation.$touched && !createUserForm.password_confirmation.$valid'>
+    Please enter a valid password. Passwords must match.
+  </p>
+</section>

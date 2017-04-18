@@ -23,11 +23,13 @@
   */
     vm.login = function login(userLogin){
       LoginService.login(userLogin.email, userLogin.password)
-      .then(function testLog(){
-        console.log(userLogin);
+      .then(function goToHome(){
+        $state.go('home');
+      })
+      .catch(function handleError(err) {
+        console.warn('Unable to log in', err);
       });
     };
-
 
   /**
    * Removes the token to log out a user from the website.

@@ -21,7 +21,10 @@
         .then(function goHome() {
           $state.go('home');
         })
-        .catch();
+        .catch(function handleError(err) {
+          console.warn('Unable to create a new user', err);
+
+        });
       };
     }
 
