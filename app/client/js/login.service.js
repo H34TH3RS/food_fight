@@ -19,7 +19,7 @@
      * @param  {String} password the user's password
      * @return {String}          the authorization token
      */
-    function sendLogin(email, password) {
+    function login(email, password) {
       return $http({
         url: '/api/users',
         method: 'POST',
@@ -68,7 +68,7 @@
 
     return {
       getToken: getToken,
-      sendLogin: sendLogin,
+      login: login,
       logout: logout
     };
 

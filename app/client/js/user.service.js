@@ -34,8 +34,7 @@
       })
       .then(function handleResponse(response) {
         return response.data;
-      })
-      .catch();
+      });
     }
 
     return {
