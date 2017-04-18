@@ -5,8 +5,18 @@
 
   UserService.$inject = ['$http'];
 
+  /**
+   * Creates the user service
+   * @param {function} $http the service for ajax calls
+   * @return {Object} contains functions for use in the user controller
+   */
   function UserService($http) {
 
+    /**
+     * Creates a new user account
+     * @param  {Object} user must contain {email: xxx, username: xxx, password: xxx, password_confirmation: xxx}
+     * @return {void}
+     */
     function createUser(user) {
       return $http({
         url: '/api/users',

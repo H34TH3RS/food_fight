@@ -3,14 +3,14 @@
 
   angular.module('game').controller('LoginController', LoginController);
 
-  LoginController.inject = ['LoginService'];
+  LoginController.inject = ['$state', 'LoginService'];
 
   /**
    * Creates login controllers for allowing a user to log in to their account.
    * @param {function} LoginService the service containing login and logout functions
    * @return {void}
    */
-  function LoginController(LoginService){
+  function LoginController($state, LoginService){
 
     let vm = this;
 
