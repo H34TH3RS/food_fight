@@ -10,12 +10,21 @@
   </header>
   <body>
 
+    <nav ng-controller='LoginController as loginCtrl'>
+      <ul>
+        <li><a ui-sref='home'>home</a></li>
+        <li><a ui-sref='login'>log in</a></li>
+        <li><a href='#' ng-click='loginCtrl.logout()'>log out</a></li>
+        <li><a ui-sref='create-user'>create a user</a></li>
+      </ul>
+    </nav>
+
     <main ui-view>
       <small>angular is loading</small>
     </main>
 
     <footer>
-      &copy 2017
+      <p>&copy 2017</p>
     </footer>
 
     <script src='/angular.min.js'></script>

@@ -28,7 +28,7 @@
     .state({
       name: 'create-user',
       url: '/create-user',
-      templateUrl: 'templates/create_user.template.html',
+      templateUrl: 'templates/create-user.template.html',
       controller: 'UpcController',
       controllerAs: 'upcCtrl'
     });
