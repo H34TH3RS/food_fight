@@ -16,7 +16,7 @@
     .state({
       name: 'home',
       url: '',
-      templateUrl: '/templates/home.template.html'
+      templateUrl: 'templates/home.template.html'
     })
     .state({
       name: 'login',

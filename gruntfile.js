@@ -26,12 +26,12 @@ module.exports = function(grunt){
             expand: true
         }]
       },
-    angular:{
-      files: [{
-          cwd:'node_modules/angular/',
-          src:['angular.js'],
-          dest:'public/js/',
-          expand: true
+      angular:{
+        files: [{
+            cwd:'node_modules/angular/',
+            src:['angular.min.js'],
+            dest:'public/',
+            expand: true
         }]
       }
     },
