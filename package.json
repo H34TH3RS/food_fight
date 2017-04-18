@@ -7,14 +7,23 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "grunt",
+    "start": "http-server ./public/ -p $PORT"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2",
     "angular-mocks": "^1.6.4",
     "chai": "^3.5.0",
-    "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
@@ -24,9 +33,5 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-mocha": "^1.3.0",
     "mocha": "^3.2.0"
-  },
-  "dependencies": {
-    "angular": "^1.6.4",
-    "angular-ui-router": "^0.4.2"
   }
 }
