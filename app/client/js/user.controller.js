@@ -12,7 +12,7 @@
       vm.user = {};
 
       vm.createUser = function createUser(user) {
-        return UpcService.createUser(user)
+        return UserService.createUser(user)
         .then(function goHome() {
           $state.go('home');
         })
