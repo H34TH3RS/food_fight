@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "grunt",
-    "start": "http-server ./build/ -p $PORT"
+    "start": "http-server ./public/ -p $PORT"
   },
   "author": "",
   "license": "ISC",
