@@ -15,6 +15,8 @@
 
       vm.users = [];
       vm.user = {};
+      vm.message = null;
+      vm.hasError = false;
 
       vm.createUser = function createUser(user) {
         return UserService.createUser(user)
@@ -22,8 +24,13 @@
           $state.go('home');
         })
         .catch(function handleError(err) {
-          console.warn('Unable to create a new user', err);
-
+          vm.hasError = true;
+          if (err.status === 404) {
+            vm.message = 'Unable to create a new user. Page not found.';
+            // use $state.go('not-found') instead of message on the page?
+          } else {
+            vm.message = 'There is a problem with the server. Please try again later.';
+          }
         });
       };
     }

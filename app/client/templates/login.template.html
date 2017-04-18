@@ -6,7 +6,7 @@
     <label for='email'>Email</label>
     <input ng-model='loginCtrl.userLogin.email' type='email' name='email' placeholder='food@fight.com' required>
     <label for='password'>Password</label>
-    <input ng-model='loginCtrl.userLogin.email' type='password' name='password' required>
+    <input ng-model='loginCtrl.userLogin.password' type='password' name='password' required>
 
     <button type='submit' name='submitLogin'>Log In</button>
 
@@ -15,6 +15,7 @@
   <section class='errMsg'>
     <p ng-cloak ng-show='loginform.email.$touched && !loginform.email.$valid'>Please enter a valid email address.</p>
     <p ng-clock ng-show='loginform.password.$touched && !loginform.email.$valid'>Please enter a valid password.</p>
+    <p ng-cloak ng-show='loginCtrl.hasError'>{{loginCtrl.message}}</p>
     <!-- add alert for when email or password is wrong/not found in the db -->
   </section>
 

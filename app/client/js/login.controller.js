@@ -15,6 +15,8 @@
     let vm = this;
 
     vm.userLogin = {};
+    vm.message = null;
+    vm.hasError = false;
 
   /**
   * Allows a user to log in to their account.
@@ -27,7 +29,13 @@
         $state.go('home');
       })
       .catch(function handleError(err) {
-        console.warn('Unable to log in', err);
+        vm.hasError = true;
+        if (err.status === 404) {
+          vm.message = 'Unable to log in. Page not found.';
+          // use $state.go('not-found') instead of message on the page?
+        } else {
+          vm.message = 'There is a problem with the server. Please try again later.';
+        }
       });
     };
 

@@ -30,4 +30,5 @@
   <p ng-cloak ng-show='createUserForm.password_confirmation.$touched && !createUserForm.password_confirmation.$valid'>
     Please enter a valid password. Passwords must match.
   </p>
+  <p ng-cloak ng-show='userCtrl.hasError'>{{userCtrl.message}}</p>
 </section>
