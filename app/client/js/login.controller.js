@@ -1,4 +1,4 @@
-(function() {
+ (function() {
   'use strict';
 
   angular.module('game').controller('LoginController', LoginController);

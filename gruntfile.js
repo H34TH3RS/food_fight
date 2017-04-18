@@ -73,6 +73,7 @@ module.exports = function(grunt){
           browsers: ['Chrome'],
           files:[
             'node_modules/angular/angular.js',
+            'node_modules/angular-ui-router/release/angular-ui-router.min.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'app/client/js/game.module.js',
             'app/client/js/**/*.js',
@@ -93,6 +94,8 @@ module.exports = function(grunt){
   });
 
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-karma');
+
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');
   // grunt.loadNpmTasks('grunt-contrib-copy');

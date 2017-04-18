@@ -20,6 +20,14 @@
      * @return {String}          the authorization token
      */
     function sendLogin(email, password) {
+      // if (typeof(email) !== 'string' || !email.length){
+      //   return Promise.reject('Please provide a valid email');
+      // }
+      //
+      // if (typeof(password) !== 'string' || !password.length){
+      //   return Promise.reject('Please provide a valid email');
+      // }
+
       return $http({
         url: '/api/users',
         method: 'POST',
