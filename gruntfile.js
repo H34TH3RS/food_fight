@@ -64,16 +64,40 @@ module.exports = function(grunt){
             src:['app/client/js/**/*.js']
         }
       }
+    },
+
+    karma: {
+      all: {
+        options: {
+          frameworks: ['mocha', 'chai'],
+          browsers: ['Chrome'],
+          files:[
+            'node_modules/angular/angular.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'app/client/js/game.module.js',
+            'app/client/js/**/*.js',
+            'test/client/spec/**/*.spec.js'
+          ],
+          singleRun: true,
+          preproccessors: {
+            'app/client/js/**/*.js': ['coverage']
+          },
+          reporters:['dots', 'coverage'],
+          coverageReporter:{
+            type: 'text-summary'
+          }
+        }
+      }
     }
 
   });
 
   require('load-grunt-tasks')(grunt);
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  // grunt.loadNpmTasks('grunt-contrib-jshint');
+  // grunt.loadNpmTasks('grunt-contrib-watch');
+  // grunt.loadNpmTasks('grunt-contrib-copy');
+  // grunt.loadNpmTasks('grunt-contrib-clean');
+  // grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat']);
+  grunt.registerTask('default', ['jshint', 'karma', 'clean', 'copy', 'concat']);
 };
