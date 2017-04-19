@@ -29,8 +29,8 @@
       name: 'create-user',
       url: '/create-user',
       templateUrl: 'templates/create-user.template.html',
-      controller: 'UpcController',
-      controllerAs: 'upcCtrl'
+      controller: 'UserController',
+      controllerAs: 'userCtrl'
     });
 }
 
