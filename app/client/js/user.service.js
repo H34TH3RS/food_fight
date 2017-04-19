@@ -67,7 +67,7 @@
 
     /**
      * Removes the authorization token to log out the user
-     * @return {function} the ajax call to remove the token
+     * @return {Promise} the ajax call to remove the token
      */
     function logout() {
       return $http({
