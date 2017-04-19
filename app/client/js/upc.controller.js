@@ -13,7 +13,7 @@
     vm.upcCode = {};
 
     function sendUpcData() {
-      UpcService.sendUpcData(upcCode.upc);
+      return UpcService.sendUpcData(upcCode.upc);
 
     }
 
