@@ -47,7 +47,9 @@ module.exports = function(grunt){
 
     watch: {
          scripts: {
-           files: ['app/client/js/**/*.js', 'app/client/**/*.html',     'app/client/templates/**/*.html'],
+           files: ['app/client/js/**/*.js',
+                   'app/client/**/*.html',
+                   'app/client/templates/**/*.html'],
            tasks: ['clean', 'copy', 'concat'],
            options: {
            spawn: false,
@@ -77,7 +79,7 @@ module.exports = function(grunt){
             'node_modules/angular-mocks/angular-mocks.js',
             'app/client/js/game.module.js',
             'app/client/js/**/*.js',
-            'test/client/spec/**/*.spec.js'
+            'app/client/test/**/*.spec.js'
           ],
           singleRun: true,
           preproccessors: {
@@ -95,7 +97,6 @@ module.exports = function(grunt){
 
   require('load-grunt-tasks')(grunt);
   // grunt.loadNpmTasks('grunt-karma');
-
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');
   // grunt.loadNpmTasks('grunt-contrib-copy');
