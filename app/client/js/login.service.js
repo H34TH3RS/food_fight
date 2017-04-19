@@ -13,73 +13,8 @@
 
     let token = localStorage.getItem('token');
 
-    /**
-     * Retrieves an auth token to allow the user to log in to their account.
-     * @param  {String} email    the user's email address
-     * @param  {String} password the user's password
-     * @return {String}          the authorization token
-     */
 
-    function login(email, password) {
-      if (typeof(email) !== 'string' || !email.length){
-        return Promise.reject('Please provide a valid email');
-      }
 
-      if (typeof(password) !== 'string' || !password.length){
-        return Promise.reject('Please provide a valid email');
-      }
-
-      return $http({
-        url: '/api/users',
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          email: email,
-          password: password,
-        }
-      })
-      .then(function handleResponse(response) {
-        localStorage.setItem('token', respsonse.data.auth_token);//auth_token
-        token = response.data.auth_token;
-        return token;
-      });
-    }
-
-    /**
-     * Removes the authorization token to log out the user
-     * @return {function} the ajax call to remove the token
-     */
-    function logout() {
-      return $http({
-        url: '/api/users',
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        }
-      })
-      .then(function handleResponse(response) {
-        token = null;
-        localStorage.removeItem('token');
-      });
-
-    }
-
-    /**
-     * Retrieves the token for secure access by the authorization system
-     * @return {String} the authorization token
-     */
-    function getToken() {
-      return token;
-    }
-
-    return {
-      getToken: getToken,
-      login: login,
-      logout: logout
-    };
 
   }
 
