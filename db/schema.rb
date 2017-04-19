@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417164107) do
+ActiveRecord::Schema.define(version: 20170419194446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "food_name"
+    t.string   "class"
+    t.integer  "energy"
+    t.integer  "physical_resistance_debuff"
+    t.integer  "health"
+    t.integer  "accuracy"
+    t.integer  "energy_debuff"
+    t.integer  "strength"
+    t.integer  "accuracy_buff"
+    t.integer  "health_buff"
+    t.integer  "defense"
+    t.integer  "attack_buff"
+    t.integer  "cleanse"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "upc"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
