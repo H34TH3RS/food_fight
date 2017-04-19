@@ -5,7 +5,6 @@
 
   UpcController.$inject = ['$state', 'UpcService'];
 
-
   function UpcController($state, UpcService) {
 
   }
