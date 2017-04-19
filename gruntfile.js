@@ -98,5 +98,5 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-babel');
 
-  grunt.registerTask('default', ['jshint', 'clean','concat','babel', 'copy','sass']);
+  grunt.registerTask('default', ['jshint', 'clean','concat','babel','copy','sass']);
 };
