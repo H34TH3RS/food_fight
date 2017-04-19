@@ -22,8 +22,8 @@
       name: 'login',
       url: '/login',
       templateUrl: 'templates/login.template.html',
-      controller: 'LoginController',
-      controllerAs: 'loginCtrl'
+      controller: 'UserController',
+      controllerAs: 'userCtrl'
     })
     .state({
       name: 'create-user',
