@@ -35,6 +35,7 @@ module.exports = function(grunt){
         }]
       }
     },
+
     concat:{
       options: {
         sourceMap: true
@@ -54,10 +55,23 @@ module.exports = function(grunt){
         }
       }
     },
+
     sass: {
       all: {
         files: {
           'public/style.css': 'app/client/sass/main.scss'
+        }
+      }
+    },
+
+    babel: {
+      all: {
+        options: {
+          presets: ['es2015'],
+          sourceMap: true
+        },
+        files:{
+          'public/js/app.js': 'public/js/app.js'
         }
       }
     },
@@ -82,6 +96,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-babel');
 
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'concat','sass']);
+  grunt.registerTask('default', ['jshint', 'clean','concat','babel', 'copy','sass']);
 };
