@@ -20,18 +20,18 @@ module.exports = function(grunt){
       },
       templatesHtml: {
         files: [{
-            cwd: 'app/client/templates/',
-            src: ['*.html'],
-            dest: 'public/templates/',
-            expand: true
+          cwd: 'app/client/templates/',
+          src: ['*.html'],
+          dest: 'public/templates/',
+          expand: true
         }]
       },
       angular:{
         files: [{
-            cwd:'node_modules/angular/',
-            src:['angular.min.js'],
-            dest:'public/',
-            expand: true
+          cwd:'node_modules/angular/',
+          src:['angular.min.js'],
+          dest:'public/',
+          expand: true
         }]
       }
     },
@@ -46,24 +46,30 @@ module.exports = function(grunt){
     },
 
     watch: {
-         scripts: {
-           files: ['app/client/js/**/*.js',
-                   'app/client/**/*.html',
-                   'app/client/templates/**/*.html'],
-           tasks: ['clean', 'copy', 'concat'],
-           options: {
-           spawn: false,
-         }
-       }
-     },
 
-    jshint:{
+      scripts: {
+        files: ['app/client/js/**/*.js', 'app/client/**/*.html',     'app/client/templates/**/*.html'],
+        tasks: ['clean', 'copy', 'concat', 'sass'],
+        options: {
+          spawn: false,
+        }
+      }
+    },
+    sass: {
+      all: {
+        files: {
+          'public/style.css': 'app/client/sass/main.scss'
+        }
+      }
+    },
+
+     jshint:{
       source:{
         options:{
           jshintrc:'.jshintrc'
         },
         files:{
-            src:['app/client/js/**/*.js']
+          src:['app/client/js/**/*.js']
         }
       }
     },
@@ -96,7 +102,6 @@ module.exports = function(grunt){
   });
 
   require('load-grunt-tasks')(grunt);
-
   // grunt.loadNpmTasks('grunt-karma');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');
@@ -105,4 +110,5 @@ module.exports = function(grunt){
   // grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.registerTask('default', ['jshint', 'karma', 'clean', 'copy', 'concat']);
+
 };

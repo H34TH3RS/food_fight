@@ -9,7 +9,7 @@
    * Creates the login service for loging in and out with an authorization token
    * @return {Object} the object containing funcitons for use in the login controller
    */
-  function LoginService(){
+  function LoginService($http) {
 
     let token = localStorage.getItem('token');
 
@@ -19,7 +19,8 @@
      * @param  {String} password the user's password
      * @return {String}          the authorization token
      */
-    function sendLogin(email, password) {
+
+    function login(email, password) {
       if (typeof(email) !== 'string' || !email.length){
         return Promise.reject('Please provide a valid email');
       }
@@ -76,7 +77,7 @@
 
     return {
       getToken: getToken,
-      sendLogin: sendLogin,
+      login: login,
       logout: logout
     };
 

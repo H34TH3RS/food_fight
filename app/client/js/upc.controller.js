@@ -7,6 +7,15 @@
 
   function UpcController($state, UpcService) {
 
+    let vm = this;
+
+    vm.upcCode = {};
+
+    function sendUpcData() {
+      UpcService.sendUpcData(upcCode.upc);
+
+    }
+
   }
 
 
