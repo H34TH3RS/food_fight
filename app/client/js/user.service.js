@@ -12,7 +12,7 @@
    */
   function UserService($http) {
 
-    let token  = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
 
     /**
      * Creates a new user account
@@ -37,11 +37,7 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log('inside .then', response.status, response);
-        localStorage.setItem('token', response.data.auth_token);
-        token = response.data.auth_token;
-        console.log(token);
-        return token;
+        return response.data;
       });
     }
     /**
