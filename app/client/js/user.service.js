@@ -44,7 +44,7 @@
      * Retrieves an auth token to allow the user to log in to their account.
      * @param  {String} email    the user's email address
      * @param  {String} password the user's password
-     * @return {String}          the authorization token
+     * @return {Promise}          the authorization token
      */
     function login(email, password) {
       return $http({
