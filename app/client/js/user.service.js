@@ -37,11 +37,7 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log('inside .then', response.status, response);
-        localStorage.setItem('token', response.data.auth_token);
-        token = response.data.auth_token;
-        console.log(token);
-        return token;
+        return response.data;
       });
     }
     /**
@@ -58,8 +54,10 @@
           'Content-Type': 'application/json',
         },
         data: {
-          email: email,
-          password: password,
+          user: {
+            email: email,
+            password: password
+          }
         }
       })
       .then(function handleResponse(response) {
