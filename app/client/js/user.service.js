@@ -28,15 +28,19 @@
           'Content-Type': 'application/json',
         },
         data: {
-          email: user.email,
-          username: user.username,
-          password: user.password,
-          password_confirmation: user.password_confirmation
+          user: {
+            email: user.email,
+            username: user.username,
+            password: user.password,
+            password_confirmation: user.password_confirmation
+          }
         }
       })
       .then(function handleResponse(response) {
+        console.log('inside .then', response.status, response);
         localStorage.setItem('token', response.data.auth_token);
         token = response.data.auth_token;
+        console.log(token);
         return token;
       });
     }
