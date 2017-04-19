@@ -94,7 +94,7 @@ module.exports = function(grunt){
   });
 
   require('load-grunt-tasks')(grunt);
-  grunt.loadNpmTasks('grunt-karma');
+  // grunt.loadNpmTasks('grunt-karma');
 
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');

@@ -19,18 +19,17 @@
 
       mockUserService.createUser = function createUser(user) {
         mockUserService.createUser.numTimesCalled++;
-
       };
 
       mockUserService.createUser.numTimesCalled = 0;
       UserController = $controller('UserController');
 
-  }));
+    }));
 
     it('should be the correct types', function() {
       expect(UserController.createUser).to.be.a('function');
     });
 
-});
+  });
 
 }());

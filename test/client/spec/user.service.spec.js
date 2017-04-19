@@ -1,7 +1,6 @@
 (function() {
   'use strict';
 
-
   let expect = chai.expect;
 
   describe('user service', function(){
@@ -21,10 +20,6 @@
     it('should return a promise is passed object', function(){
       expect(UserService.createUser()).to.be.a('promise');
     });
-
-    
-
-
 
   });
 

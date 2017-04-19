@@ -7,7 +7,6 @@
 
     let LoginService;
 
-
     beforeEach(module('game'));
 
     beforeEach(inject(function(_LoginService_){
@@ -20,12 +19,9 @@
       expect(LoginService.getToken).to.be.a('function');
     });
 
-
     it('should return a promise if passed strings', function(){
       expect(LoginService.sendLogin()).to.be.a('promise');
     });
-
-
 
   });
 

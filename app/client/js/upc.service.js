@@ -15,7 +15,7 @@
           'Content-Type': 'application/json'
         },
         data: {
-          upc: upc
+          upc: upc //getting an error here when testing
         }
 
       })
