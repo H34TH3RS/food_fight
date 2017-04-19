@@ -82,7 +82,7 @@ module.exports = function(grunt){
             'app/client/test/**/*.spec.js'
           ],
           singleRun: true,
-          preproccessors: {
+          preprocessors: {
             'app/client/js/**/*.js': ['coverage']
           },
           reporters:['dots', 'coverage'],
@@ -96,6 +96,7 @@ module.exports = function(grunt){
   });
 
   require('load-grunt-tasks')(grunt);
+
   // grunt.loadNpmTasks('grunt-karma');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-watch');
