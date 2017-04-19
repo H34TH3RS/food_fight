@@ -13,7 +13,6 @@
         method: 'POST',
         header: {
           'Content-Type': 'application/json',
-          'Authorization': LoginService.getToken()
         },
         data: {
           email: user.email,
