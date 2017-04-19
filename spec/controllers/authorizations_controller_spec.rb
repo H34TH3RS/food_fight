@@ -15,7 +15,8 @@ RSpec.describe Api::AuthorizationsController, type: :controller do
         email: 'moose@tiydc.com',
         password: 'password'
       }
-      expect(response). to be_ok
+      binding.pry
+      expect(response).to be_ok
       token = JSON.parse(response.body)['auth_token']
       expect(token).to match(/[0-f]{32}/)
     end
