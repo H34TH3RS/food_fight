@@ -43,7 +43,9 @@
     .state({
       name: 'cards',
       url: '/cards',
-      templateUrl: 'templates/cards.template.html'
+      templateUrl: 'templates/cards.template.html',
+      controller: 'CardController',
+      controllerAs: 'cardCtrl'
     })
     .state({
       name: 'not-found',
