@@ -1,21 +1,22 @@
 
 
 (function() {
-    'use strict';
+  'use strict';
 
-    angular.module('game', ['ui.router'])
-    .config(routerConfig);
+  angular.module('game', ['ui.router'])
+  .config(routerConfig);
 
-    routerConfig.$inject = ['$stateProvider'];
+  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    // $urlRouterProvider.when('', '/');
-    // $urlRouterProvider.otherwise('/not-found');
- function routerConfig($stateProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.otherwise('/not-found');
 
     $stateProvider
     .state({
       name: 'home',
-      url: '',
+      url: '/',
       templateUrl: 'templates/home.template.html'
     })
     .state({
@@ -38,6 +39,11 @@
       templateUrl: 'templates/upc.template.html',
       controller: 'UpcController',
       controllerAs: 'upcCtrl'
+    })
+    .state({
+      name: 'not-found',
+      url: '/not-found',
+      templateUrl: 'templates/not-found.template.html'
     });
 }
 
