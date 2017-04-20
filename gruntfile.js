@@ -18,6 +18,14 @@ module.exports = function(grunt) {
           expand: true
         }]
       },
+      css:{
+        files:[{
+          cwd: 'app/client/',
+          src: 'style.css',
+          dest: 'public/',
+          expand: true
+        }]
+      },
       templatesHtml: {
         files: [{
           cwd: 'app/client/templates/',
@@ -58,7 +66,7 @@ module.exports = function(grunt) {
     sass: {
       all: {
         files: {
-          'public/style.css': 'app/client/sass/main.scss'
+          'publin/style.css': 'app/client/sass/main.scss'
         }
       }
     },
