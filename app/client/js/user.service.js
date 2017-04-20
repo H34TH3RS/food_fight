@@ -12,7 +12,7 @@
    */
   function UserService($http) {
 
-    let token  = localStorage.getItem('token');
+    let token  = localStorage.getItem('token') || null;
 
     /**
      * Creates a new user account
@@ -58,17 +58,19 @@
           'Content-Type': 'application/json',
         },
         data: {
-          email: email,
-          password: password,
+          user:{
+            email: email,
+            password: password,
+          }
         }
       })
       .then(function handleResponse(response) {
-        localStorage.setItem('token', respsonse.data.auth_token);//auth_token
         token = response.data.auth_token;
+        localStorage.setItem('token', token);//auth_token
+        console.log('In login ',  token);
         return token;
       });
     }
-
     /**
      * Removes the authorization token to log out the user
      * @return {Promise} the ajax call to remove the token
@@ -83,6 +85,7 @@
         }
       })
       .then(function handleResponse(response) {
+        console.log(token);
         token = null;
         localStorage.removeItem('token');
       });
