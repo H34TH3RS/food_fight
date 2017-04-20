@@ -47,7 +47,6 @@
     */
     vm.logout = function logout() {
       UserService.logout();
-      console.log('logged out');
       $state.go('home');
     };
 
