@@ -13,7 +13,7 @@
   function UserService($http) {
 
     let token  = localStorage.getItem('token') || null;
-    console.log(token);
+      console.log(token);
     /**
     * Creates a new user account
     * @param  {Object} user must contain {email: xxx, username: xxx, password: xxx, password_confirmation: xxx}
