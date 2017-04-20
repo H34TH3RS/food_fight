@@ -8,7 +8,6 @@ class Api::CardsController < ApplicationController
 
     new_card_data = CardConverter.new.convert!(nutrition_data)
 
-    binding.pry
     # @card = Card.new(card_data)
     # @card.save
   end
