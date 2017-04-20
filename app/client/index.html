@@ -9,19 +9,18 @@
   </head>
   <body>
 
-  <header>
-    <h1>Food Fight</h1>
-    <nav ng-controller='UserController as userCtrl' class=" nav navbar navbar-inverse nav-pills">
-      <ul>
-        <li><a ui-sref='home'>home</a></li>
-        <li><a ui-sref='login'>log in</a></li>
-        <li><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
-        <li><a ui-sref='create-user'>create a user</a></li>
-        <li><a ui-sref='upc'>UPC</a></li>
-      </ul>
-    </nav>
-  </header>
-
+    <header>
+      <h1>Food Fight</h1>
+      <nav ng-controller='UserController as userCtrl' class=" nav navbar navbar-inverse nav-pills">
+        <ul>
+          <li><a ui-sref='home'>home</a></li>
+          <li><a ui-sref='login'>log in</a></li>
+          <li><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
+          <li><a ui-sref='create-user'>create a user</a></li>
+          <li><a ui-sref='upc'>UPC</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <main ui-view>
     </main>
