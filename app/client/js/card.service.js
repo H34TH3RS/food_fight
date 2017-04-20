@@ -4,6 +4,12 @@
 
   CardService.$inject = ['$http', 'UserService'];
 
+
+  /**
+   * Creates the Card Service
+   * @param {Function} $http       Service that allows ajax calls
+   * @param {Function} UserService Contains the function to retrieve the auth token
+   */
   function CardService($http, UserService) {
 
     function getAllCards() {
