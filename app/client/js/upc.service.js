@@ -5,6 +5,11 @@
 
   UpcService.$inject = ['$http'];
 
+  /**
+   * Creates the UPC Service
+   * @param {Function} $http Service that allows ajax calls
+   * @return {Promise}
+   */
   function UpcService($http) {
     function sendUpcData(upcCode) {
       return $http({
