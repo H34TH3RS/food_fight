@@ -31,6 +31,13 @@
       templateUrl: 'templates/create-user.template.html',
       controller: 'UserController',
       controllerAs: 'userCtrl'
+    })
+    .state({
+      name: 'upc',
+      url: '/upc',
+      templateUrl: 'templates/upc.template.html',
+      controller: 'UpcController',
+      controllerAs: 'upcCtrl'
     });
 }
 

@@ -11,9 +11,9 @@
   * @return {Object} contains functions for use in the user controller
   */
   function UserService($http) {
-
     let token  = localStorage.getItem('token') || null;
       console.log(token);
+
     /**
     * Creates a new user account
     * @param  {Object} user must contain {email: xxx, username: xxx, password: xxx, password_confirmation: xxx}
@@ -37,10 +37,10 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log(response.data);
         return response.data;
       });
     }
+
     /**
     * Retrieves an auth token to allow the user to log in to their account.
     * @param  {String} email    the user's email address
@@ -49,20 +49,18 @@
     */
     function login(email, password) {
       return $http({
-        url: '/api/users',
+        url: '/api/authorization',
         method: 'POST',
         header: {
           'Content-Type': 'application/json',
         },
         data: {
-          user:{
-            email: email,
-            password: password,
-          }
+          email: email,
+          password: password
         }
       })
       .then(function handleResponse(response) {
-        token = response.data.auth_token;
+        token = 'token ' + response.data.auth_token;
         localStorage.setItem('token', token);//auth_token
         console.log('In login ',  token);
         return token;
