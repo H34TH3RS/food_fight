@@ -5,10 +5,10 @@
   UserController.$inject = ['$state', 'UserService'];
 
   /**
-   * creates the user controller
-   * @param {function} $state  the service for routing views
-   * @param {function} UserService the service containing user functions
-   */
+  * creates the user controller
+  * @param {function} $state  the service for routing views
+  * @param {function} UserService the service containing user functions
+  */
   function UserController($state, UserService) {
 
     let vm = this;
@@ -47,6 +47,8 @@
     */
     vm.logout = function logout() {
       UserService.logout();
+      console.log('logged out');
+      $state.go('home');
     };
 
     vm.createUser = function createUser(user) {
@@ -65,6 +67,6 @@
         }
       });
     };
-    }
+  }
 
 }());
