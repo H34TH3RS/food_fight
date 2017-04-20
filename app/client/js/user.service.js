@@ -13,7 +13,7 @@
   function UserService($http) {
 
     let token  = localStorage.getItem('token') || null;
-
+    console.log(token);
     /**
      * Creates a new user account
      * @param  {Object} user must contain {email: xxx, username: xxx, password: xxx, password_confirmation: xxx}
@@ -37,11 +37,11 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log('inside .then', response.status, response);
-        localStorage.setItem('token', response.data.auth_token);
-        token = response.data.auth_token;
-        console.log(token);
-        return token;
+        // console.log('inside .then', response.status, response);
+        // localStorage.setItem('token', response.data.auth_token);
+        // token = response.data.auth_token;
+        console.log(response.data);
+        return response.data;
       });
     }
     /**
@@ -71,26 +71,34 @@
         return token;
       });
     }
-    /**
-     * Removes the authorization token to log out the user
-     * @return {Promise} the ajax call to remove the token
-     */
-    function logout() {
-      return $http({
-        url: '/api/users',
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json',
-          'Authorization': token
+    // /**
+    //  * Removes the authorization token to log out the user
+    //  * @return {Promise} the ajax call to remove the token
+    //  */
+    // function logout() {
+    //   return $http({
+    //     url: '/api/users',
+    //     method: 'POST',
+    //     header: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': token
+    //     }
+    //   })
+    //   .then(function handleResponse(response) {
+    //     console.log(token);
+    //     token = null;
+    //     localStorage.removeItem('token');
+    //   });
+    //
+    // }
+    //
+    //  /**
+         
+        function logout() {
+          token = null;
+          localStorage.removeItem('token');
         }
-      })
-      .then(function handleResponse(response) {
-        console.log(token);
-        token = null;
-        localStorage.removeItem('token');
-      });
 
-    }
 
     /**
      * Retrieves the token for secure access by the authorization system
