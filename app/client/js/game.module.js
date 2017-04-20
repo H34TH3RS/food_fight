@@ -41,6 +41,11 @@
       controllerAs: 'upcCtrl'
     })
     .state({
+      name: 'cards',
+      url: '/cards',
+      templateUrl: 'templates/cards.template.html'
+    })
+    .state({
       name: 'not-found',
       url: '/not-found',
       templateUrl: 'templates/not-found.template.html'

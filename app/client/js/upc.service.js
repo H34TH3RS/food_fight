@@ -5,35 +5,21 @@
 
   UpcService.$inject = ['$http'];
 
+  /**
+   * Creates the UPC Service
+   * @param {Function} $http Service that allows ajax calls
+   * @return {Promise}
+   */
   function UpcService($http) {
-
-    function upcLookup() {
+    function sendUpcData(upcCode) {
       return $http({
         url: '/api/cards',
         method: 'POST',
         header: {
           'Content-Type': 'application/json'
         },
-        data:{
-          upc: upcCode.upc
-        }
-      })
-      .then(function handleResponse(response) {
-        console.log(response.data);
-        return response.data;
-      });
-
-    }
-
-    function sendUpcData(data) {
-      return $http({
-        url: '/api/users',
-        method: 'POST',
-        header: {
-          'Content-Type': 'application/json'
-        },
         data: {
-          upc: upc //getting an error here when testing
+          upc: upcCode.upc
         }
       })
       .then(function handleResponse(response) {
@@ -42,10 +28,8 @@
     }
 
     return {
-      sendUpcData: sendUpcData,
-      upcLookup: upcLookup
+      sendUpcData: sendUpcData
     };
-
   }
 
 }());
