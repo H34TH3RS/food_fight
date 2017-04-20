@@ -6,9 +6,7 @@
   UpcService.$inject = ['$http'];
 
   function UpcService($http) {
-    console.log('inside UpcService');
     function sendUpcData(upcCode) {
-      console.log('inside sendUpcData');
       return $http({
         url: '/api/cards',
         method: 'POST',
@@ -20,7 +18,6 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log('inside .then sentUpcData', upcCode.upc);
         return response.data;
       });
     }
