@@ -17,11 +17,6 @@
     it('should expect the function to be function', function() {
       expect(UpcService.sendUpcData).to.be.a('function');
     });
-
-    // it('should expect the function to be function', function() {
-    //   expect(UpcService.sendUpcData()).to.be.a('promise');
-    // });
-
   });
 
 }());
