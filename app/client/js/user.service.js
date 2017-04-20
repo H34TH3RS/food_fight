@@ -40,7 +40,7 @@
         return response.data;
       });
     }
-    
+
     /**
     * Retrieves an auth token to allow the user to log in to their account.
     * @param  {String} email    the user's email address
@@ -49,20 +49,18 @@
     */
     function login(email, password) {
       return $http({
-        url: '/api/users',
+        url: '/api/authorization',
         method: 'POST',
         header: {
           'Content-Type': 'application/json',
         },
         data: {
-          user:{
-            email: email,
-            password: password,
-          }
+          email: email,
+          password: password
         }
       })
       .then(function handleResponse(response) {
-        token = response.data.auth_token;
+        token = 'token ' + response.data.auth_token;
         localStorage.setItem('token', token);//auth_token
         console.log('In login ',  token);
         return token;
