@@ -25,12 +25,11 @@ class Api::CardsController < ApplicationController
       upc: user_params['upc'],
       nutrition_data: nutrition_data.as_json
     }
-    card_data = basic_card_data.merge(added_data)
+    card_data = @basic_card_data.merge(added_data)
 
     @card = Card.new(card_data)
 
-    if
-      @card.save
+    if @card.save
       render json: @basic_card_data.as_json, status: :created
     else
       render json: { message: error.to_s }, status: :unprocessable_entity
