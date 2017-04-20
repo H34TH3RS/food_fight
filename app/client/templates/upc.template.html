@@ -1,6 +1,7 @@
-<form ng-submit name='findupc'>
-  <label for='upcLookup'>Enter a UPC</label>
-  <input ng-model='upcCtrl.upcCode.upc' type='text' name='upcLookup' required placeholder='Enter a UPC'>
+<form ng-submit='upcCtrl.sendUpcData(upcCtrl.upcCode)' name='findupc'>
+
+  <label for='upc'>Enter a UPC</label>
+  <input ng-model='upcCtrl.upcCode.upc' type='text' name='upc' required placeholder='Enter a UPC'>
 
   <button type='submit' name='upcSubmit'>Find UPC</button>
 

@@ -38,6 +38,11 @@
       templateUrl: 'templates/upc.template.html',
       controller: 'UpcController',
       controllerAs: 'upcCtrl'
+    })
+    .state({
+      name: 'cards',
+      url: '/cards',
+      templateUrl: 'templates/cards.template.html'
     });
 }
 
