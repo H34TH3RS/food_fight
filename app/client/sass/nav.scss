@@ -1,9 +1,14 @@
 
 nav {
   list-style: none;
-    li {
-    display: inline;
-    font-size:1.5em;
-    padding-right:.5em;
+
+  li {
+  display: inline;
+  font-size:1.5em;
+  padding-right:.5em;
   }
+}
+
+.navbar {
+  border-radius: 0px;
 }
