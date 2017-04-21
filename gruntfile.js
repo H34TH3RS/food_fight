@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       css:{
         files:[{
           cwd: 'app/client/',
-          src: 'style.css',
+          src: ['style.css', 'bootstrap.css'],
           dest: 'public/',
           expand: true
         }]
