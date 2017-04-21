@@ -11,8 +11,8 @@
 
     <header>
       <h1>Food Fight</h1>
-      <nav ng-controller='UserController as userCtrl' class=" nav navbar navbar-inverse nav-pills">
-        <ul>
+      <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+        <ul class='container'>
           <li><a ui-sref='home'>home</a></li>
           <li><a ui-sref='login'>log in</a></li>
           <li><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
@@ -23,7 +23,7 @@
       </nav>
     </header>
 
-    <main ui-view>
+    <main ui-view class='container'>
     </main>
 
     <footer>
