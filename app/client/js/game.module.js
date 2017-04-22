@@ -48,11 +48,23 @@
       controllerAs: 'cardCtrl'
     })
     .state({
+      name: 'play',
+      url: '/play',
+      templateUrl: 'templates/play.template.html',
+      controller: 'GameController',
+      controllerAs: 'gameCtrl'
+    })
+    .state({
+      name: 'end',
+      url: '/end',
+      templateUrl: 'templates/end.template.html',
+      controller: 'GameController',
+      controllerAs: 'gameCtrl'
+    })
+    .state({
       name: 'not-found',
       url: '/not-found',
       templateUrl: 'templates/not-found.template.html',
-      controller: 'GameController',
-      controllerAs: 'gameCtrl'
     });
 }
 

@@ -1,43 +1,84 @@
 (function() {
   'use strict';
 
-angular.module('game').controller('GameController', GameController);
+  angular.module('game').controller('GameController', GameController);
 
-GameController.$inject =['$state'];
+  GameController.$inject =['$state'];
 
   function GameController($state){
 
     let vm = this;
-    let board = 25;
+    vm.board = 1000;
+    vm.roll = 0;
+    // vm.enemy =' ';
+    // vm.treasure =' ';
+    vm.status = '';
 
-  //TODO
-  //Basic 'movement'
-  //2. The roll will be the number of moves the character makes on the board.
-  //    --the board is jsut a set number of spaces that the char must get through.
-  //3. After every roll, the board space count (BSC) will subtract the roll. When
-  //    the BSC reaches 0, the board is complete.
-  //
+    let enemies = [
+      {enemy:'Deadly Daikon Dan'},
+      {enemy:'Crazy Carrotina'},
+      {enemy:'Eggploding Eggbert'}
+    ];
+    let treasures = [
+      {treasure:'a Golden Egg'},
+      {treasure:'some Cool Beans'},
+      {treasure:'some Salt'}
+    ];
+    let nothings = [
+      {nothing:'Nothing here but some boneless chickens...'},
+      {nothing:'You can hear crickets in the background.'},
+      {nothing:'You encounter a some wilted lettuce.'}
+    ];
+
+    let chance = 100;
+    let treasureChance = 5;
+    let nothing = 30;
+
+    vm.rollRNG = function rollRNG(){
 
 
-  vm.rollRNG =  function rollRNG(){
-    let roll = 0;
-    roll = Math.floor(Math.random()*6)+1;
-    return roll;
-  };
 
-  
+      vm.roll = Math.floor(Math.random()*6)+1;
+      // vm.enemy =' ';
+      // vm.treasure = ' ';
+      console.log(vm.roll);
+
+      vm.board = vm.board - vm.roll;
+      if (vm.board <= 0){
+        console.log(vm.endMessage);
+        $state.go('end');
+      }
+      let encounter = Math.floor(Math.random()*chance)+1;
+      if ( encounter < treasureChance){
+        vm.status = ' ';
+        let treasurePick = Math.floor(Math.random()* treasures.length);
+        console.log(treasures[treasurePick]);
+        vm.status = 'You find ' + treasures[treasurePick].treasure + '! Neato....';
+        // return vm.status;
+        //
+      }else if(encounter < nothing && encounter > treasureChance ) {
+        vm.status = ' ';
+        let nothingPick = Math.floor(Math.random()* nothings.length);
+        console.log(nothings[nothingPick]);
+        vm.status = (nothings[nothingPick].nothing + ' I guess you should move on...');
+        // return vm.status;
+        }else{
+          vm.status = ' ';
+          let enemyPick = Math.floor(Math.random()* enemies.length);
+          console.log(enemies[enemyPick]);
+          vm.status = 'You fight ' + enemies[enemyPick].enemy + ' !';
+        }
 
 
 
 
-  //TODO
-  //Board mechanics
-  //1. After every roll, there will be another roll that determines if the player
-  //    enters into a battle or gets and item. If a battle is entered, then the
-  //    controller will make a call to the backend for an enemey card. Maybe it would
-  //    be better to pre-load an array o enemy objects and pick one randomly?
+      return vm.roll, vm.board, vm.status;
+    };
 
 
+
+    //TODO
+    // Make an array of enemy and treasure objects that will be selected at random
 
 
 
