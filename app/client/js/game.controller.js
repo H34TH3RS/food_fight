@@ -10,14 +10,16 @@
     let vm = this;
     vm.board = 1000;
     vm.roll = 0;
-    // vm.enemy =' ';
-    // vm.treasure =' ';
     vm.status = '';
 
+    //this will be replaced with data from elsewhere. This is just for  testing
     let enemies = [
-      {enemy:'Deadly Daikon Dan'},
-      {enemy:'Crazy Carrotina'},
-      {enemy:'Eggploding Eggbert'}
+      {enemy:'Deadly Daikon Dan',
+      image:'https://blocksworld-production.s3.amazonaws.com/user_model_c4c20a13-d296-487b-a734-315449712234_image-768x768.png'},
+      {enemy:'Crazy Carrotina',
+      image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
+      {enemy:'Eggploding Eggbert',
+      image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
     ];
     let treasures = [
       {treasure:'a Golden Egg'},
@@ -34,58 +36,48 @@
     let treasureChance = 5;
     let nothing = 30;
 
+
     vm.rollRNG = function rollRNG(){
 
-
-
       vm.roll = Math.floor(Math.random()*6)+1;
-      // vm.enemy =' ';
-      // vm.treasure = ' ';
-      console.log(vm.roll);
 
       vm.board = vm.board - vm.roll;
       if (vm.board <= 0){
-        console.log(vm.endMessage);
         $state.go('end');
       }
       let encounter = Math.floor(Math.random()*chance)+1;
       if ( encounter < treasureChance){
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
-        console.log(treasures[treasurePick]);
         vm.status = 'You find ' + treasures[treasurePick].treasure + '! Neato....';
-        // return vm.status;
-        //
+
       }else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         let nothingPick = Math.floor(Math.random()* nothings.length);
-        console.log(nothings[nothingPick]);
         vm.status = (nothings[nothingPick].nothing + ' I guess you should move on...');
-        // return vm.status;
+
         }else{
           vm.status = ' ';
           let enemyPick = Math.floor(Math.random()* enemies.length);
-          console.log(enemies[enemyPick]);
+          vm.image = enemies[enemyPick].image;
           vm.status = 'You fight ' + enemies[enemyPick].enemy + ' !';
         }
 
-
-
-
-      return vm.roll, vm.board, vm.status;
+        return vm.roll, vm.board, vm.status;
     };
 
-
-
     //TODO
-    // Make an array of enemy and treasure objects that will be selected at random
+    //Flesh out the game mechanincs a bit more.
+    //Need to make some fake stats for the enemies
+    //Need to make a fake character
+    //
+    //Need to make the char roll the the game and actually
+    //battle an enemey and persist the HP in local storage after each battle
+    //will need to get some actual fight commands. Items can wait
+    
 
 
 
-
-
-
-
-  }
+}
 
 }());
