@@ -52,7 +52,6 @@
 
   vm.rollRNG = function rollRNG(){
     vm.roll = Math.floor(Math.random()*6)+1;
-
     vm.board = vm.board - vm.roll;
     if (vm.board <= 0){
       $state.go('end');
@@ -91,6 +90,8 @@
     if (battleBool === false){
     vm.image = '';
     }
+    vm.playerHealth = localStorage.getItem('playerHealthLocal');
+    vm.botHealth = localStorage.getItem('botHealthLocal');
     return battleBool;
   };
 
@@ -101,28 +102,27 @@
 
     if (battleBool === true){
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
-      console.log(vm.playerHealth);
-      console.log(battleBool);
       vm.botHealth = localStorage.getItem('botHealthLocal');
-      console.log(vm.botHealth);
+
       vm.playerHealth = vm.playerHealth - vm.botHealth;
       player[0].health = vm.playerHealth;
       console.log('player health', vm.playerHealth);
+
       if(player[0].health <= 0){
-        player[0].health = basicPlayerHealth; // need to set it so that the
-        //playerhealth Object is what the health get's reset to and not a
-        //pre made variabel;
+        player[0].health = basicPlayerHealth;
         vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
         $state.go('end');
       }
+
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
     }
-  };
 
-  if(clickCount === 1){
-    battleBool = !battleBool;//this changes on every click of atk
-    console.log(battleBool);
-  }
+    if(clickCount === 1){
+      battleBool = !battleBool;//this changes on every click of atk
+      console.log(battleBool);
+    }
+    return;
+};
 
 
 
