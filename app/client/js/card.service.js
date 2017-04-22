@@ -17,7 +17,7 @@
         url: '/api/cards',
         method: 'GET',
         headers: {
-          'Authorization': UserService.getToken()
+          'Content-Type': 'application/json'
         }
       })
       .then(function handleResponse(response) {
@@ -25,8 +25,27 @@
       });
     }
 
+    function getOneCard(upc) {
+      return $http({
+        url: '/api/cards',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          upc: upc.upc
+        }
+      })
+      .then(function handleResponse(response) {
+        console.log(response.data);
+        return response.data;
+      });
+
+    }
+
     return {
-      getAllCards: getAllCards
+      getAllCards: getAllCards,
+      getOneCard: getOneCard
     };
 
   }

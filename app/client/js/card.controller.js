@@ -26,11 +26,20 @@
     */
     vm.getAllCards = function getAllCards(card) {
       CardService.getAllCards(cards.card)
-      .then(function handleResponse(response) {
-        return response.data;
+        .then(function handleResponse(response) {
+          return response.data;
       });
     };
     vm.getAllCards();
+
+    vm.getOneCard = function getOneCard(card) {
+      CardService.getOneCard(cards.card)
+        .then(function handleResponse(response) {
+          return response.data;
+
+        });
+    };
+    vm.getOneCard();
 
   }
 
