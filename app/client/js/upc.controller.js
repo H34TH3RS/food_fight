@@ -23,6 +23,9 @@
     * @return {Promise}
     */
     vm.sendUpcData = function sendUpcData(upcCode) {
+      if (typeof('upcCode') !== 'string') {
+        return Promise.reject();
+      }
       UpcService.sendUpcData(upcCode.upc)
       .then(function goToCards() {
         $state.go('cards');

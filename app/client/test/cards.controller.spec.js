@@ -27,7 +27,8 @@
     }));
 
     it('should return an array', function() {
-      expect(CardController.getAllCards).to.be.an('array');
+      let result = CardController.getAllCards();
+      expect(result).to.be.an('array');
     });
 
   });
