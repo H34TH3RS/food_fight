@@ -5,9 +5,14 @@
   <h2>{{gameCtrl.board}}</h2>
   <aside>{{gameCtrl.status}}</aside>
 
-
   <section>
   <img src= {{gameCtrl.image}} height="250" width="250">
- </section>
- 
+  </section>
+
+<section ng-show='gameCtrl.checkBattleBool()'>
+  <h3>{{gameCtrl.playerHealth}} </h3>
+  <h3>{{gameCtrl.botHealth}} </h3>
+  <button ng-click='gameCtrl.battle()'>ATK</button>
+</section>
+
 </section>
