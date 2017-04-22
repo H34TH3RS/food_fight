@@ -50,7 +50,9 @@
     .state({
       name: 'not-found',
       url: '/not-found',
-      templateUrl: 'templates/not-found.template.html'
+      templateUrl: 'templates/not-found.template.html',
+      controller: 'GameController',
+      controllerAs: 'gameCtrl'
     });
 }
 
