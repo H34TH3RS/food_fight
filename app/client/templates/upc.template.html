@@ -1,8 +1,8 @@
-<form ng-submit='upcCtrl.sendUpcData(upcCtrl.upcCode)' name='findupc'>
+<form class='form-group form-inline' ng-submit='upcCtrl.sendUpcData(upcCtrl.upcCode)' name='findupc'>
 
   <label for='upc'>Enter a UPC</label>
-  <input ng-model='upcCtrl.upcCode.upc' type='text' name='upc' required placeholder='Enter a UPC'>
+  <input class='form-control' ng-model='upcCtrl.upcCode.upc' type='text' name='upc' required placeholder='Enter a UPC'>
 
-  <input type='submit' name='upcSubmit' value='find UPC'>
+  <input class='form-control btn btn-info' type='submit' name='upcSubmit' value='find UPC'>
 
 </form>
