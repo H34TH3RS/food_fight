@@ -12,16 +12,19 @@
     vm.roll = 0;
     vm.status = '';
     vm.botHealth = 0;
-    vm.playerHealth = localStorage.getItem('playerHealthLocal');
+    vm.playerHealth = localStorage.getItem('playerHealthLocal') || null;
     vm.message = '';
     vm.botName ='';
+    vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
 
-    //this will be replaced with data from elsewhere. This is just for  testing
-    let player = [
-      { name: 'Taco Mac',
-      health: 20,
-      strength: 8,
-      defense: 20,
+
+  //this will be replaced with data from elsewhere. This is just for  testing
+  /*********************************************************************************/
+  let player = [
+    { name: 'Taco Mac',
+    health: 20,
+    strength: 8,
+    defense: 20,
     }
   ];
   let enemies = [
@@ -57,9 +60,13 @@
     {nothing:'You encounter a some wilted lettuce.',
     image:'http://greensaver.oxo.com/wp-content/uploads/2015/02/lettuce_rotten.png'}
   ];
+/*********************************************************************************/
+
+
+  //these need to be cleaned
   let enemyPick;
   let chance = 100;
-  let treasureChance = 5;
+  let treasureChance = 29;
   let nothing = 30;
   let battleBool = false;
   let clickCount = 0;
@@ -71,26 +78,43 @@
   let playerDef =  player[0].defense;
   let playerStr =  player[0].strength;
 
-  vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
+  //should be stored inside the player object
+  // let itemCount = localStorage.getItem('itemCountLocal') || null;
+  // itemCount = localStorage.setItem('itemCountLocal', itemCount);
 
-
+  /**
+   * checks whether the battlebool var is true or not. Also retrieves the current
+   * health of the player and enemy obj
+   * @return {Boolean}
+   */
   vm.checkBattleBool = function checkBattleBool(){
+    let counter = 0;
+    counter = counter ++;
+    console.log(counter);
     console.log(battleBool);
     vm.playerHealth = localStorage.getItem('playerHealthLocal');
     vm.botHealth = localStorage.getItem('botHealthLocal');
     return battleBool;
   };
 
-
+  /**
+   * Generates a random number betwen 1 and 6. After generating the num, subtracts
+   * that number from the board, then goes on to generate a number from based on the
+   * chance var to determine encounter type. From there, depending on the encounter
+   * , a bot, treasure, or "nothing" encounter occur.
+   * @return {String} [description]
+   */
   vm.rollRNG = function rollRNG(){
-    vm.roll = Math.floor(Math.random()*6)+1;
-    vm.board = vm.board - vm.roll;
-    vm.message = '';
+    vm.roll = Math.floor(Math.random()*6)+1;//generates the roll
+    vm.board = vm.board - vm.roll; //subtracts the roll from board
+    vm.message = ''; // clears the last message displayed
 
+    //when the board reaches 0, the games ends. This is where the boss will go
     if(vm.board <=0){
       $state.go('end');
     }
 
+    // this block determines encounter type based on chance var
     let encounter = Math.floor(Math.random()*chance)+1;
     if ( encounter < treasureChance){
       battleBool = false;
@@ -98,6 +122,11 @@
       let treasurePick = Math.floor(Math.random()* treasures.length);
       vm.image = treasures[treasurePick].image;
       vm.status = 'You find ' + treasures[treasurePick].treasure + '! Neato....';
+      // if(treasures[treasurePick].treasure === true){
+      //   itemCount = itemCount + 67;
+      //   console.log(itemCount);
+      //   itemCount = localStorage.setItem('itemCountLocal', itemCount);
+      // }
 
     }else if(encounter < nothing && encounter > treasureChance ) {
       vm.status = ' ';
@@ -108,8 +137,7 @@
 
     }else{
       vm.status = ' ';
-      battleBool = true;
-      console.log(battleBool);
+      battleBool = true; //this is set to true so that the fight menu can be displayed
       enemyPick = Math.floor(Math.random()* enemies.length);
       vm.botHealth = localStorage.setItem('botHealthLocal', enemies[enemyPick].health);
       basicBotHealth = enemies[enemyPick].health;
@@ -119,25 +147,28 @@
       vm.status = 'You fight ' + enemies[enemyPick].enemy + ' !';
     }
 
+    //this resets the players health to base health is a new game is started
     vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-    console.log(battleBool);
 
-
+    //is it bad paractice to return multiple variables
     return vm.roll, vm.board, vm.status;
   };
 
-
-
-
-
-  //if an enemy is encountered, i need to open up the battle panel.
+  /**
+   * This handles the battle mechanics.
+   * @return {VOID} [description]
+   */
   vm.battle = function battle(){
+    //if this is above 0, then clicking on the atk button will not change the
+    //value of battlebool. Maybe this should be a boolean as well.
     clickCount = clickCount ++;
 
     if (battleBool === true){
+      //retrieves the health of the bot and player/
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
 
+      //will do a random roll to decide who atks first
       vm.battleRoll = Math.floor(Math.random()*100)+1;
 
       if(vm.battleRoll < battleRate){
@@ -146,15 +177,17 @@
         vm.botHealth = vm.botHealth - playerStr;
       }
 
+      //sets the current bot health to be same as vm.botHealth
       enemies[enemyPick].health = vm.botHealth;
+      //sets current player health be the same as vm.playerHealth
       player[0].health = vm.playerHealth;
-      console.log('player health', vm.playerHealth);
-      console.log('bot health', vm.botHealth);
 
+      //If the players health reaches 0, go to the "end" view
       if(player[0].health <= 0){
         player[0].health = basicPlayerHealth;
         $state.go('lost');
       }
+      //if the bots health reaches 0, remove the battle menu
       if(vm.botHealth <= 0){
         console.log('You destroyed ' + vm.botName);
         vm.message = 'You destroyed ' + vm.botName;
@@ -167,14 +200,50 @@
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
     }
 
+
+
     if(clickCount === 1){
+      //the disallows batle bool to be changes while inside this function
       battleBool = !battleBool;//this changes on every click of atk
-      console.log(battleBool);
     }
     return;
   };
 
 
+  //this need cleaned up a lot
+  vm.battleDef = function battleDef(){
+    console.log(vm.playerHealth);
+    vm.playerHealth = localStorage.getItem('playerHealthLocal');
+    console.log(vm.playerHealth);
+    player[0].health = player[0].health + 1;
+    vm.playerHealth = player[0].health;
+    //vm.playerHealth is a string. It needs to be converted before adding
+    console.log(typeof(vm.playerHealth));
+    console.log(vm.playerHealth);
+    localStorage.setItem('playerHealthLocal', player[0].health);
+    console.log(vm.playerHealth);
+  };
+
+  //should refer to a count being kept inside the player object
+  // vm.battleItem = function battleItem(){
+  //   itemCount = localStorage.getItem('itemCountLocal');
+  //   console.log('itemCount = ', itemCount);
+  //   console.log('itemCount = ', itemCount);
+  //   itemCount = itemCount -1;
+  //   console.log('itemCount = ', itemCount);
+  //   itemCount = localStorage.setItem('itemCountLocal', itemCount);
+  //   return itemCount;
+  // };
+
 }
 
 }());
+
+//TODO
+// I need to get the item and defense options set up.
+// I need to think about seperating the various option out into
+//  -different functions
+// I need to get everything ready to get data from the api.
+// I need to store the schema I do have into a game.services
+// I need to look into better compartmentalizing everything
+//
