@@ -55,6 +55,11 @@
       controllerAs: 'gameCtrl'
     })
     .state({
+      name: 'lost',
+      url: '/lost',
+      templateUrl: 'templates/lost.template.html',
+    })
+    .state({
       name: 'end',
       url: '/end',
       templateUrl: 'templates/end.template.html',
