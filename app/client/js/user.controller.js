@@ -51,7 +51,6 @@
     */
     vm.logout = function logout() {
       UserService.logout();
-      console.log('logged out');
       $state.go('home');
     };
 
@@ -59,7 +58,6 @@
       if (typeof('user') !== 'object' || !user.email || !user.password || !user.password_confirmation || !user.username){
         return Promise.reject();
       }
-      console.log('inside create user controller', user);
       return UserService.createUser(user)
       .then(function goHome() {
         $state.go('home');
