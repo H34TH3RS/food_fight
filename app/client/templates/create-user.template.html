@@ -1,22 +1,22 @@
-<form class='form-group form-horizontal createUserForm' ng-submit='userCtrl.createUser(userCtrl.user)' name='createUserForm'>
+<form class='form-group createUserForm col-lg-8 col-lg-offset-2' ng-submit='userCtrl.createUser(userCtrl.user)' name='createUserForm'>
 
-  <label for='email'>Email</label>
+  <label class='control-label' for='email'>Email</label>
   <input class='form-control' ng-model='userCtrl.user.email' type='email' name='email' required placeholder='game@game.com'>
 
-  <label for='username'>Username</label>
+  <label class='control-label' for='username'>Username</label>
   <input class='form-control' ng-model='userCtrl.user.username' type='text' name='username' required placeholder='Choose a username'>
 
-  <label for='password'>Password</label>
+  <label class='control-label' for='password'>Password</label>
   <input class='form-control' ng-model='userCtrl.user.password' type='password' name='password' required placeholder='********'>
 
-  <label for='password_confirmation'>Please re-enter your password</label>
+  <label class='control-label' for='password_confirmation'>Please re-enter your password</label>
   <input class='form-control' ng-model='userCtrl.user.password_confirmation' type='password' name='password_confirmation' required placeholder='********'>
 
   <input class='form-control btn btn-info' type='submit' name='newUserSubmit' value='Create Account'>
 
 </form>
 
-<section class='errMsg'>
+<section class='errMsg col-lg-6'>
   <p ng-cloak ng-show='createUserForm.email.$touched && !createUserForm.email.$valid'>
     Please enter a valid email.
   </p>
