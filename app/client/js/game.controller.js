@@ -71,6 +71,7 @@
     let treasureChance = 29;
     let nothing = 30;
     let battleBool = false;
+    let battleTurn = true;
     let clickCount = 0;
     let basicPlayerHealth = player[0].health;
     let basicPlayerItems =  player[0].items;
@@ -81,7 +82,8 @@
     let playerDef =  player[0].defense;
     let playerStr =  player[0].strength;
 
-    
+
+
 
     /**
      * checks whether the battlebool var is true or not. Also retrieves the current
@@ -159,23 +161,47 @@
       //value of battlebool. Maybe this should be a boolean as well.
       clickCount = clickCount ++;
 
+      //this says'if you come across an bot, you will go into a battle.
+      //Get the health data for the bot and player
       if (battleBool === true){
         //retrieves the health of the bot and player/
         vm.playerHealth = localStorage.getItem('playerHealthLocal');
         vm.botHealth = localStorage.getItem('botHealthLocal');
-
         //will do a random roll to decide who atks first
         vm.battleRoll = Math.floor(Math.random()*100)+1;
 
+
+        //this is the 'initiative' roll. If battleRoll goes below battleRate
+        //then the enemy goes first, otherwise it's the players turn.
         if(vm.battleRoll < battleRate){
+          //will need to check this against clickCount to make
+          //sure that every ATK button push doesnt change the value of battleTurn
           vm.playerHealth = vm.playerHealth - botBtlStr;
+          battleTurn = true;
+        //players turn
         }else{
           vm.botHealth = vm.botHealth - playerStr;
+          battleTurn = false;
         }
 
+
+        while (vm.playerHealth > 0 && vm.botHealth > 0){
+          bots[botPick].health = vm.botHealth;
+          player[0].health = vm.playerHealth;
+
+
+
+
+        }
+
+
+
+        //All this needs to go insides a while loop.
         //sets the current bot health to be same as vm.botHealth
+        //
         bots[botPick].health = vm.botHealth;
         //sets current player health be the same as vm.playerHealth
+        //
         player[0].health = vm.playerHealth;
 
         //If the players health reaches 0, go to the "end" view
@@ -203,15 +229,41 @@
       return;
     };
 
+    vm.btlDefCmd = function btlDefCmd(){
+
+    };
+
   }
 }());
 
+
+  // TODO
+  // After entering into a battle, there needs to be a roll for initiative.
+  // -then, depending on the outcome, a bool val is set to either true or fale.
+  // Bot turns should happen on false. Player turns should happen on true.
+  // When the bot goes, there should be a message saying the bot went with its
+  // action. Just ATK for now. There needs to be a timer enabled for this so
+  // the player actually sees the action taken. When the bot goes, the players
+  // battle options should be disabled and colored differently;
+  //
+  //
+  // the when a player lands on a bot, the initiative is rolled. After determining
+  // the order of play, the battleturn var is set to !battleturn. This should be
+  // used to go to other turn. A while loop can used to continue the battle until
+  // either the bot or player is dead.
+
+
+
+
+
+
   //TODO
-  // Bots/ Enemmie vars need to be consistent
+
+  // I need to add the enemy/player turn logic before 1st.
   // I need to get the item and defense options set up.
   // I need to think about seperating the various option out into
   //  -different functions
   // I need to get everything ready to get data from the api.
-  // I need to store the schema I do have into a game.services
+
   // I need to look into better compartmentalizing everything
   //
