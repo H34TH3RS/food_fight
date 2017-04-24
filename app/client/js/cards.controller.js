@@ -3,21 +3,19 @@
 
   angular.module('game').controller('CardController', CardController);
 
-  CardController.$inject = ['$state', 'CardService'];
+  CardController.$inject = ['$state', 'CardsService'];
 
   /**
    * Creates Card Controllers
    * @param {Function} $state      Service that allows view routing
-   * @param {Function} CardService Service that contains character card functions
+   * @param {Function} CardsService Service that contains character card functions
    */
-  function CardController($state, CardService) {
+  function CardController($state, CardsService) {
 
     let vm = this;
 
     let cards = [];
-    let card = {
-      stats: 'testing stats'
-    };
+    let card = {};
 
    /**
     * Retrieves all character cards in an array
@@ -28,7 +26,7 @@
       if (!Array.isArray('cards') || typeof('card') !== 'object' || cards.length === 0) {
         return Promise.reject();
       }
-      CardService.getAllCards(cards.card)
+      CardsService.getAllCards(cards.card)
         .then(function handleResponse(response) {
           return response.data;
       });
@@ -39,7 +37,7 @@
       if(typeof('card') !== 'object' || cards.length === 0) {
         return Promise.reject();
       }
-      CardService.getOneCard(cards.card)
+      CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
 

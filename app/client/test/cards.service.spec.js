@@ -5,15 +5,14 @@
 
   describe('card service', function() {
 
-    let CardService;
-    let mockCardService = {};
+    let CardsService;
+    let mockCardsService = {};
 
     beforeEach(module('game'));
-    beforeEach(inject(function(_CardService_) {
-      CardService = _CardService_;
+    beforeEach(inject(function(_CardsService_) {
+      CardsService = _CardsService_;
     }));
 
-    
   });
 
 }());

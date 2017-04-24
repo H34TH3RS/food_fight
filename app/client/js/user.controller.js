@@ -27,7 +27,7 @@
     vm.login = function login(userLogin){
 
       if (!userLogin.email || !userLogin.password) {
-        return Promise.reject();x
+        return Promise.reject();
       }
 
       UserService.login(userLogin.email, userLogin.password)

@@ -6,17 +6,18 @@
   describe('CardController', function() {
 
     let CardController;
-    let mockCardService = {};
+    let mockCardsService = {};
+    let cards = [];
     let card = {};
 
     beforeEach(module('game'));
 
     beforeEach(module(function($provide) {
-      $provide.value('CardService', mockCardService);
+      $provide.value('CardsService', mockCardsService);
     }));
 
     beforeEach(inject(function($controller) {
-      mockCardService.getAllCards = function getAllCards() {
+      mockCardsService.getAllCards = function getAllCards() {
         return [
           {stats: 'testing'}
         ];
@@ -26,9 +27,14 @@
 
     }));
 
-    it('should return an array', function() {
-      let result = CardController.getAllCards();
-      expect(result).to.be.an('array');
+    it('should be a function', function() {
+      expect(CardController.getAllCards).to.be.a('function');
+      expect(CardController.getOneCard).to.be.a('function');
+    });
+
+    it('should reject an argument that is not an object', function() {
+      let result = CardController.getAllCards(1);
+      expect(result.length).to.equal(undefined);
     });
 
   });
