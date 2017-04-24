@@ -7,6 +7,7 @@
 
     let UserController;
     let mockUserService = {};
+    let users = [];
     let user = {};
 
     beforeEach(module('game'));
@@ -17,6 +18,7 @@
 
     beforeEach(inject(function($controller) {
 
+
       mockUserService.createUser = function createUser(user) {
         mockUserService.createUser.numTimesCalled++;
       };
@@ -26,8 +28,10 @@
 
     }));
 
-    it('should be the correct types', function() {
+    it('should be a funciton', function() {
       expect(UserController.createUser).to.be.a('function');
+      expect(UserController.login).to.be.a('function');
+      expect(UserController.logout).to.be.a('function');
     });
 
   });
