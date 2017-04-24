@@ -3,9 +3,9 @@
 
   let expect = chai.expect;
 
-  describe('CardController', function() {
+  describe('CardsController', function() {
 
-    let CardController;
+    let CardsController;
     let mockCardsService = {};
     let cards = [];
     let card = {};
@@ -23,17 +23,17 @@
         ];
       };
 
-      CardController = $controller('CardController');
+      CardsController = $controller('CardsController');
 
     }));
 
     it('should be a function', function() {
-      expect(CardController.getAllCards).to.be.a('function');
-      expect(CardController.getOneCard).to.be.a('function');
+      expect(CardsController.getAllCards).to.be.a('function');
+      expect(CardsController.getOneCard).to.be.a('function');
     });
 
     it('should reject an argument that is not an object', function() {
-      let result = CardController.getAllCards(1);
+      let result = CardsController.getAllCards(1);
       expect(result.length).to.equal(undefined);
     });
 
