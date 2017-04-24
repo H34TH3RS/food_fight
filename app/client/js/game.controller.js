@@ -209,6 +209,7 @@
 }());
 
   //TODO
+  // Bots/ Enemmie vars need to be consistent
   // I need to get the item and defense options set up.
   // I need to think about seperating the various option out into
   //  -different functions
