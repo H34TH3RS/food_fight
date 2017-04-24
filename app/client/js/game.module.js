@@ -44,7 +44,7 @@
       name: 'cards',
       url: '/cards',
       templateUrl: 'templates/cards.template.html',
-      controller: 'CardController',
+      controller: 'CardsController',
       controllerAs: 'cardCtrl'
     })
     .state({

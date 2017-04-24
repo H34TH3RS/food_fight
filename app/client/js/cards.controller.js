@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  angular.module('game').controller('CardController', CardController);
+  angular.module('game').controller('CardsController', CardsController);
 
-  CardController.$inject = ['$state', 'CardsService'];
+  CardsController.$inject = ['$state', 'CardsService'];
 
   /**
    * Creates Card Controllers
    * @param {Function} $state      Service that allows view routing
    * @param {Function} CardsService Service that contains character card functions
    */
-  function CardController($state, CardsService) {
+  function CardsController($state, CardsService) {
 
     let vm = this;
 
