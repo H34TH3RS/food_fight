@@ -89,7 +89,6 @@
       login: login,
       logout: logout,
       createUser: createUser
-
     };
 
   }

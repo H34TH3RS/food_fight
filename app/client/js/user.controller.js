@@ -55,6 +55,10 @@
       $state.go('home');
     };
 
+    vm.loggedIn = function loggedIn(){
+      return !!UserService.getToken();
+    };
+
     vm.createUser = function createUser(user) {
       if (typeof('user') !== 'object' || !user.email || !user.password || !user.password_confirmation || !user.username){
         return Promise.reject();
