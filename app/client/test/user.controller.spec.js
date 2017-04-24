@@ -17,21 +17,37 @@
     }));
 
     beforeEach(inject(function($controller) {
-
-
-      mockUserService.createUser = function createUser(user) {
-        mockUserService.createUser.numTimesCalled++;
-      };
-
-      mockUserService.createUser.numTimesCalled = 0;
       UserController = $controller('UserController');
-
     }));
 
-    it('should be a funciton', function() {
-      expect(UserController.createUser).to.be.a('function');
-      expect(UserController.login).to.be.a('function');
-      expect(UserController.logout).to.be.a('function');
+    describe('createUser tests', function() {
+      it('should be a function', function() {
+        expect(UserController.createUser).to.be.a('function');
+      });
+
+      it('should accept an object with the correct information', function() {
+        let result = UserController.createUser({
+          email: 'user.email',
+          username: 'user.username',
+          password: 'user.password',
+          password_confirmation: 'user.password_confirmation'
+        });
+        expect(result.email).to.equal('user.email');
+      });
+
+    });
+
+    describe('login tests', function() {
+      it('should be a function', function() {
+        expect(UserController.login).to.be.a('function');
+      });
+    });
+
+    describe('logout tests', function() {
+      it('should be a function', function() {
+        expect(UserController.logout).to.be.a('function');
+      });
+
     });
 
   });
