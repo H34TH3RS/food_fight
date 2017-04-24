@@ -66,7 +66,7 @@ module.exports = function(grunt) {
     sass: {
       all: {
         files: {
-          'publin/style.css': 'app/client/sass/main.scss'
+          'public/style.css': 'app/client/sass/main.scss'
         }
       }
     },

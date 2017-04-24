@@ -8,7 +8,7 @@
     function GameController($state){
 
     let vm = this;
-    vm.board = 30;
+    vm.boardSize = 1000;
     vm.roll = 0;
     vm.status = '';
     vm.botHealth = 0;
@@ -29,7 +29,7 @@
       items:0
       }
     ];
-    let enemies = [
+    let bots = [
       { enemy:'Deadly Daikon Dan',
       health: 10,
       strength: 2,
@@ -66,7 +66,7 @@
 
 
     //these need to be cleaned
-    let enemyPick;
+    let botPick;
     let chance = 100;
     let treasureChance = 29;
     let nothing = 30;
@@ -81,9 +81,7 @@
     let playerDef =  player[0].defense;
     let playerStr =  player[0].strength;
 
-    //should be stored inside the player object
-    // let itemCount = localStorage.getItem('itemCountLocal') || null;
-    // itemCount = localStorage.setItem('itemCountLocal', itemCount);
+    
 
     /**
      * checks whether the battlebool var is true or not. Also retrieves the current
@@ -109,11 +107,11 @@
      */
     vm.rollRNG = function rollRNG(){
       vm.roll = Math.floor(Math.random()*6)+1;//generates the roll
-      vm.board = vm.board - vm.roll; //subtracts the roll from board
+      vm.boardSize = vm.boardSize - vm.roll; //subtracts the roll from board
       vm.message = ''; // clears the last message displayed
 
       //when the board reaches 0, the games ends. This is where the boss will go
-      if(vm.board <=0){
+      if(vm.boardSize <=0){
         $state.go('end');
       }
 
@@ -136,20 +134,20 @@
       }else{
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
-        enemyPick = Math.floor(Math.random()* enemies.length);
-        vm.botHealth = localStorage.setItem('botHealthLocal', enemies[enemyPick].health);
-        basicBotHealth = enemies[enemyPick].health;
-        botBtlStr= enemies[enemyPick].strength;
-        vm.image = enemies[enemyPick].image;
-        vm.botName = enemies[enemyPick].enemy;
-        vm.status = 'You fight ' + enemies[enemyPick].enemy + ' !';
+        botPick = Math.floor(Math.random()* bots.length);
+        vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
+        basicBotHealth = bots[botPick].health;
+        botBtlStr= bots[botPick].strength;
+        vm.image = bots[botPick].image;
+        vm.botName = bots[botPick].enemy;
+        vm.status = 'You fight ' + bots[botPick].enemy + ' !';
       }
 
       //this resets the players health to base health is a new game is started
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
 
       //is it bad paractice to return multiple variables
-      return vm.roll, vm.board, vm.status;
+      return vm.roll, vm.boardSize, vm.status;
     };
 
     /**
@@ -176,7 +174,7 @@
         }
 
         //sets the current bot health to be same as vm.botHealth
-        enemies[enemyPick].health = vm.botHealth;
+        bots[botPick].health = vm.botHealth;
         //sets current player health be the same as vm.playerHealth
         player[0].health = vm.playerHealth;
 
@@ -190,11 +188,11 @@
           console.log('You destroyed ' + vm.botName);
           vm.message = 'You destroyed ' + vm.botName;
           battleBool = !battleBool;
-          enemies[enemyPick].health = basicBotHealth;
+          bots[botPick].health = basicBotHealth;
         }
 
         //updates the health of either
-        vm.botHealth = localStorage.setItem('botHealthLocal', enemies[enemyPick].health);
+        vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
         vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       }
 
