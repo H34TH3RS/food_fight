@@ -93,12 +93,13 @@
     vm.checkBattleBool = function checkBattleBool(){
       let counter = 0;
       counter = counter ++;
-      console.log(counter);
-      console.log(battleBool);
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
       return battleBool;
     };
+
+
+
 
     /**
      * Generates a random number betwen 1 and 6. After generating the num, subtracts
@@ -185,14 +186,8 @@
         }
 
 
-        while (vm.playerHealth > 0 && vm.botHealth > 0){
-          bots[botPick].health = vm.botHealth;
-          player[0].health = vm.playerHealth;
-
-
-
-
-        }
+        bots[botPick].health = vm.botHealth;
+        player[0].health = vm.playerHealth;
 
 
 
@@ -229,41 +224,34 @@
       return;
     };
 
-    vm.btlDefCmd = function btlDefCmd(){
+    //the while loop that controls the battle turn
+    // function turnBtlLoop(){
+    //   console.log('Inside turnBtl function');
+    //   while (vm.playerHealth > 0 && vm.botHealth > 0){
+    //     // bots[botPick].health = vm.botHealth;
+    //     player[0].health = vm.playerHealth;
+    //     //checks the current turn
+    //     if(battleTurn === false){
+    //       atkBtlBot();
+    //     }
+    //     //end of battle conditions
+    //     if(player[0].health <= 0){
+    //       player[0].health = basicPlayerHealth;
+    //       $state.go('lost');
+    //     }
+    //     if(vm.botHealth <= 0){
+    //       console.log('You destroyed ' + vm.botName);
+    //       vm.message = 'You destroyed ' + vm.botName;
+    //       battleBool = !battleBool;
+    //       bots[botPick].health = basicBotHealth;
+    //     }
+    //   }
+    // }
 
-    };
 
   }
 }());
 
 
-  // TODO
-  // After entering into a battle, there needs to be a roll for initiative.
-  // -then, depending on the outcome, a bool val is set to either true or fale.
-  // Bot turns should happen on false. Player turns should happen on true.
-  // When the bot goes, there should be a message saying the bot went with its
-  // action. Just ATK for now. There needs to be a timer enabled for this so
-  // the player actually sees the action taken. When the bot goes, the players
-  // battle options should be disabled and colored differently;
-  //
-  //
-  // the when a player lands on a bot, the initiative is rolled. After determining
-  // the order of play, the battleturn var is set to !battleturn. This should be
-  // used to go to other turn. A while loop can used to continue the battle until
-  // either the bot or player is dead.
 
-
-
-
-
-
-  //TODO
-
-  // I need to add the enemy/player turn logic before 1st.
-  // I need to get the item and defense options set up.
-  // I need to think about seperating the various option out into
-  //  -different functions
-  // I need to get everything ready to get data from the api.
-
-  // I need to look into better compartmentalizing everything
-  //
+//serperate everything into more manageable blocks
