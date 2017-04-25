@@ -1,0 +1,12 @@
+.grue {
+  color: $terminal-green;
+  text-align: center;
+  margin: auto;
+  background-color: $background-color;
+  font-family: Courier, Times, serif;
+  padding: 0;
+
+  a {
+    color: $terminal-green;
+  }
+}

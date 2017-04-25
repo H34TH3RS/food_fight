@@ -12,7 +12,6 @@
   */
   function UserService($http) {
     let token  = localStorage.getItem('token') || null;
-      console.log(token);
 
     /**
     * Creates a new user account
@@ -20,7 +19,6 @@
     * @return {void}
     */
     function createUser(user) {
-      console.log('inside create user service');
       return $http({
         url: '/api/users',
         method: 'POST',
@@ -62,7 +60,6 @@
       .then(function handleResponse(response) {
         token = 'token ' + response.data.auth_token;
         localStorage.setItem('token', token);//auth_token
-        console.log('In login ',  token);
         return token;
       });
     }
