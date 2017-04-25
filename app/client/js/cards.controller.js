@@ -23,9 +23,7 @@
     * @return {Promise}
     */
     vm.getAllCards = function getAllCards(card) {
-      // if (!Array.isArray('cards') || typeof('card') !== 'object' || cards.length === 0) {
-      //   return Promise.reject();
-      // }
+      
       CardsService.getAllCards(cards.card)
         .then(function handleResponse(response) {
           return response.data;
@@ -34,9 +32,7 @@
     vm.getAllCards();
 
     vm.getOneCard = function getOneCard(card) {
-      // if(typeof('card') !== 'object' || cards.length === 0) {
-      //   return Promise.reject();
-      // }
+      
       CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
