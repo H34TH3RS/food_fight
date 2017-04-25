@@ -2,8 +2,28 @@
 
 class Api::CardsController < ApplicationController
   def create
+    upc = user_params['upc']
+    card = Card.find_by(upc: upc)
+    @card = if card
+              card
+            else
+              Card.new(build_card_from_api)
+            end
+
+    if @card.save
+      # TODO: except keys you don't need in json output
+      render json: @card.as_json(except: [:created_at, :upc, :nutrition_data]), status: :created
+    else
+      render json: { message: error.to_s }, status: :unprocessable_entity
+    end
+  end
+
+  private def user_params
+    params.permit(:upc) # TODO: need to add validations
+  end
+
+  def build_card_from_api
     api_data = NutritionixApi.new.get_nutrition_data(user_params['upc'])
-    # TODO: need to add conditional logic to determine if a new card should be created or an old card should be pulled from memory
 
     nutrition_data = api_data.slice(
       'item_name',
@@ -17,26 +37,15 @@ class Api::CardsController < ApplicationController
       'nf_vitamin_c_dv',
       'nf_calcium_dv',
       'nf_iron_dv',
-      'nf_potassium'
+      'nf_potassium',
+      'nf_sodium'
     )
 
-    @basic_card_data = CardConverter.new.convert!(nutrition_data)
+    basic_card_data = CardConverter.new.convert!(nutrition_data)
     added_data = {
       upc: user_params['upc'],
       nutrition_data: nutrition_data.as_json
     }
-    card_data = @basic_card_data.merge(added_data)
-
-    @card = Card.new(card_data)
-
-    if @card.save
-      render json: @basic_card_data.as_json, status: :created
-    else
-      render json: { message: error.to_s }, status: :unprocessable_entity
-    end
-  end
-
-  private def user_params
-    params.permit(:upc) # TODO: need to add validations
+    basic_card_data.merge(added_data)
   end
 end
