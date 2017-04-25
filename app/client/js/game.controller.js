@@ -130,6 +130,15 @@
   };
 
 
+function addItem(){
+  if (player[0].items < 3){
+    player[0].items =    player[0].items + 1;
+  }else{
+    vm.message = 'You have too many items';
+  }
+
+}
+
   function randomEncounter(){
     console.log('in random encounter');
     let encounter = rngEncounter();
@@ -139,6 +148,7 @@
       let treasurePick = Math.floor(Math.random()* treasures.length);
       vm.image = treasures[treasurePick].image;
       vm.status = 'You find ' + treasures[treasurePick].treasure + '! Neato....';
+      addItem();
     }else if(encounter < nothing && encounter > treasureChance ) {
       vm.status = ' ';
       battleBool = false;
@@ -175,8 +185,10 @@
     const BattleRoll = vm.battleRoll;
     if(vm.battleRoll < battleRate){
       playerTurn = false;
+      // fightFunc();
     }else{
       playerTurn = true;
+      // fightFunc();
     }
   }
 
