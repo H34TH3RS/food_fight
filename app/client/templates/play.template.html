@@ -1,5 +1,12 @@
+  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+    </aside>
+  </section>
 
-<section ng-controller = 'GameController as gameCtrl' class='game-box'>
+  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
+    </aside>
+  </section>
 
   <aside ng-show='gameCtrl.checkBattleBool()'>
     <h2>Player Health:{{gameCtrl.playerHealth}} : Enemy Health:{{gameCtrl.botHealth}} </h2>
@@ -8,16 +15,18 @@
   <img src= {{gameCtrl.image}} height="250" width="250" class='image-box'>
 
   <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
-    <button ng-click='gameCtrl.playerAtk()'>ATK</button>
-    <button ng-click='gameCtrl.playerItems()'>Item</button>
-    <button ng-click='gameCtrl.playerDef()'>Defense</button>
+    <button class='btn btn-danger' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+    <button class='btn btn-info' ng-click='gameCtrl.playerItems()'>Item</button>
+    <button class='btn btn-success' ng-click='gameCtrl.playerDef()'>Defense</button>
   </section>
 
    <aside ng-show='!gameCtrl.checkBattleBool()'class='move-box' >
-    <button ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+    <button class='btn btn-primary btn-lg' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
     <h3>{{gameCtrl.roll}}</h3>
     <h3>{{gameCtrl.boardSize}}</h3>
   </aside>
+
+<section class='terminal-box'>
 
   <ul class='message-board'>
     <li><h3>{{gameCtrl.messageArray[0]}}</h3></li>
