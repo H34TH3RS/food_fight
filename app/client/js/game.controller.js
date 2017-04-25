@@ -15,6 +15,7 @@
     vm.playerHealth = localStorage.getItem('playerHealthLocal') || null;
     vm.playerItems = localStorage.getItem('playerItemsLocal') || null;
     vm.message = '';
+    vm.messageArray =[];
     vm.botName ='';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
 
@@ -101,6 +102,7 @@
     vm.botHealth = localStorage.getItem('botHealthLocal');
     return battleBool;
   };
+
   /**
   * Generates a random number between 1 and 6
   * @return {Number}
@@ -120,7 +122,7 @@
     console.log('rollctrl');
     vm.rollRNG();
     vm.boardSize = vm.boardSize - vm.roll; //subtracts the roll from board
-    vm.message = ''; // clears the last message displayed
+    // unshiftMessages(''); // clears the last message displayed
     if (vm.boardSize > 0){
       randomEncounter();
     }else{
@@ -134,7 +136,7 @@
     if (player[0].items < 3){
       player[0].items =    player[0].items + 1;
     }else{
-      vm.message = 'You have too many items';
+      unshiftMessages('You have too many items');
     }
 
   }
@@ -147,14 +149,14 @@
       vm.status = ' ';
       let treasurePick = Math.floor(Math.random()* treasures.length);
       vm.image = treasures[treasurePick].image;
-      vm.status = 'You find ' + treasures[treasurePick].treasure + '! Neato....';
+      unshiftMessages('You find ' + treasures[treasurePick].treasure + '! Neato....');
       addItem();
     }else if(encounter < nothing && encounter > treasureChance ) {
       vm.status = ' ';
       battleBool = false;
       let nothingPick = Math.floor(Math.random()* nothings.length);
       vm.image = nothings[nothingPick].image;
-      vm.status = (nothings[nothingPick].nothing + ' I guess you should move on...');
+      unshiftMessages(nothings[nothingPick].nothing + ' I guess you should move on...');
     }else{
       vm.status = ' ';
       battleBool = true; //this is set to true so that the fight menu can be displayed
@@ -164,7 +166,7 @@
       botBtlStr= bots[botPick].strength;
       vm.image = bots[botPick].image;
       vm.botName = bots[botPick].enemy;
-      vm.status = 'You fight ' + bots[botPick].enemy + ' !';
+    unshiftMessages( 'You fight ' + bots[botPick].enemy + ' !');
       battle();
     }
     vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
@@ -196,16 +198,16 @@
     console.log('Current playerTurn bool is ', playerTurn);
     console.log('fightFunc loop');
     if(playerTurn === true){
-      vm.message = 'PLayer Turn';
+      unshiftMessages(' Make your move...');
       bots[botPick].health = vm.botHealth;
       console.log('player turn');
       if(vm.botHealth <=0){
-        vm.message = 'You destroyed ' + vm.botName;
+        unshiftMessages('You destroyed ' + vm.botName);
         battleBool = !battleBool;
         bots[botPick].health = basicBotHealth;
       }
     }else{
-      vm.message = 'Enemy Turn';
+      unshiftMessages('Enemy makes it\'s move...');
       botAtk();
     }
   }
@@ -229,28 +231,25 @@
   function botAtk(){
     let botMiss = rngEncounter();
     console.log('Bot turn');
-    playerTurn = true;
     console.log(botMiss);
 
     if(botMiss >= 50 && playerDefendBool === false){
       console.log(playerDefendBool);
       vm.playerHealth = vm.playerHealth - botBtlStr;
-      player[0].health = vm.playerHealth;
-      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-      vm.playerHealth = localStorage.getItem('playerHealthLocal');
-      vm.status = 'enemy swipes!!';
+      playerHealthReturn();
+      unshiftMessages('The enemy does ' +  botBtlStr + ' damage');
       playerDeathCheck();
+      playerTurn = true;
     }else if (botMiss >= 50 && playerDefendBool === true){
       playerDefendBool = false;
       vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
-      player[0].health = vm.playerHealth;
-      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-      vm.playerHealth = localStorage.getItem('playerHealthLocal');
-      vm.status = 'enemy swipes!!';
+      playerHealthReturn();
+      unshiftMessages('The enemy does ' +  (botBtlStr*0.5) + ' damage');
       playerDeathCheck();
+      playerTurn = true;
     }else{
-      vm.message = 'The enemy misses';
-      vm.status = 'The enemy misses';
+      unshiftMessages('The enemy misses');
+      playerTurn = true;
     }
 
     console.log('In botatk', player[0].health);
@@ -260,37 +259,42 @@
 
   //this is working but the timing makes it not appear so
   vm.playerDef = function playerDef(){
+    unshiftMessages('You defend!');
     playerDefendBool = true;
-    vm.message = ' ';
-    vm.message = 'you defend!';
     playerTurn = false;
     fightFunc();
   };
 
-function useItem(){
-  vm.message = 'You used an item';
-  player[0].items = player[0].items - 1;
-  vm.playerHealth = player[0].health + 3;
-  player[0].health = vm.playerHealth;
-  vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-  vm.playerHealth = localStorage.getItem('playerHealthLocal');
-  fightFunc();
-}
 
   vm.playerItems = function playerItems(){
     vm.message = ' ';
     if(player[0].items === 0){
       console.log('You have no items');
-      vm.message = 'no items';
-      vm.status = 'no items';
+      unshiftMessages('You are out of items');
     }else{
-      useItem();
+      unshiftMessages('You used an item');
+      player[0].items = player[0].items - 1;
+      vm.playerHealth = player[0].health + 3;
+      playerHealthReturn();
+      playerTurn = false;
     }
     console.log(player[0].items);
     fightFunc();
   };
 
+function playerHealthReturn(){
+  player[0].health = vm.playerHealth;
+  vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+  vm.playerHealth = localStorage.getItem('playerHealthLocal');
+}
 
+function unshiftMessages(string){
+  if(playerTurn === true){
+    vm.messageArray.unshift('PLAYER: ' + string);
+  }else{
+    vm.messageArray.unshift('ENEMY: '+ string);
+  }
+}
 
 
 }

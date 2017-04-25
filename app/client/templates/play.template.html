@@ -1,31 +1,36 @@
 
 <section ng-controller = 'GameController as gameCtrl' class='game-box'>
 
+
+
   <section>
     <img src= {{gameCtrl.image}} height="250" width="250">
   </section>
 
-<section ng-show='gameCtrl.checkBattleBool()'>
-    <h3>Player Health: {{gameCtrl.playerHealth}}</h3>
-    <h3>Enemy Health: {{gameCtrl.botHealth}} </h3>
-    <button ng-click='gameCtrl.playerAtk()'>ATK</button>
-    <button ng-click='gameCtrl.playerItems()'>Item</button>
-    <button ng-click='gameCtrl.playerDef()'>Defense</button>
-
-    <h1>{{gameCtrl.message}} </h1>
-    <h1>{{gameCtrl.status}} </h1>
-
+  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
+      <h3>Player Health: {{gameCtrl.playerHealth}}</h3>
+      <h3>Enemy Health: {{gameCtrl.botHealth}} </h3>
+      <button ng-click='gameCtrl.playerAtk()'>ATK</button>
+      <button ng-click='gameCtrl.playerItems()'>Item</button>
+      <button ng-click='gameCtrl.playerDef()'>Defense</button>
   </section>
 
 
   <!-- I need to seperate these into diff vars  -->
-  <aside ng-show='!gameCtrl.checkBattleBool()'>
+  <aside ng-show='!gameCtrl.checkBattleBool()' >
     <button ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
     <h2>{{gameCtrl.roll}}</h2>
     <h2>{{gameCtrl.boardSize}}</h2>
-    <h1>{{gameCtrl.message}} </h1>
-    <h1>{{gameCtrl.status}} </h1>
   </aside>
+
+  <section class='message-board'>
+    <h2>{{gameCtrl.messageArray[0]}} </h2>
+
+    <p>{{gameCtrl.messageArray[1]}} </p>
+    <p>{{gameCtrl.messageArray[2]}} </p>
+    <p>{{gameCtrl.messageArray[3]}} </p>
+
+  </section>
 
 
 
