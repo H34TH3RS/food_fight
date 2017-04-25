@@ -18,7 +18,7 @@ CARD_KEYS = {
 
 class CardConverter
   def convert!(nutrition_data)
+    nutrition_data.fetch('nf_calories') + 100
     nutrition_data.map { |key, value| [CARD_KEYS[key], value] }.to_h
-    nutrition_data.fetch('health') + 100
   end
 end
