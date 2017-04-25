@@ -5,7 +5,7 @@
     <img src= {{gameCtrl.image}} height="250" width="250">
   </section>
 
-  <section ng-show='gameCtrl.checkBattleBool()' ng-class='gameCtrl.battle()'>
+<section ng-show='gameCtrl.checkBattleBool()'>
     <h3>Player Health: {{gameCtrl.playerHealth}}</h3>
     <h3>Enemy Health: {{gameCtrl.botHealth}} </h3>
     <button ng-click='gameCtrl.playerAtk()'>ATK</button>

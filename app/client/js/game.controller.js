@@ -116,7 +116,6 @@
   */
   vm.rollCtrl = function rollCtrl(){
     console.log('rollctrl');
-    vm.rollRNG();
     vm.boardSize = vm.boardSize - vm.roll; //subtracts the roll from board
     vm.message = ''; // clears the last message displayed
     if (vm.boardSize > 0){
@@ -152,7 +151,7 @@
       vm.image = bots[botPick].image;
       vm.botName = bots[botPick].enemy;
       vm.status = 'You fight ' + bots[botPick].enemy + ' !';
-      vm.battle();
+      battle();
     }
     //this resets the players health to base health if a new game is started
     vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
@@ -164,50 +163,39 @@
   * This handles the battle mechanics.
   * @return {VOID} [description]
   */
-  vm.battle = function battle(){
+  function battle(){
     console.log('in battle');
     vm.canRollCheck = true;
-    atkClick = atkClick ++;
     vm.battleRoll = Math.floor(Math.random()*100)+1;
     const BattleRoll = vm.battleRoll;
     if(vm.battleRoll < battleRate){
       playerTurn = false;
+    }else{
+      playerTurn = true;
     }
-
-    if(atkClick === 1){
-      //the disallows batle bool to be changes while inside this function
-      battleBool = !battleBool;//this changes on every click of atk
-    }
-    return;
-  };
+  }
 
   function fightFunc(){
     vm.botHealth = localStorage.getItem('botHealthLocal');
     console.log('Current playerTurn bool is ', playerTurn);
     console.log('fightFunc loop');
-
     if(playerTurn === true){
+      vm.message = 'PLayer Turn';
       bots[botPick].health = vm.botHealth;
       console.log('player turn');
       if(vm.botHealth <=0){
         vm.message = 'You destroyed ' + vm.botName;
         battleBool = !battleBool;
         bots[botPick].health = basicBotHealth;
-        return;
       }
-      return;
     }else{
+      vm.message = 'Enemy Turn';
       botAtk();
-      if(player[0].health <= 0){
-        $state.go('lost');
-      }
-      return;
     }
   }
 
 
-
-  vm.playerAtk = function playerAtk(){
+vm.playerAtk = function playerAtk(){
     playerTurn = false;
     console.log('inside the player atk button');
     vm.botHealth = vm.botHealth - playerStr;
@@ -216,14 +204,18 @@
     fightFunc();
   };
 
-//add the setTimeout method
   function botAtk(){
     console.log('Bot turn');
     playerTurn = true;
-    console.log('inside the bot');
-    vm.playerHealth = vm.playerHealth - botBtlStr;
-    player[0].health = vm.playerHealth;
-    vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+    if(player[0].health <= 0){
+      $state.go('lost');
+    }
+    setTimeout(function botSwipe(){
+      vm.playerHealth = vm.playerHealth - botBtlStr;
+      player[0].health = vm.playerHealth;
+      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+      vm.message = 'enemy swipes!!';
+    }, 3000);
     fightFunc();
   }
 
