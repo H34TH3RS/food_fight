@@ -217,14 +217,20 @@
   };
 
   function botAtk(){
+    let botMiss = rngEncounter();
     console.log('Bot turn');
     playerTurn = true;
-    vm.playerHealth = vm.playerHealth - botBtlStr;
-    player[0].health = vm.playerHealth;
-    vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-    vm.playerHealth = localStorage.getItem('playerHealthLocal');
+    if(botMiss >= 90){
+      vm.playerHealth = vm.playerHealth - botBtlStr;
+      player[0].health = vm.playerHealth;
+      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+      vm.playerHealth = localStorage.getItem('playerHealthLocal');
+      vm.status = 'enemy swipes!!';
+    }else{
+      vm.message = 'The enemy misses';
+      vm.status = 'The enemy misses';
+    }
 
-    vm.status = 'enemy swipes!!';
       console.log('In botatk', player[0].health);
     fightFunc();
   }
@@ -253,7 +259,7 @@
     if(player[0].items === 0){
       console.log('You have no items');
       vm.message = 'no items';
-      
+      vm.status = 'no items';
     }else{
       vm.message = 'You used an item';
       player[0].items = player[0].items - 1;
