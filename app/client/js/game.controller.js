@@ -25,7 +25,7 @@
       health: 20,
       strength: 8,
       defense: 20,
-      items:0
+      items:2
     }
   ];
   let bots = [
@@ -110,6 +110,8 @@
     vm.roll = Math.floor(Math.random()*6)+1;
     return vm.roll;
   };
+
+
   /**
   * Handles the dice rolls and subtracts the number from the boardSize
   * @return {Void} [description]
@@ -126,6 +128,7 @@
     }
     return vm.roll, vm.boardSize;
   };
+
 
   function randomEncounter(){
     console.log('in random encounter');
@@ -227,8 +230,9 @@
   }
 
 
-//this is working
+//this is working but the timing makes it not appear so
   vm.playerDef = function playerDef(){
+    vm.message = ' ';
     vm.message = 'you defend!';
     playerTurn = false;
     console.log('In DEF', vm.playerHealth);
@@ -241,6 +245,21 @@
     vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
     vm.playerHealth = localStorage.getItem('playerHealthLocal');
     console.log('In DEF',vm.playerHealth);
+    fightFunc();
+  };
+
+  vm.playerItems = function playerItems(){
+    vm.message = ' ';
+    if(player[0].items === 0){
+      console.log('You have no items');
+      vm.message = 'no items';
+      
+    }else{
+      vm.message = 'You used an item';
+      player[0].items = player[0].items - 1;
+      vm.playerDef();
+    }
+    console.log(player[0].items);
     fightFunc();
   };
 
