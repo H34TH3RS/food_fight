@@ -6,7 +6,7 @@
   CardsController.$inject = ['$state', 'CardsService'];
 
   /**
-   * Creates Card Controllers
+   * Creates Cards Controllers
    * @param {Function} $state      Service that allows view routing
    * @param {Function} CardsService Service that contains character card functions
    */
