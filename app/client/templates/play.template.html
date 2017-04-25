@@ -1,3 +1,9 @@
+  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+
+    </aside>
+  </section>
+
   <aside ng-show='gameCtrl.checkBattleBool()'>
     <h2>Player Health:{{gameCtrl.playerHealth}} : Enemy Health:{{gameCtrl.botHealth}} </h2>
   </aside>

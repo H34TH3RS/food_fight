@@ -88,6 +88,11 @@
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
 
 
+    vm.fullHealth = function fullHealth() {
+      let healthMod = 100/basicPlayerHealth;
+      console.log(vm.playerHealth);
+      return vm.playerHealth*healthMod;
+    };
 
     /**
      * Generates a random number based on the chance variable
