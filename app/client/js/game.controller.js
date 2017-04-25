@@ -8,7 +8,7 @@
   function GameController($state){
 
     let vm = this;
-    vm.boardSize = 1000;
+    vm.boardSize = 25;
     vm.roll = 0;
     vm.status = '';
     vm.botHealth = 0;
@@ -272,7 +272,7 @@
       console.log('You have no items');
       unshiftMessages('You are out of items');
     }else{
-      unshiftMessages('You used an item');
+      unshiftMessages('You recovered ' + 3 + ' hp');
       player[0].items = player[0].items - 1;
       vm.playerHealth = player[0].health + 3;
       playerHealthReturn();

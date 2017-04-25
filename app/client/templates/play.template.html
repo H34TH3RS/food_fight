@@ -2,35 +2,34 @@
 <section ng-controller = 'GameController as gameCtrl' class='game-box'>
 
 
-
-  <section>
-    <img src= {{gameCtrl.image}} height="250" width="250">
-  </section>
-
-  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
-      <h3>Player Health: {{gameCtrl.playerHealth}}</h3>
-      <h3>Enemy Health: {{gameCtrl.botHealth}} </h3>
-      <button ng-click='gameCtrl.playerAtk()'>ATK</button>
-      <button ng-click='gameCtrl.playerItems()'>Item</button>
-      <button ng-click='gameCtrl.playerDef()'>Defense</button>
-  </section>
-
-
-  <!-- I need to seperate these into diff vars  -->
-  <aside ng-show='!gameCtrl.checkBattleBool()' >
-    <button ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-    <h2>{{gameCtrl.roll}}</h2>
-    <h2>{{gameCtrl.boardSize}}</h2>
+  <aside ng-show='gameCtrl.checkBattleBool()'>
+  <h2>Player Health:{{gameCtrl.playerHealth}} : Enemy Health:{{gameCtrl.botHealth}} </h2>
   </aside>
 
-  <section class='message-board'>
-    <h2>{{gameCtrl.messageArray[0]}} </h2>
+  <img src= {{gameCtrl.image}} height="250" width="250" class='image-box'>
 
-    <p>{{gameCtrl.messageArray[1]}} </p>
-    <p>{{gameCtrl.messageArray[2]}} </p>
-    <p>{{gameCtrl.messageArray[3]}} </p>
 
+  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
+    <button ng-click='gameCtrl.playerAtk()'>ATK</button>
+    <button ng-click='gameCtrl.playerItems()'>Item</button>
+    <button ng-click='gameCtrl.playerDef()'>Defense</button>
   </section>
+
+
+  <aside ng-show='!gameCtrl.checkBattleBool()'class='move-box' >
+    <button ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+    <h3>{{gameCtrl.roll}}</h3>
+    <h3>{{gameCtrl.boardSize}}</h3>
+  </aside>
+
+  <ul class='message-board'>
+    <li><h3>{{gameCtrl.messageArray[0]}}</h3></li>
+    <li><p>{{gameCtrl.messageArray[1]}} </p></li>
+    <li><p>{{gameCtrl.messageArray[2]}} </p></li>
+    <li><p>{{gameCtrl.messageArray[3]}} </p></li>
+    <li><p>{{gameCtrl.messageArray[4]}} </p></li>
+    <li><p>{{gameCtrl.messageArray[5]}} </p></li>
+  </ul>
 
 
 

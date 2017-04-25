@@ -32,4 +32,9 @@ nav {
   .home h3 {
     font-size: 3em; }
 
+.game-box h2 {
+  margin: auto 0; }
+.game-box ul {
+  list-style: none; }
+
 /*# sourceMappingURL=style.css.map */
