@@ -36,5 +36,7 @@ nav {
   margin: auto 0; }
 .game-box ul {
   list-style: none; }
+  .game-box ul p {
+    font-size: .75em; }
 
 /*# sourceMappingURL=style.css.map */
