@@ -18,7 +18,6 @@
     vm.botName ='';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
 
-
     //this will be replaced with data from elsewhere. This is just for  testing
     /*********************************************************************************/
     let player = [
@@ -71,14 +70,14 @@
     let treasureChance = 29;
     let nothing = 30;
     let battleBool = false;
-    let battleTurn = true;
+    let playerTurn = true;
     let atkClick = 0;
     let basicPlayerHealth = player[0].health;
     let basicPlayerItems =  player[0].items;
     let basicBotHealth;
     let botBtlStr = 0;
     let botBtlDef = 0;
-    let battleRate = 20;
+    let battleRate = 50;
     let playerDef =  player[0].defense;
     let playerStr =  player[0].strength;
 
@@ -87,12 +86,15 @@
       return  Math.floor(Math.random()*chance)+1;
     }
 
+
+
     /**
      * checks whether the battlebool var is true or not. Also retrieves the current
      * health of the player and enemy obj
      * @return {Boolean}
      */
     vm.checkBattleBool = function checkBattleBool(){
+      vm.canRollCheck = true;
       let counter = 0;//resets the counter evertime the fn is called
       counter = counter ++;
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
@@ -104,6 +106,7 @@
      * @return {Number}
      */
     vm.rollRNG = function rollRNG(){
+      console.log('rollRNG');
       vm.roll = Math.floor(Math.random()*6)+1;
       return vm.roll;
     };
@@ -112,6 +115,7 @@
      * @return {Void} [description]
      */
     vm.rollCtrl = function rollCtrl(){
+      console.log('rollctrl');
       vm.rollRNG();
       vm.boardSize = vm.boardSize - vm.roll; //subtracts the roll from board
       vm.message = ''; // clears the last message displayed
@@ -124,6 +128,7 @@
     };
 
     function randomEncounter(){
+      console.log('in random encounter');
       let encounter = rngEncounter();
       if ( encounter < treasureChance){
         battleBool = false;
@@ -139,6 +144,7 @@
         vm.status = (nothings[nothingPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
+        turn();
         battleBool = true; //this is set to true so that the fight menu can be displayed
         botPick = Math.floor(Math.random()* bots.length);
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
@@ -159,56 +165,45 @@
      * @return {VOID} [description]
      */
     vm.battle = function battle(){
+      console.log('in battle');
+
+      vm.canRollCheck = true;
       atkClick = atkClick ++;
-      if (battleBool === true){
-        vm.playerHealth = localStorage.getItem('playerHealthLocal');
-        vm.botHealth = localStorage.getItem('botHealthLocal');
-        vm.battleRoll = Math.floor(Math.random()*100)+1;
 
 
-        //this is the 'initiative' roll. If battleRoll goes below battleRate
-        //then the enemy goes first, otherwise it's the players turn.
-        if(vm.battleRoll < battleRate){
-          //will need to check this against atkClick to make
-          //sure that every ATK button push doesnt change the value of battleTurn
-          vm.playerHealth = vm.playerHealth - botBtlStr;
-          battleTurn = true;
-        //players turn
-        }else{
-          vm.botHealth = vm.botHealth - playerStr;
-          battleTurn = false;
-        }
+    while (battleBool === true && vm.botHealth > 0 ){
+      console.log('while loop');
 
-        while (vm.playerHealth > 0 ){
+      if(vm.battleRoll < battleRate){
+        playerTurn = false;
+      }
 
-        }
-
-
-
-
-
-        //All this needs to go insides a while loop.
-        //sets the current bot health to be same as vm.botHealth
-        //
+      if(playerTurn === true){
         bots[botPick].health = vm.botHealth;
-        //sets current player health be the same as vm.playerHealth
-        //
-        player[0].health = vm.playerHealth;
-
-        //If the players health reaches 0, go to the "end" view
-        if(player[0].health <= 0){
-          player[0].health = basicPlayerHealth;
-          $state.go('lost');
-        }
-        //if the bots health reaches 0, remove the battle menu
+        turnChange();
+        console.log('player turn');
+        // playerState();
         if(vm.botHealth <= 0){
+          player[0].health = vm.playerHealth;
           console.log('You destroyed ' + vm.botName);
           vm.message = 'You destroyed ' + vm.botName;
           battleBool = !battleBool;
           bots[botPick].health = basicBotHealth;
         }
+        return;
+      }else{
+        // turnChange();
+        // vm.playerHealth = localStorage.getItem('playerHealthLocal');
+        vm.playerHealth = vm.playerHealth - botBtlStr;
+        console.log('Bot turn');
+        if(player[0].health <= 0){
+          player[0].health = basicPlayerHealth;
+          $state.go('lost');
+        }
+        return;
+      }
 
-        //updates the health of either
+      //updates the health of either
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
         vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       }
@@ -219,6 +214,28 @@
       }
       return;
     };
+
+
+
+      vm.playerAtk = function playerAtk(){
+        console.log('inside the atk button');
+        vm.botHealth = vm.botHealth - playerStr;
+        bots[botPick].health =vm.botHealth;
+        vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
+        return;
+      };
+
+
+
+    function turnChange(){
+      return !playerTurn;
+      fightFunc();
+    }
+
+    function turn(){
+      vm.battleRoll = Math.floor(Math.random()*100)+1;
+      return vm.battleRoll;
+      }
 
 
 
