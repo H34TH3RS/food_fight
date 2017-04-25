@@ -1,11 +1,12 @@
 .grue {
-  color: #ffffff;
+  color: #$404-light-text;
   text-align: center;
   margin: auto;
   background-color: $background-color;
-  display: flex;
-  align-items: center;
-  display: block;
   font-family: Courier, Times, serif;
   padding: 0;
+
+  a {
+    color: #$404-light-text;
+  }
 }
