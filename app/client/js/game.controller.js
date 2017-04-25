@@ -130,14 +130,14 @@
   };
 
 
-function addItem(){
-  if (player[0].items < 3){
-    player[0].items =    player[0].items + 1;
-  }else{
-    vm.message = 'You have too many items';
-  }
+  function addItem(){
+    if (player[0].items < 3){
+      player[0].items =    player[0].items + 1;
+    }else{
+      vm.message = 'You have too many items';
+    }
 
-}
+  }
 
   function randomEncounter(){
     console.log('in random encounter');
@@ -167,9 +167,7 @@ function addItem(){
       vm.status = 'You fight ' + bots[botPick].enemy + ' !';
       battle();
     }
-    //this resets the players health to base health if a new game is started
     vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-    //is it bad paractice to return multiple variables
     return vm.status;
   }
 
@@ -219,10 +217,6 @@ function addItem(){
   }
 
 
-
-
-
-
   vm.playerAtk = function playerAtk(){
     playerTurn = false;
     console.log('inside the player atk button');
@@ -236,7 +230,7 @@ function addItem(){
     let botMiss = rngEncounter();
     console.log('Bot turn');
     playerTurn = true;
-      console.log(botMiss);
+    console.log(botMiss);
 
     if(botMiss >= 50 && playerDefendBool === false){
       console.log(playerDefendBool);
@@ -254,7 +248,7 @@ function addItem(){
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.status = 'enemy swipes!!';
       playerDeathCheck();
-      }else{
+    }else{
       vm.message = 'The enemy misses';
       vm.status = 'The enemy misses';
     }
@@ -264,7 +258,7 @@ function addItem(){
   }
 
 
-//this is working but the timing makes it not appear so
+  //this is working but the timing makes it not appear so
   vm.playerDef = function playerDef(){
     playerDefendBool = true;
     vm.message = ' ';
@@ -273,6 +267,16 @@ function addItem(){
     fightFunc();
   };
 
+function useItem(){
+  vm.message = 'You used an item';
+  player[0].items = player[0].items - 1;
+  vm.playerHealth = player[0].health + 3;
+  player[0].health = vm.playerHealth;
+  vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+  vm.playerHealth = localStorage.getItem('playerHealthLocal');
+  fightFunc();
+}
+
   vm.playerItems = function playerItems(){
     vm.message = ' ';
     if(player[0].items === 0){
@@ -280,9 +284,7 @@ function addItem(){
       vm.message = 'no items';
       vm.status = 'no items';
     }else{
-      vm.message = 'You used an item';
-      player[0].items = player[0].items - 1;
-      vm.playerDef();
+      useItem();
     }
     console.log(player[0].items);
     fightFunc();
@@ -291,15 +293,5 @@ function addItem(){
 
 
 
-  }
+}
 }());
-
-
-
-//player defense needs to change the algorithm for botAtk for only one turn,
-//even if the bot misses on that turn. After the bot turn, the defend bool needs
-//to be reset.
-
-//if the chane is above 50 and a playDef === false, attack regualarly
-//else if chance is above 50 and plaefef == true, attack by .5
-//else miss
