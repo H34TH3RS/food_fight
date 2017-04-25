@@ -1,9 +1,28 @@
 
 nav {
   list-style: none;
-    li {
-    display: inline;
-    font-size:1.5em;
-    padding-right:.5em;
+
+  a {
+    color: $warning-color;
   }
+
+  a:hover {
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  a:focus {
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  li {
+  display: inline;
+  font-size:1.5em;
+  padding-right:.5em;
+  }
+}
+
+.navbar {
+  border-radius: 0px;
 }

@@ -1,1 +1,27 @@
 
+.loginForm {
+  color: $warning-color;
+  padding: 2em;
+}
+
+.makeAcctLink {
+  text-align: center;
+
+  p {
+    color: $info-color;
+  }
+
+  a {
+    color: $info-color;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  a:focus {
+    text-decoration: none;
+    color: $info-color;
+  }
+}

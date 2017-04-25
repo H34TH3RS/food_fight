@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       css:{
         files:[{
           cwd: 'app/client/',
-          src: 'style.css',
+          src: ['bootstrap.css'],
           dest: 'public/',
           expand: true
         }]
@@ -55,8 +55,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['app/client/js/**/*.js', 'app/client/**/*.html', 'app/client/templates/**/*.html',
-                'app/client/**/*.css'],
+        files: ['app/client/js/**/*.js', 'app/client/**/*.html', 'app/client/templates/**/*.html', 'app/client/sass/**/*.scss', 'app/client/**/*.css'],
         tasks: ['clean', 'copy', 'concat', 'sass'],
         options: {
           spawn: false,
@@ -118,6 +117,6 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-clean');
   // grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['jshint', /*'karma',*/ 'clean', 'copy', 'concat']);
+  grunt.registerTask('default', ['jshint', /*'karma',*/ 'clean', 'sass', 'copy', 'concat']);
 
 };

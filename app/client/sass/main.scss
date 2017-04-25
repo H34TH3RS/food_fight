@@ -1,7 +1,6 @@
+@import 'variables';
 
 @import 'body';
-
-@import 'main-view';
 
 @import 'login';
 
@@ -9,8 +8,18 @@
 
 @import 'nav';
 
+@import 'main-view';
+
 @import 'home';
+
+@import 'create-user';
+
+@import 'upc-form';
+
+@import 'cards';
 
 @import 'play';
 
 @import 'footer';
+
+@import 'not-found';

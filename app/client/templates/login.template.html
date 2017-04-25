@@ -1,18 +1,23 @@
 
-  <form name='loginform' ng-submit='loginform.$valid && userCtrl.login(userCtrl.userLogin)'>
+  <form class='form-group form-inline loginForm' name='loginform' ng-submit='loginform.$valid && userCtrl.login(userCtrl.userLogin)'>
 
     <label for='email'>Email</label>
-    <input ng-model='userCtrl.userLogin.email' type='email' name='email' placeholder='food@fight.com' required>
+    <input class='form-control' ng-model='userCtrl.userLogin.email' type='email' name='email' placeholder='food@fight.com' required>
     <label for='password'>Password</label>
-    <input ng-model='userCtrl.userLogin.password' type='password' name='password' required>
+    <input class='form-control' ng-model='userCtrl.userLogin.password' type='password' name='password' required>
 
-    <input type='submit' name='submitLogin' val='Log In'>
+    <input class='form-control btn btn-info' type='submit' name='submitLogin' val='Log In'>
 
   </form>
 
+  <section class='makeAcctLink'>
+    <p>Don't have an account?</p>
+    <h3><a ui-sref='create-user'>Make one!</a></h3>
+  </section>
+
   <section class='errMsg'>
-    <p ng-cloak ng-show='loginform.email.$touched && !loginform.email.$valid'>Please enter a valid email address.</p>
-    <p ng-cloak ng-show='loginform.password.$touched && !loginform.email.$valid'>Please enter a valid password.</p>
-    <p ng-cloak ng-show='userCtrl.hasError'>{{userCtrl.message}}</p>
+    <p class='alert alert-warning' ng-cloak ng-show='loginform.email.$touched && !loginform.email.$valid'>Please enter a valid email address.</p>
+    <p class='alert alert-warning' ng-cloak ng-show='loginform.password.$touched && !loginform.email.$valid'>Please enter a valid password.</p>
+    <p class='alert alert-warning' ng-cloak ng-show='userCtrl.hasError'>{{userCtrl.message}}</p>
     <!-- add alert for when email or password is wrong/not found in the db -->
   </section>

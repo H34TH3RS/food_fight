@@ -26,6 +26,10 @@
     */
     vm.login = function login(userLogin){
 
+      if (!userLogin.email || !userLogin.password) {
+        return Promise.reject();
+      }
+
       UserService.login(userLogin.email, userLogin.password)
       .then(function goToHome(){
         $state.go('home');
@@ -47,12 +51,14 @@
     */
     vm.logout = function logout() {
       UserService.logout();
-      console.log('logged out');
       $state.go('home');
     };
 
+    vm.loggedIn = function loggedIn(){
+      return !!UserService.getToken();
+    };
+
     vm.createUser = function createUser(user) {
-      console.log('inside create user controller', user);
       return UserService.createUser(user)
       .then(function goHome() {
         $state.go('home');

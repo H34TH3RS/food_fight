@@ -17,10 +17,6 @@
       expect(UserService.createUser).to.be.a('function');
     });
 
-    it('should return a promise is passed object', function(){
-      expect(UserService.createUser()).to.be.a('promise');
-    });
-
   });
 
 }());

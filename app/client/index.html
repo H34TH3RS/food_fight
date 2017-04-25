@@ -3,27 +3,30 @@
   <head>
     <meta charset='utf-8'>
     <title>Food Fight</title>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/bootstrap.css' rel='stylesheet'>
     <link href='/style.css' rel='stylesheet'>
 
   </head>
   <body>
 
-    <header>
+    <header class='jumbotron'>
       <h1>Food Fight</h1>
-      <nav ng-controller='UserController as userCtrl' class=" nav navbar navbar-inverse nav-pills">
-        <ul>
-          <li><a ui-sref='home'>home</a></li>
-          <li><a ui-sref='login'>log in</a></li>
-          <li><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
-          <li><a ui-sref='create-user'>create a user</a></li>
-          <li><a ui-sref='upc'>UPC</a></li>
-          <li><a ui-sref='cards'>View All Cards</a></li>
-        </ul>
-      </nav>
+      <p>a game of wits and grits</p>
+
     </header>
 
-    <main ui-view>
+    <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+      <ul class='container'>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>home</a></li>
+        <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
+        <li ng-hide='userCtrl.loggedIn()'><a ui-sref='create-user'>create a user</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='upc'>UPC</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='cards'>View All Cards</a></li>
+      </ul>
+    </nav>
+
+    <main ui-view class='container'>
     </main>
 
     <footer>
