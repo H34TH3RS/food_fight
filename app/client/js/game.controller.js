@@ -116,6 +116,7 @@
   */
   vm.rollCtrl = function rollCtrl(){
     console.log('rollctrl');
+    vm.rollRNG();
     vm.boardSize = vm.boardSize - vm.roll; //subtracts the roll from board
     vm.message = ''; // clears the last message displayed
     if (vm.boardSize > 0){
@@ -210,12 +211,12 @@ vm.playerAtk = function playerAtk(){
     if(player[0].health <= 0){
       $state.go('lost');
     }
-    setTimeout(function botSwipe(){
+
       vm.playerHealth = vm.playerHealth - botBtlStr;
       player[0].health = vm.playerHealth;
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       vm.message = 'enemy swipes!!';
-    }, 3000);
+    
     fightFunc();
   }
 
