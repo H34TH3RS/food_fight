@@ -165,6 +165,7 @@
   * @return {VOID} [description]
   */
   function battle(){
+    playerDeathCheck();
     console.log('in battle');
     vm.canRollCheck = true;
     vm.battleRoll = Math.floor(Math.random()*100)+1;
@@ -177,6 +178,7 @@
   }
 
   function fightFunc(){
+    vm.playerHealth = localStorage.getItem('playerHealthLocal');
     vm.botHealth = localStorage.getItem('botHealthLocal');
     console.log('Current playerTurn bool is ', playerTurn);
     console.log('fightFunc loop');
@@ -195,8 +197,14 @@
     }
   }
 
+  function playerDeathCheck(){
+    if(player[0].health <= 0){
+      $state.go('lost');
+    }
+  }
 
-vm.playerAtk = function playerAtk(){
+
+  vm.playerAtk = function playerAtk(){
     playerTurn = false;
     console.log('inside the player atk button');
     vm.botHealth = vm.botHealth - playerStr;
@@ -208,21 +216,37 @@ vm.playerAtk = function playerAtk(){
   function botAtk(){
     console.log('Bot turn');
     playerTurn = true;
-    if(player[0].health <= 0){
-      $state.go('lost');
-    }
+    vm.playerHealth = vm.playerHealth - botBtlStr;
+    player[0].health = vm.playerHealth;
+    vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+    vm.playerHealth = localStorage.getItem('playerHealthLocal');
 
-      vm.playerHealth = vm.playerHealth - botBtlStr;
-      player[0].health = vm.playerHealth;
-      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-      vm.message = 'enemy swipes!!';
-    
+    vm.status = 'enemy swipes!!';
+      console.log('In botatk', player[0].health);
     fightFunc();
   }
 
 
+//this is working
+  vm.playerDef = function playerDef(){
+    vm.message = 'you defend!';
+    playerTurn = false;
+    console.log('In DEF', vm.playerHealth);
+    console.log('in def Player h', player[0].health );
+    player[0].health = player[0].health  + 2;
+    console.log('in def Player h', player[0].health );
+    vm.playerHealth = player[0].health;
+    console.log('In DEF',vm.playerHealth);
+    player[0].health = vm.playerHealth;
+    vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+    vm.playerHealth = localStorage.getItem('playerHealthLocal');
+    console.log('In DEF',vm.playerHealth);
+    fightFunc();
+  };
 
-}
+
+
+  }
 }());
 
 
