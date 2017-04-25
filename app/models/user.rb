@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
+  has_many :card_assignments
+  has_many :cards, through: :card_assignments
   has_secure_password
   before_create :set_auth_token
   validates :password, confirmation: true

@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe NutritionixApi, type: :model do
-  NUTRITIONIX_STUB_PATH =  \
-    'spec/fixtures/files/stub_requests/get_nutrition_data.json'
-
   it 'fetches api data by upc' do
     stub_request(:get, %r{api.nutritionix.com/v1_1/item})
       .with(query: hash_including(upc: '52200004265'))
