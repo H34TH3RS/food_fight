@@ -36,12 +36,12 @@
     image:'https://blocksworld-production.s3.amazonaws.com/user_model_c4c20a13-d296-487b-a734-315449712234_image-768x768.png'},
     { enemy:'Crazy Carrotina',
     health: 12,
-    strength: 3,
+    strength: 4,
     defense:1,
     image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
     { enemy:'Eggploding Eggbert',
     health: 14,
-    strength: 3,
+    strength: 6,
     defense:1,
     image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
   ];
@@ -67,7 +67,7 @@
   //these need to be cleaned
   let botPick;
   let chance = 100;
-  let treasureChance = 29;
+  let treasureChance = 10;
   let nothing = 30;
   let battleBool = false;
   let playerTurn = true;
@@ -80,7 +80,7 @@
   let battleRate = 30;
   let playerDef =  player[0].defense;
   let playerStr =  player[0].strength;
-
+  let playerDefendBool = false;
 
   function rngEncounter(){
     return  Math.floor(Math.random()*chance)+1;
@@ -219,6 +219,10 @@ function addItem(){
   }
 
 
+
+
+
+
   vm.playerAtk = function playerAtk(){
     playerTurn = false;
     console.log('inside the player atk button');
@@ -232,37 +236,40 @@ function addItem(){
     let botMiss = rngEncounter();
     console.log('Bot turn');
     playerTurn = true;
-    if(botMiss >= 90){
+      console.log(botMiss);
+
+    if(botMiss >= 50 && playerDefendBool === false){
+      console.log(playerDefendBool);
       vm.playerHealth = vm.playerHealth - botBtlStr;
       player[0].health = vm.playerHealth;
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.status = 'enemy swipes!!';
-    }else{
+      playerDeathCheck();
+    }else if (botMiss >= 50 && playerDefendBool === true){
+      playerDefendBool = false;
+      vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
+      player[0].health = vm.playerHealth;
+      vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
+      vm.playerHealth = localStorage.getItem('playerHealthLocal');
+      vm.status = 'enemy swipes!!';
+      playerDeathCheck();
+      }else{
       vm.message = 'The enemy misses';
       vm.status = 'The enemy misses';
     }
 
-      console.log('In botatk', player[0].health);
+    console.log('In botatk', player[0].health);
     fightFunc();
   }
 
 
 //this is working but the timing makes it not appear so
   vm.playerDef = function playerDef(){
+    playerDefendBool = true;
     vm.message = ' ';
     vm.message = 'you defend!';
     playerTurn = false;
-    console.log('In DEF', vm.playerHealth);
-    console.log('in def Player h', player[0].health );
-    player[0].health = player[0].health  + 2;
-    console.log('in def Player h', player[0].health );
-    vm.playerHealth = player[0].health;
-    console.log('In DEF',vm.playerHealth);
-    player[0].health = vm.playerHealth;
-    vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
-    vm.playerHealth = localStorage.getItem('playerHealthLocal');
-    console.log('In DEF',vm.playerHealth);
     fightFunc();
   };
 
@@ -283,9 +290,16 @@ function addItem(){
 
 
 
+
   }
 }());
 
 
 
-//serperate everything into more manageable blocks
+//player defense needs to change the algorithm for botAtk for only one turn,
+//even if the bot misses on that turn. After the bot turn, the defend bool needs
+//to be reset.
+
+//if the chane is above 50 and a playDef === false, attack regualarly
+//else if chance is above 50 and plaefef == true, attack by .5
+//else miss
