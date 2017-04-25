@@ -60,9 +60,6 @@
     };
 
     vm.createUser = function createUser(user) {
-      if (typeof('user') !== 'object' || !user.email || !user.password || !user.password_confirmation || !user.username){
-        return Promise.reject();
-      }
       console.log('inside create user controller', user);
       return UserService.createUser(user)
       .then(function goHome() {
