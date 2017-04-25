@@ -1,6 +1,10 @@
   <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
     <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+    </aside>
+  </section>
 
+  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
     </aside>
   </section>
 

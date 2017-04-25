@@ -79,7 +79,7 @@
     vm.boardSize = 25;
     vm.roll = 0;
     vm.status = '';
-    vm.botHealth = 0;
+    vm.botHealth = localStorage.getItem('healthLocal') || null;
     vm.playerHealth = localStorage.getItem('playerHealthLocal') || null;
     vm.playerItems = localStorage.getItem('playerItemsLocal') || null;
     vm.message = '';
@@ -94,6 +94,11 @@
       return vm.playerHealth*healthMod;
     };
 
+    vm.fullBotHealth = function fullBotHealth() {
+      let healthBotMod = 100/basicBotHealth;
+      console.log(vm.botHealth);
+      return vm.botHealth*healthBotMod;
+    };
     /**
      * Generates a random number based on the chance variable
      * @return {Number} [description]
