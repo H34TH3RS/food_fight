@@ -3,14 +3,7 @@
 class Api::CardsController < ApplicationController
   before_action :authorize!
   def create
-    upc = card_params['upc']
-    card = Card.find_by(upc: upc)
-    @card = if card
-              card
-            else
-              card_data = CardBuilder.new.build_card_from_api(upc)
-              Card.new(card_data) if card_data
-            end
+    @card = CardBuilder.new(card_params['upc']).card
 
     if @card&.save
       current_user.cards << @card

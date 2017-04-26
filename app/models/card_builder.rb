@@ -1,24 +1,30 @@
 # frozen_string_literal: true
 
 class CardBuilder
+  attr_reader :upc
+  def initialize(upc)
+    @upc = upc
+  end
+
+  def card
+    card = Card.find_by(upc: upc)
+    if card
+      card
+    else
+      card_data = build_card_from_api(upc)
+      if card_data
+         Card.new(card_data)
+       else
+
+       end
+    end
+  end
+
   def build_card_from_api(upc)
     api_data = NutritionixApi.new.get_nutrition_data(upc)
     return if api_data['status_code'] == 404
-    nutrition_data = api_data.slice(
-      'item_name',
-      'nf_calories',
-      'nf_total_fat',
-      'nf_total_carbohydrate',
-      'nf_dietary_fiber',
-      'nf_sugars',
-      'nf_protein',
-      'nf_vitamin_a_dv',
-      'nf_vitamin_c_dv',
-      'nf_calcium_dv',
-      'nf_iron_dv',
-      'nf_potassium',
-      'nf_sodium'
-    )
+    # Remove the source data that we converted to card attributes.
+    nutrition_data = api_data.slice(CardConverter::CARD_KEYS.keys)
 
     basic_card_data = CardConverter.new.convert!(nutrition_data)
     basic_card_data.transform_values! { |value| value || 0 }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::AuthorizationsController, type: :controller do
@@ -22,7 +24,7 @@ RSpec.describe Api::AuthorizationsController, type: :controller do
     it 'can log out a user' do
       current_user = users(:russell)
       token = current_user.auth_token
-      request.headers["HTTP_AUTHORIZATION"]= "token #{token}"
+      request.headers['HTTP_AUTHORIZATION'] = "token #{token}"
       delete :destroy
       current_user.reload
       new_token = current_user.auth_token
