@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CardBuilder
   def build_card_from_api(upc)
     api_data = NutritionixApi.new.get_nutrition_data(upc)
@@ -18,6 +20,8 @@ class CardBuilder
     )
 
     basic_card_data = CardConverter.new.convert!(nutrition_data)
+    basic_card_data.transform_values! { |value| value || 0 }
+
     added_data = {
       upc: upc,
       nutrition_data: nutrition_data.as_json

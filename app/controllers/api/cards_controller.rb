@@ -13,7 +13,9 @@ class Api::CardsController < ApplicationController
     if @card.save
       current_user.cards << @card
       # TODO: except keys you don't need in json output
-      render json: @card.as_json(except: %i[created_at upc nutrition_data]),
+      render json: @card.as_json(
+        except: %i[created_at updated_at upc nutrition_data]
+      ),
              status: :created
     else
       render json: { message: error.to_s },
