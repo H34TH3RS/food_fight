@@ -3,60 +3,15 @@
 
   angular.module('game').controller('GameController', GameController);
 
-  GameController.$inject =['$state'];
+  GameController.$inject =['$state', 'GameService'];
 
-  function GameController($state){
-
-
-
-    //this will be replaced with data from elsewhere. This is just for  testing
-    /*********************************************************************************/
-    let player = [
-      { name: 'Taco Mac',
-      health: 20,
-      strength: 8,
-      defense: 20,
-      items:2
-      }
-    ];
-    let bots = [
-      { enemy:'Deadly Daikon Dan',
-      health: 10,
-      strength: 2,
-      defense:1,
-      image:'https://blocksworld-production.s3.amazonaws.com/user_model_c4c20a13-d296-487b-a734-315449712234_image-768x768.png'},
-      { enemy:'Crazy Carrotina',
-      health: 12,
-      strength: 4,
-      defense:1,
-      image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
-      { enemy:'Eggploding Eggbert',
-      health: 14,
-      strength: 6,
-      defense:1,
-      image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
-    ];
-    let treasures = [
-      {treasure:'a Golden Egg',
-      image:'http://freepngimages.com/wp-content/uploads/2014/04/EasterGold_Egg_1.png'},
-      {treasure:'some Cool Beans',
-      image:'http://waycoolbeans.com/wp-content/uploads/2016/06/Way-Cool-Beans-Logo-Small.png'},
-      {treasure:'some Salt',
-      image:'http://vignette4.wikia.nocookie.net/battlefordreamislandfanfiction/images/7/77/Salt.png/revision/latest?cb=20140331153921'}
-    ];
-    let nothings = [
-      {nothing:'Nothing here but some boneless chickens...',
-      image:'https://hydra-media.cursecdn.com/zelda.gamepedia.com/thumb/1/14/HW_Cucco.png/200px-HW_Cucco.png?version=dfa0439718d5e856ae8f416812d3d858'},
-      {nothing:'You can hear crickets in the background.',
-      image:'http://www.pngmart.com/files/3/Grasshopper-Transparent-PNG.png'},
-      {nothing:'You encounter a some wilted lettuce.',
-      image:'http://greensaver.oxo.com/wp-content/uploads/2015/02/lettuce_rotten.png'}
-    ];
-  /*********************************************************************************/
+  function GameController($state, GameService){
 
     let vm = this;
-
-    //these need to be cleaned
+    let player =[GameService.getUserCard()];
+    let bots = GameService.getBots();
+    let treasures = GameService.getTreasures();
+    let event = GameService.getEvents();
     let botPick;
     let chance = 100;
     let treasureChance = 10;
@@ -74,8 +29,9 @@
     let playerStr =  player[0].strength;
     let playerDefendBool = false;
     const HitChance = 40;
-    const itemSmall = 3;
+    const itemSmallHP = 3;
 
+    vm.playerName = player[0].name;
     vm.boardSize = 25;
     vm.roll = 0;
     vm.status = '';
@@ -84,19 +40,17 @@
     vm.playerItems = localStorage.getItem('playerItemsLocal') || null;
     vm.message = '';
     vm.messageArray =[];
-    vm.botName ='';
+    vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
 
 
     vm.fullHealth = function fullHealth() {
       let healthMod = 100/basicPlayerHealth;
-      console.log(vm.playerHealth);
       return vm.playerHealth*healthMod;
     };
 
     vm.fullBotHealth = function fullBotHealth() {
       let healthBotMod = 100/basicBotHealth;
-      console.log(vm.botHealth);
       return vm.botHealth*healthBotMod;
     };
     /**
@@ -151,7 +105,7 @@
     */
     function addItem(){
       if (player[0].items < 3){
-        player[0].items =    player[0].items + 1;
+        player[0].items = player[0].items + 1;
       }else{
         unshiftMessages('You have too many items');
       }
@@ -169,14 +123,14 @@
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
         vm.image = treasures[treasurePick].image;
-        unshiftMessages('You find ' + treasures[treasurePick].treasure + '! Neato....');
+        unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
       }else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         battleBool = false;
-        let nothingPick = Math.floor(Math.random()* nothings.length);
-        vm.image = nothings[nothingPick].image;
-        unshiftMessages(nothings[nothingPick].nothing + ' I guess you should move on...');
+        let eventPick = Math.floor(Math.random()* event.length);
+        vm.image = event[eventPick].image;
+        unshiftMessages(event[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
@@ -186,7 +140,7 @@
         botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
-      unshiftMessages( 'You fight ' + bots[botPick].enemy + ' !');
+      unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
         battle();
       }
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
@@ -219,15 +173,15 @@
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
       if(playerTurn === true){
-        unshiftMessages(' Make your move...');
+        unshiftMessages('Make your move...');
         bots[botPick].health = vm.botHealth;
         if(vm.botHealth <=0){
-          unshiftMessages('You destroyed ' + vm.botName);
+          unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
           battleBool = !battleBool;
           bots[botPick].health = basicBotHealth;
         }
       }else{
-        unshiftMessages('Enemy makes it\'s move...');
+        unshiftMessages('It\'s ' + vm.botName + '\s turn...');
         botAtk();
       }
     }
@@ -266,18 +220,18 @@
       if(botMiss >= HitChance && playerDefendBool === false){
         vm.playerHealth = vm.playerHealth - botBtlStr;
         playerHealthUpdate();
-        unshiftMessages('The enemy does ' +  botBtlStr + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  botBtlStr + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
         vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages('The enemy does ' +  (botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (botBtlStr*0.5) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{
-        unshiftMessages('The enemy misses');
+        unshiftMessages(vm.botName + ' misses the attack ');
         playerTurn = true;
       }
       fightFunc();
@@ -289,7 +243,7 @@
      * @return {Function} [description]
      */
     vm.playerDef = function playerDef(){
-      unshiftMessages('You defend!');
+      unshiftMessages(player[0].name + ' defends!');
       playerDefendBool = true;
       playerTurn = false;
       return fightFunc();
@@ -303,9 +257,9 @@
       if(player[0].items === 0){
         unshiftMessages('You are out of items');
       }else{
-        unshiftMessages('You recovered ' + itemSmall + ' hp');
+        unshiftMessages(player[0].name + ' uses an item and recovers ' + itemSmallHP + ' hp');
         player[0].items = player[0].items - 1;
-        vm.playerHealth = player[0].health + itemSmall;
+        vm.playerHealth = player[0].health + itemSmallHP;
         playerHealthUpdate();
         playerTurn = false;
       }
