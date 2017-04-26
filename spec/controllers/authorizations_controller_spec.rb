@@ -19,5 +19,14 @@ RSpec.describe Api::AuthorizationsController, type: :controller do
       token = JSON.parse(response.body)['auth_token']
       expect(token).to match(/[0-f]{32}/)
     end
+    it 'can log out a user' do
+      current_user = users(:russell)
+      token = current_user.auth_token
+      request.headers["HTTP_AUTHORIZATION"]= "token #{token}"
+      delete :destroy, headers: { auth_token: token }
+      current_user.reload
+      new_token = current_user.auth_token
+      expect(token).not_to equal(new_token)
+    end
   end
 end
