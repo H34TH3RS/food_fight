@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Api::CardsController < ApplicationController
+  before_action :authorize!
   def create
-    upc = user_params['upc']
+    upc = card_params['upc']
     card = Card.find_by(upc: upc)
     @card = if card
               card
@@ -23,7 +24,7 @@ class Api::CardsController < ApplicationController
     end
   end
 
-  private def user_params
+  private def card_params
     params.permit(:upc) # TODO: need to add validations
   end
 end
