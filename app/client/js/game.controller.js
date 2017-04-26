@@ -11,15 +11,12 @@
     let player =[GameService.getUserCard()];
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
-    let event = GameService.getEvents();
+    let events = GameService.getEvents();
     let botPick;
     let chance = 100;
     let treasureChance = 10;
     let nothing = 30;
-    let battleBool = false;
-    let playerTurn = true;
     let atkClick = 0;
-    let basicPlayerHealth = player[0].health;
     let basicPlayerItems =  player[0].items;
     let basicBotHealth;
     let botBtlStr = 0;
@@ -28,6 +25,10 @@
     let playerDef =  player[0].defense;
     let playerStr =  player[0].strength;
     let playerDefendBool = false;
+    let battleBool = false;
+    let playerTurn = true;
+
+    let basicPlayerHealth = player[0].health;
     const HitChance = 40;
     const itemSmallHP = 3;
 
@@ -128,9 +129,9 @@
       }else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         battleBool = false;
-        let eventPick = Math.floor(Math.random()* event.length);
-        vm.image = event[eventPick].image;
-        unshiftMessages(event[eventPick].nothing + ' I guess you should move on...');
+        let eventPick = Math.floor(Math.random()* events.length);
+        vm.image = events[eventPick].image;
+        unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
@@ -193,6 +194,7 @@
      */
     function playerDeathCheck(){
       if(player[0].health <= 0){
+        player[0].health = basicPlayerHealth;
         $state.go('lost');
       }
     }
