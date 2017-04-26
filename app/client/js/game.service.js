@@ -7,8 +7,12 @@
   GameService.$inject =['$http', 'CardsService'];
 
   function GameService($http, CardsService){
-    // let token = CardsService.getToken();
+
+
+
+
     let card = CardsService.getCardPick();
+
     let playerCard ={
       name: 'Taco Cat',
       health: CardsService.getCardPick().health,
