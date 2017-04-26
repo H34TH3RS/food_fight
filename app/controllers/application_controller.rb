@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find_by(auth_token: token)
     end
   end
+
+  def authorize!
+    unless current_user
+      render json: { message: 'Please log in!' },
+             status: :unauthorized
+    end
+  end
 end

@@ -27,4 +27,11 @@ RSpec.describe Api::CardsController, type: :controller do
       expect(JSON.parse(response.body)).to include('energy')
     end
   end
+  describe "POST #create" do
+    it "prevents users from submitting upcs without logging in" do
+      post :create,
+           params: { upc: '52200004265' }
+      expect(response).to be_unauthorized
+    end
+  end
 end
