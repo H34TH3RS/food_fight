@@ -11,13 +11,13 @@
   text-align: center;
   display: inline-block;
   box-sizing: border-box;
-  width: 30%;
   margin: 1em;
   border: 2px solid red;
   border-radius: 5px;
   background-color: white;
-  height: 20em;
-  width: 15em;
+  height: 15em;
+  width: 12em;
+  padding: 1em;
 
   .progress {
     margin: 10px;
@@ -27,11 +27,20 @@
 .move-box {
   color: $terminal-green;
   font-family: Courier, Times, serif;
+  text-align: center;
 }
 
 .battle-box {
   text-align: center;
   margin: 1em;
+}
+
+.dice {
+  border: 1px solid $primary-color;
+}
+
+.board-size {
+  border: 1px solid $primary-color;
 }
 
 .message-board {

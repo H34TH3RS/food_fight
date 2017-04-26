@@ -42,6 +42,7 @@
     vm.messageArray =[];
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
+    vm.playerImage = player[0].image;
 
 
     vm.fullHealth = function fullHealth() {
