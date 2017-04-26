@@ -12,11 +12,7 @@ class CardBuilder
       card
     else
       card_data = build_card_from_api(upc)
-      if card_data
-         Card.new(card_data)
-       else
-
-       end
+      Card.new(card_data) if card_data
     end
   end
 
