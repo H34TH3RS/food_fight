@@ -24,6 +24,7 @@
         method: 'POST',
         header: {
           'Content-Type': 'application/json',
+          'Authorization': token
         },
         data: {
           user: {

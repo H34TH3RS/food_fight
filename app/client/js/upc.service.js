@@ -3,23 +3,30 @@
 
   angular.module('game').factory('UpcService', UpcService);
 
-  UpcService.$inject = ['$http'];
+  UpcService.$inject = ['$http', 'UserService'];
 
   /**
    * Creates the UPC Service
    * @param {Function} $http Service that allows ajax calls
    * @return {Promise}
    */
-  function UpcService($http) {
+  function UpcService($http, UserService) {
+
+    let token = UserService.getToken();
+    console.log(token);
+
+
     function sendUpcData(upcCode) {
+      console.log('inside sendUpcData', token);
       return $http({
         url: '/api/cards',
         method: 'POST',
-        header: {
-          'Content-Type': 'application/json'
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
         },
         data: {
-          upc: upcCode.upc
+          upc: upcCode
         }
       })
       .then(function handleResponse(response) {
