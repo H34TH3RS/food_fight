@@ -11,13 +11,15 @@
    * @param {Function} UserService Contains the function to retrieve the auth token
    */
   function CardsService($http, UserService) {
+    let token = UserService.getToken();
 
     function getAllCards() {
       return $http({
         url: '/api/cards',
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': token
         }
       })
       .then(function handleResponse(response) {
@@ -30,10 +32,11 @@
         url: '/api/cards',
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': token
         },
         data: {
-          upc: upc.upc
+          upc: upc
         }
       })
       .then(function handleResponse(response) {
