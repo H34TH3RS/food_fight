@@ -23,18 +23,20 @@
     * @return {Promise}
     */
     vm.getAllCards = function getAllCards(card) {
-      CardService.getAllCards(cards.card)
+
+      CardsService.getAllCards(cards.card)
         .then(function handleResponse(response) {
+          vm.card = response;
           return response.data;
       });
     };
     vm.getAllCards();
 
     vm.getOneCard = function getOneCard(card) {
-      CardService.getOneCard(cards.card)
+
+      CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
-
         });
     };
     vm.getOneCard();
