@@ -1,0 +1,17 @@
+coke:
+  food_name: 'Coke'
+  klass: 'Coke'
+  energy: 0
+  physical_resistance_debuff: 0
+  health: 0
+  accuracy: 0
+  energy_debuff: 0
+  strength: 0
+  accuracy_buff: 0
+  health_buff: 0
+  defense: 0
+  attack_buff: 0
+  cleanse: 0
+  upc: "123456789123"
+  nutrition_data: '{health: 0}'
+  salt: 0

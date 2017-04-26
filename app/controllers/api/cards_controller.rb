@@ -3,23 +3,19 @@
 class Api::CardsController < ApplicationController
   before_action :authorize!
   def create
-    upc = card_params['upc']
-    card = Card.find_by(upc: upc)
-    @card = if card
-              card
-            else
-              Card.new(CardBuilder.new.build_card_from_api(upc))
-            end
+    @card = CardBuilder.new(card_params['upc']).card
 
-    if @card.save
+    if @card&.save
       current_user.cards << @card
-      # TODO: except keys you don't need in json output
       render json: @card.as_json(
         except: %i[created_at updated_at upc nutrition_data]
       ),
              status: :created
+    elsif @card
+      render json: { messages: @card.errors.full_messages },
+             status: :unprocessable_entity
     else
-      render json: { message: error.to_s },
+      render json: { messages: 'Invalid UPC' },
              status: :unprocessable_entity
     end
   end

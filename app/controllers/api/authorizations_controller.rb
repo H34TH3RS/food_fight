@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::AuthorizationsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
@@ -9,6 +11,7 @@ class Api::AuthorizationsController < ApplicationController
   end
 
   def destroy
-    reset_auth_token!
+    @user = User.find_by(email: current_user.email)
+    @user.reset_auth_token!
   end
 end
