@@ -46,13 +46,11 @@
 
     vm.fullHealth = function fullHealth() {
       let healthMod = 100/basicPlayerHealth;
-      console.log('Player health', vm.playerHealth);
       return vm.playerHealth*healthMod;
     };
 
     vm.fullBotHealth = function fullBotHealth() {
       let healthBotMod = 100/basicBotHealth;
-      console.log('Bot health',vm.botHealth);
       return vm.botHealth*healthBotMod;
     };
     /**
@@ -175,15 +173,15 @@
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
       if(playerTurn === true){
-        unshiftMessages(' Make your move...');
+        unshiftMessages('Make your move...');
         bots[botPick].health = vm.botHealth;
         if(vm.botHealth <=0){
-          unshiftMessages(player[0].name + 'destroyed ' + vm.botName);
+          unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
           battleBool = !battleBool;
           bots[botPick].health = basicBotHealth;
         }
       }else{
-        unshiftMessages('Enemy makes it\'s move...');
+        unshiftMessages('It\'s ' + vm.botName + '\s turn...');
         botAtk();
       }
     }
@@ -222,18 +220,18 @@
       if(botMiss >= HitChance && playerDefendBool === false){
         vm.playerHealth = vm.playerHealth - botBtlStr;
         playerHealthUpdate();
-        unshiftMessages('The enemy does ' +  botBtlStr + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  botBtlStr + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
         vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages('The enemy does ' +  (botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (botBtlStr*0.5) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{
-        unshiftMessages('The enemy misses');
+        unshiftMessages(vm.botName + ' misses the attack ');
         playerTurn = true;
       }
       fightFunc();
@@ -259,7 +257,7 @@
       if(player[0].items === 0){
         unshiftMessages('You are out of items');
       }else{
-        unshiftMessages(player[0].name + ' uses an items and recovers ' + itemSmallHP + ' hp');
+        unshiftMessages(player[0].name + ' uses an item and recovers ' + itemSmallHP + ' hp');
         player[0].items = player[0].items - 1;
         vm.playerHealth = player[0].health + itemSmallHP;
         playerHealthUpdate();
