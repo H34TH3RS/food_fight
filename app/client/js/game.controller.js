@@ -17,18 +17,18 @@
     let treasureChance = 10;
     let nothing = 30;
     let atkClick = 0;
-    let basicPlayerItems =  player[0].items;
+    vm.basicPlayerItems =  player[0].items;
     let basicBotHealth;
     let botBtlStr = 0;
     let botBtlDef = 0;
     let battleRate = 30;
-    let playerDef =  player[0].defense;
-    let playerStr =  player[0].strength;
+    vm.playerDefense =  player[0].defense;
+    vm.playerStr =  player[0].strength;
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
 
-    let basicPlayerHealth = player[0].health;
+    vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;
     const itemSmallHP = 3;
 

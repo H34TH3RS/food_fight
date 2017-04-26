@@ -1,5 +1,19 @@
 <span class='glyphicon glyphicon-unchecked ticker-block'>for the board ticker</span>
 
+<article class='panel panel-primary col-lg-4'>
+  <section class='panel-heading'>
+    <h3>{{gameCtrl.playerName}} </h3>
+  </section>
+  <section class='panel-body'>
+    <ul class='list-group'>
+      <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
+      <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
+      <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
+      <li class='list-group-item'>Items: {{gameCtrl.basicPlayerItems}}</li>
+    </ul>
+  </section>
+</article>
+
 <main class='battleground row'>
   <section class='playerCardDisplay cardDisplay col-xs-6'>
     <img src='{{gameCtrl.playerImage}}' height="250" width="250" class='image-box playerAvatar'>
