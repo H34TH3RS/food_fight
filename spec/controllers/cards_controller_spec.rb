@@ -34,4 +34,13 @@ RSpec.describe Api::CardsController, type: :controller do
       expect(response).to be_unauthorized
     end
   end
+  describe 'POST #create' do
+    it 'can retrieve existing card data without connecting to api' do
+      current_user = users(:russell)
+      request.headers['HTTP_AUTHORIZATION'] = "token #{current_user.auth_token}"
+      post :create,
+           params: { upc: '123456789123' }
+      expect(JSON.parse(response.body)['klass']).to eq('Coke')
+    end
+  end
 end
