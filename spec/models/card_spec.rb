@@ -8,6 +8,6 @@ RSpec.describe Card, type: :model do
   end
   it 'can parse upc data' do
     card = Card.create(upc: '1234-1234-1234')
-    expect card[:upc].to equal '123412341234'
+    expect(card[:upc]).to eq '123412341234'
   end
 end

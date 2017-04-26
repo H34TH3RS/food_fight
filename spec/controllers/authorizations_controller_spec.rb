@@ -23,7 +23,7 @@ RSpec.describe Api::AuthorizationsController, type: :controller do
       current_user = users(:russell)
       token = current_user.auth_token
       request.headers["HTTP_AUTHORIZATION"]= "token #{token}"
-      delete :destroy, headers: { auth_token: token }
+      delete :destroy
       current_user.reload
       new_token = current_user.auth_token
       expect(token).not_to equal(new_token)

@@ -1,0 +1,5 @@
+{
+  "error_message": "Item ID or UPC was invalid",
+  "error_code": "item_not_found",
+  "status_code": 404
+}
