@@ -14,4 +14,11 @@ RSpec.describe Api::UsersController, type: :controller do
       expect(token)
     end
   end
+  it 'can reject a new user' do
+    post :create, params: { user: {
+      email: 'whatever',
+      username: 'whatever'
+    } }
+    expect(response).to have_http_status(:unprocessable_entity)
+  end
 end

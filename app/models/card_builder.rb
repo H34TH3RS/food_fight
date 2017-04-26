@@ -3,6 +3,7 @@
 class CardBuilder
   def build_card_from_api(upc)
     api_data = NutritionixApi.new.get_nutrition_data(upc)
+    return if api_data['status_code'] == 404
     nutrition_data = api_data.slice(
       'item_name',
       'nf_calories',

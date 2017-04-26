@@ -8,10 +8,13 @@ class Api::CardsController < ApplicationController
     @card = if card
               card
             else
-              Card.new(CardBuilder.new.build_card_from_api(upc))
+              card_data = CardBuilder.new.build_card_from_api(upc)
+              if card_data
+                Card.new(card_data)
+              end
             end
 
-    if @card.save
+    if @card&.save
       current_user.cards << @card
       # TODO: except keys you don't need in json output
       render json: @card.as_json(
@@ -19,7 +22,7 @@ class Api::CardsController < ApplicationController
       ),
              status: :created
     else
-      render json: { message: error.to_s },
+      render json: { messages: @card.errors.full_messages },
              status: :unprocessable_entity
     end
   end
