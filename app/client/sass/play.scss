@@ -13,6 +13,21 @@
   }
 }
 
+.cardDisplay {
+  display: inline-block;
+  width: 30%;
+  margin: 1em;
+  border: 2px solid red;
+  border-radius: 5px;
+  background-color: white;
+  height: 20em;
+  width: 15em;
+
+  .progress {
+    margin: 10px;
+  }
+}
+
 .image-box {
 
 }
