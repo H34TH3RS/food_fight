@@ -93,7 +93,7 @@ module.exports = function(grunt) {
             'node_modules/angular-mocks/angular-mocks.js',
             'app/client/js/game.module.js',
             'app/client/js/**/*.js',
-            'app/client/test/**/*.spec.js'
+            'spec/client/test/**/*.spec.js'
           ],
           singleRun: true,
           preprocessors: {
