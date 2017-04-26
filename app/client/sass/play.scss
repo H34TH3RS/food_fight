@@ -27,11 +27,9 @@
 .move-box {
   color: $terminal-green;
   font-family: Courier, Times, serif;
-  text-align: center;
 }
 
 .battle-box {
-  text-align: center;
   margin: 1em;
 }
 
@@ -55,6 +53,7 @@
   background-color: $background-color;
   border: 2px solid gray;
   margin-bottom: 1em;
+  height: 13em;
 
   .terminal-header {
     font-size: 1.25em;
