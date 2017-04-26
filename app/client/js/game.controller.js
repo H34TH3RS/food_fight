@@ -91,13 +91,13 @@
     vm.fullHealth = function fullHealth() {
       let healthMod = 100/basicPlayerHealth;
       console.log(vm.playerHealth);
-      return vm.playerHealth*healthMod;
+      return Math.ceil(vm.playerHealth*healthMod);
     };
 
     vm.fullBotHealth = function fullBotHealth() {
       let healthBotMod = 100/basicBotHealth;
       console.log(vm.botHealth);
-      return vm.botHealth*healthBotMod;
+      return Math.ceil(vm.botHealth*healthBotMod);
     };
     /**
      * Generates a random number based on the chance variable
