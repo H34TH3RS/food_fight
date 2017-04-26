@@ -16,7 +16,7 @@
     function getAllCards() {
       return $http({
         url: '/api/cards',
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token

@@ -45,7 +45,7 @@
       url: '/cards',
       templateUrl: 'templates/cards.template.html',
       controller: 'CardsController',
-      controllerAs: 'cardCtrl'
+      controllerAs: 'cardsCtrl'
     })
     .state({
       name: 'play',
