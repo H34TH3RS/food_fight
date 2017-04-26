@@ -1,20 +1,16 @@
-.game-box {
+.ticker-block {
+  display: block;
+  color: $success-color;
+}
 
-  h2 {
-      margin: auto 0;
-    }
-
-  ul {
-    list-style:none;
-
-    p {
-      font-size: .75em;
-    }
-  }
+.battleground {
+  margin: auto;
 }
 
 .cardDisplay {
+  text-align: center;
   display: inline-block;
+  box-sizing: border-box;
   width: 30%;
   margin: 1em;
   border: 2px solid red;
@@ -28,16 +24,13 @@
   }
 }
 
-.image-box {
-
-}
-
 .move-box {
   color: $terminal-green;
   font-family: Courier, Times, serif;
 }
 
 .battle-box {
+  text-align: center;
   margin: 1em;
 }
 

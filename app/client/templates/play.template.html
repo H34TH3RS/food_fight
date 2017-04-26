@@ -1,21 +1,22 @@
-<span class='glyphicon glyphicon-unchecked'>for the board ticker</span>
+<span class='glyphicon glyphicon-unchecked ticker-block'>for the board ticker</span>
 
-<section class='playerCardDisplay cardDisplay'>
-  <img src= {{gameCtrl.image}} height="250" width="250" class='image-box playerAvatar'>
-  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
-    </aside>
+<main class='battleground'>
+  <section class='playerCardDisplay cardDisplay'>
+    <img src= {{gameCtrl.image}} height="250" width="250" class='image-box playerAvatar'>
+    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+      </aside>
+    </section>
   </section>
-</section>
 
-<section class='enemyCardDisplay cardDisplay'>
-  <img src= {{gameCtrl.image}} height="250" width="250" class='image-box enemyAvatar'>
-  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
-    </aside>
+  <section class='enemyCardDisplay cardDisplay'>
+    <img src= {{gameCtrl.image}} height="250" width="250" class='image-box enemyAvatar'>
+    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
+      </aside>
+    </section>
   </section>
-</section>
-
+</main>
 
 <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
   <button class='btn btn-danger' ng-click='gameCtrl.playerAtk()'>Attack!</button>
