@@ -1,11 +1,40 @@
 .game-box {
-  h2{
+
+  h2 {
       margin: auto 0;
     }
-  ul{
+
+  ul {
     list-style:none;
-    p{
+
+    p {
       font-size: .75em;
     }
   }
+}
+
+.image-box {
+
+}
+
+.move-box {
+  color: $terminal-green;
+  font-family: Courier, Times, serif;
+}
+
+.battle-box {
+  margin: 1em;
+}
+
+.message-board {
+  list-style: none;
+  color: $terminal-green;
+  font-family: Courier, Times, serif;
+}
+
+.terminal-box {
+  width: 100%;
+  background-color: $background-color;
+  border: 2px solid gray;
+  margin-bottom: 1em;
 }
