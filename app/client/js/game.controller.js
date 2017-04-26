@@ -96,6 +96,7 @@
       if (vm.boardSize > 0){
         randomEncounter();
       }else{
+        player[0].health = basicPlayerHealth;
         $state.go('end');
       }
       return vm.roll, vm.boardSize;
