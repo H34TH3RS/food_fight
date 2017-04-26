@@ -15,7 +15,7 @@
     let vm = this;
 
     let cards = [];
-    let card = {};
+    vm.card = {};
 
    /**
     * Retrieves all character cards in an array
@@ -23,20 +23,20 @@
     * @return {Promise}
     */
     vm.getAllCards = function getAllCards(card) {
-      
+
       CardsService.getAllCards(cards.card)
         .then(function handleResponse(response) {
+          vm.card = response;
           return response.data;
       });
     };
     vm.getAllCards();
 
     vm.getOneCard = function getOneCard(card) {
-      
+
       CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
-
         });
     };
     vm.getOneCard();
