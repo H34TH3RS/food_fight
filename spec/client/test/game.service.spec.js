@@ -20,7 +20,6 @@
     });
 
     it('should be a function', function() {
-      expect(GameService.getUserCard).to.be.a('function');
       expect(GameService.getBots).to.be.a('function');
       expect(GameService.getTreasures).to.be.a('function');
       expect(GameService.getEvents).to.be.a('function');
@@ -31,11 +30,6 @@
       expect(GameService.getTreasures()).to.be.an('array');
       expect(GameService.getEvents()).to.be.an('array');
     });
-
-    it('should return an object', function() {
-      expect(GameService.getUserCard()).to.be.an('object');
-    });
-
   });
 
 }());

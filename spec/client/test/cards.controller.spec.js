@@ -7,8 +7,6 @@
 
     let CardsController;
     let mockCardsService = {};
-    let cards = [];
-    let card = {};
 
     beforeEach(module('game'));
 
@@ -18,9 +16,31 @@
 
     beforeEach(inject(function($controller) {
       mockCardsService.getAllCards = function getAllCards() {
-        return [
-          {stats: 'testing'}
-        ];
+        return Promise.resolve(
+          [
+            {
+              accuracy:2,
+              accuracy_buff:1,
+              attack_buff:1,
+              cleanse:1,
+              defense:20,
+              energy:10,
+              energy_debuff:2,
+              food_name:'Ravioli',
+              health:25,
+              health_buff:0,
+              id:1,
+              klass:'Salty',
+              physical_resistance_debuff:2,
+              salt:10,
+              strength:7
+            }
+          ]
+        );
+      };
+
+      mockCardsService.getOneCard = function getOneCard() {
+        return Promise.resolve();
       };
 
       CardsController = $controller('CardsController');
@@ -33,8 +53,7 @@
     });
 
     it('should reject an argument that is not an object', function() {
-      let result = CardsController.getAllCards(1);
-      expect(result.length).to.equal(undefined);
+      expect(CardsController.getAllCards(1)).to.equal(undefined);
     });
 
   });

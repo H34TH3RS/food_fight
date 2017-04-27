@@ -90,7 +90,7 @@
 
     /**
     * Handles the dice rolls and subtracts the number from the boardSize
-    * @return {Void}
+    * @return {Number}
     */
     vm.rollCtrl = function rollCtrl(){
       vm.rollRNG();
