@@ -18,9 +18,9 @@
     let nothing = 30;
     let atkClick = 0;
     vm.basicPlayerItems =  player[0].items;
-    let basicBotHealth;
-    let botBtlStr = 0;
-    let botBtlDef = 0;
+    vm.basicBotHealth;
+    vm.botBtlStr = 0;
+    vm.botBtlDef = 0;
     let battleRate = 30;
     vm.playerDefense =  player[0].defense;
     vm.playerStr =  player[0].strength;
@@ -52,7 +52,7 @@
     };
 
     vm.fullBotHealth = function fullBotHealth() {
-      let healthBotMod = 100/basicBotHealth;
+      let healthBotMod = 100/vm.basicBotHealth;
       return Math.ceil(vm.botHealth*healthBotMod);
 
     };
@@ -140,8 +140,8 @@
         battleBool = true; //this is set to true so that the fight menu can be displayed
         botPick = Math.floor(Math.random()* bots.length);
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
-        basicBotHealth = bots[botPick].health;
-        botBtlStr= bots[botPick].strength;
+        vm.basicBotHealth = bots[botPick].health;
+        vm.botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
       unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
@@ -182,7 +182,7 @@
         if(vm.botHealth <=0){
           unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
           battleBool = !battleBool;
-          bots[botPick].health = basicBotHealth;
+          bots[botPick].health = vm.basicBotHealth;
         }
       }else{
         unshiftMessages('It\'s ' + vm.botName + '\s turn...');
@@ -223,16 +223,16 @@
     function botAtk(){
       let botMiss = rngEncounter();
       if(botMiss >= HitChance && playerDefendBool === false){
-        vm.playerHealth = vm.playerHealth - botBtlStr;
+        vm.playerHealth = vm.playerHealth - vm.botBtlStr;
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  botBtlStr + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  vm.botBtlStr + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
-        vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
+        vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  (botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*0.5) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{

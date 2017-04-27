@@ -1,36 +1,32 @@
 <span class='glyphicon glyphicon-unchecked ticker-block'>for the board ticker</span>
 
-<article class='panel panel-primary col-lg-4'>
-  <section class='panel-heading'>
-    <h3>{{gameCtrl.playerName}} </h3>
-  </section>
-  <section class='panel-body'>
-    <ul class='list-group'>
-      <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
-      <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
-      <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
-      <li class='list-group-item'>Items: {{gameCtrl.basicPlayerItems}}</li>
-    </ul>
-  </section>
-</article>
-
 <main class='battleground row'>
   <section class='playerCardDisplay cardDisplay col-xs-6'>
-    <img src='{{gameCtrl.playerImage}}' height="250" width="250" class='image-box playerAvatar'>
+    <img src='{{gameCtrl.playerImage}}' height='200' width='200' class='image-box playerAvatar'>
     <p>{{gameCtrl.playerName}}</p>
     <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
       <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
       </aside>
     </section>
+    <ul class='list-group stats-group'>
+      <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
+      <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
+      <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
+    </ul>
   </section>
 
   <section class='enemyCardDisplay cardDisplay col-xs-6'>
-    <img src='{{gameCtrl.image}}' height="250" width="250" class='image-box enemyAvatar'>
+    <img src='{{gameCtrl.image}}' height='200' width='200' class='image-box enemyAvatar'>
     <p>{{gameCtrl.botName}}</p>
     <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
       <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
       </aside>
     </section>
+    <ul class='list-group stats-group'>
+      <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
+      <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
+      <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
+    </ul>
   </section>
   <section ng-show='gameCtrl.checkBattleBool()' class='battle-box row'>
     <button class='btn btn-danger col-xs-2 col-xs-offset-1' ng-click='gameCtrl.playerAtk()'>Attack!</button>
