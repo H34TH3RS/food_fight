@@ -47,7 +47,7 @@
 
 
     vm.fullHealth = function fullHealth() {
-      let healthMod = 100/basicPlayerHealth;
+      let healthMod = 100/vm.basicPlayerHealth;
       return Math.ceil(vm.playerHealth*healthMod);
     };
 
@@ -98,7 +98,7 @@
       if (vm.boardSize > 0){
         randomEncounter();
       }else{
-        player[0].health = basicPlayerHealth;
+        player[0].health = vm.basicPlayerHealth;
         $state.go('end');
       }
       return vm.roll, vm.boardSize;
@@ -197,7 +197,7 @@
      */
     function playerDeathCheck(){
       if(player[0].health <= 0){
-        player[0].health = basicPlayerHealth;
+        player[0].health = vm.basicPlayerHealth;
         $state.go('lost');
       }
     }
@@ -209,7 +209,7 @@
      */
     vm.playerAtk = function playerAtk(){
       playerTurn = false;
-      vm.botHealth = vm.botHealth - playerStr;
+      vm.botHealth = vm.botHealth - vm.playerStr;
       bots[botPick].health = vm.botHealth;
       vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
        return fightFunc();
