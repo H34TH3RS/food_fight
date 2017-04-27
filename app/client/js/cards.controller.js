@@ -3,14 +3,14 @@
 
   angular.module('game').controller('CardsController', CardsController);
 
-  CardsController.$inject = ['$state', 'CardsController'];
+  CardsController.$inject = ['$state', 'CardsService'];
 
   /**
    * Creates Card Controllers
    * @param {Function} $state      Service that allows view routing
    * @param {Function} CardsController Service that contains character card functions
    */
-  function CardsController($state, CardsController) {
+  function CardsController($state, CardsService) {
 
     let vm = this;
 

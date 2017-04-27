@@ -1,42 +1,144 @@
 body {
-  width: 80%;
-  margin: 0 auto; }
+  width: 100%;
+  background-color: #000000; }
 
-main {
-  height: 600px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://aidanmoher.com/blog/wp-content/uploads/2015/08/bor_breakfist_by_nightblue_art-d6hf1sb.jpg);
-  background-size: cover;
-  color: #c0392b;
-  font-size: 1.5em; }
+.loginForm {
+  color: #efb73e;
+  padding: 2em; }
 
-header {
-  background-color: #f39c12;
-  margin: .5em 0; }
-  header h1 {
-    text-align: center;
-    font-size: 5em; }
+.makeAcctLink {
+  text-align: center; }
+  .makeAcctLink p {
+    color: #772953; }
+  .makeAcctLink a {
+    color: #772953; }
+  .makeAcctLink a:hover {
+    text-decoration: none;
+    color: #e95420; }
+  .makeAcctLink a:focus {
+    text-decoration: none;
+    color: #772953; }
+
+.jumbotron {
+  margin: 0;
+  text-align: center; }
 
 nav {
   list-style: none; }
+  nav a {
+    color: #efb73e; }
+  nav a:hover {
+    text-decoration: none;
+    color: #e95420; }
+  nav a:focus {
+    text-decoration: none;
+    color: #e95420; }
   nav li {
     display: inline;
     font-size: 1.5em;
     padding-right: .5em; }
 
-.home {
-  text-align: center;
-  padding-top: 5em;
-  color: #c0392b; }
-  .home h2 {
-    font-size: 5em; }
-  .home h3 {
-    font-size: 3em; }
+.navbar {
+  border-radius: 0px; }
 
-.game-box h2 {
-  margin: auto 0; }
-.game-box ul {
-  list-style: none; }
-  .game-box ul p {
-    font-size: .75em; }
+main {
+  height: 600px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(http://aidanmoher.com/blog/wp-content/uploads/2015/08/bor_breakfist_by_nightblue_art-d6hf1sb.jpg);
+  background-size: cover;
+  font-size: 1.5em; }
+
+.homeTemplate .homepageHeaders {
+  color: #efb73e;
+  text-align: center;
+  padding-top: 2em; }
+
+.createUserForm {
+  color: #efb73e;
+  padding: 5%; }
+
+.form-group {
+  text-align: left; }
+
+.form-group {
+  color: #efb73e;
+  padding: 2em; }
+
+.upcForm {
+  text-align: center; }
+
+.panel {
+  padding: 0; }
+
+h2 {
+  color: #efb73e;
+  padding: 1em;
+  text-align: center; }
+
+.battleground {
+  margin: auto; }
+
+.cardDisplay {
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 1em;
+  border: 2px solid red;
+  border-radius: 5px;
+  background-color: white;
+  height: 15em;
+  width: 12em;
+  padding: 1em; }
+  .cardDisplay .progress {
+    margin: 10px; }
+  .cardDisplay .stats-group li {
+    font-size: 0.5em; }
+
+.move-box {
+  color: #00ff00;
+  font-family: Courier, Times, serif; }
+
+.battle-box {
+  margin: 1em; }
+
+.dice {
+  border: 1px solid #e95420; }
+
+.board-size {
+  border: 1px solid #e95420; }
+
+.message-board {
+  list-style: none;
+  color: #00ff00;
+  font-family: Courier, Times, serif; }
+
+.terminal-box {
+  font-size: 0.75em;
+  width: 100%;
+  background-color: #000000;
+  border: 2px solid gray;
+  margin-bottom: 1em;
+  height: 13em; }
+  .terminal-box .terminal-header {
+    font-size: 1.25em;
+    font-family: Courier, Times, serif; }
+
+.lost {
+  text-align: center; }
+  .lost h1 {
+    color: #efb73e; }
+
+.end {
+  color: #efb73e;
+  text-align: center; }
+
+.grue {
+  color: #00ff00;
+  text-align: center;
+  margin: auto;
+  background-color: #000000;
+  font-family: Courier, Times, serif;
+  padding: 0; }
+  .grue a {
+    color: #00ff00; }
 
 /*# sourceMappingURL=style.css.map */
