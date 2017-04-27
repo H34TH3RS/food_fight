@@ -6,8 +6,6 @@
   describe ('GameController', function(){
       let GameController;
 
-
-
-  });
+    });
 
 }());
