@@ -6,7 +6,6 @@
   describe('upc service', function(){
 
     let UpcService;
-    let mockUpcService = {};//
 
     beforeEach(module('game'));
 

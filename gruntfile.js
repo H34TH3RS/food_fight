@@ -97,7 +97,7 @@ module.exports = function(grunt) {
           ],
           singleRun: true,
           preprocessors: {
-            'app/client/js/**/*.js': ['coverage']
+            'app/client/js/**/*.js': ['coverage'],
           },
           reporters: ['dots', 'coverage'],
           coverageReporter: {
