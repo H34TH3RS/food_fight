@@ -1,35 +1,48 @@
-  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
-    </aside>
+<main class='battleground row'>
+  <section class='playerCardDisplay cardDisplay col-xs-6'>
+    <img src='{{gameCtrl.playerImage}}' height='200' width='200' class='image-box playerAvatar'>
+    <p>{{gameCtrl.playerName}}</p>
+    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+      </aside>
+    </section>
+    <ul class='list-group stats-group'>
+      <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
+      <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
+      <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
+    </ul>
   </section>
 
-  <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-    <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
-    </aside>
+  <section class='enemyCardDisplay cardDisplay col-xs-6'>
+    <img src='{{gameCtrl.image}}' height='200' width='200' class='image-box enemyAvatar'>
+    <p>{{gameCtrl.currentEventName}}</p>
+    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
+      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
+      </aside>
+    </section>
+    <ul class='list-group stats-group'>
+      <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
+      <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
+      <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
+    </ul>
+  </section>
+  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box row'>
+    <button class='btn btn-danger col-xs-2 col-xs-offset-1' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+    <button class='btn btn-info col-xs-2' ng-click='gameCtrl.playerItems()'>Item</button>
+    <button class='btn btn-success col-xs-2' ng-click='gameCtrl.playerDef()'>Defense</button>
   </section>
 
-  <aside ng-show='gameCtrl.checkBattleBool()'>
-    <h2>{{gameCtrl.playerName}}'s HP: {{gameCtrl.playerHealth}} : Enemy's HP: {{gameCtrl.botHealth}} </h2>
-  </aside>
-
-  <img src= {{gameCtrl.image}} height="250" width="250" class='image-box'>
-
-  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box'>
-    <button class='btn btn-danger' ng-click='gameCtrl.playerAtk()'>Attack!</button>
-    <button class='btn btn-info' ng-click='gameCtrl.playerItems()'>Item</button>
-    <button class='btn btn-success' ng-click='gameCtrl.playerDef()'>Defense</button>
+  <section ng-show='!gameCtrl.checkBattleBool()'class='move-box row' >
+    <button class='btn btn-primary col-xs-2 col-xs-offset-1' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+    <button class='btn btn-primary col-xs-3 col-xs-offset-1 dice'>You rolled a {{gameCtrl.roll}}</button>
+    <button class='btn btn-primary col-xs-4 col-xs-offset-1 board-size'>You have {{gameCtrl.boardSize}} spaces left to go!</button>
   </section>
-
-   <aside ng-show='!gameCtrl.checkBattleBool()'class='move-box' >
-    <button class='btn btn-primary btn-lg' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-    <h3>{{gameCtrl.roll}}</h3>
-    <h3>{{gameCtrl.boardSize}}</h3>
-  </aside>
+</main>
 
 <section class='terminal-box'>
 
   <ul class='message-board'>
-    <li><h3>{{gameCtrl.messageArray[0]}}</h3></li>
+    <li><h3 class='terminal-header'>{{gameCtrl.messageArray[0]}}</h3></li>
     <li><p>{{gameCtrl.messageArray[1]}} </p></li>
     <li><p>{{gameCtrl.messageArray[2]}} </p></li>
     <li><p>{{gameCtrl.messageArray[3]}} </p></li>
