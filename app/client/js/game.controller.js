@@ -8,10 +8,11 @@
   function GameController($state, GameService){
 
     let vm = this;
-    let player =[GameService.getUserCard()];
+    let player = GameService.getUserCard();
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
+
     let botPick;
     let chance = 100;
     let treasureChance = 10;
@@ -28,7 +29,6 @@
     let battleBool = false;
     let playerTurn = true;
     vm.currentEventName = '';
-
     vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;
     const itemSmallHP = 3;
