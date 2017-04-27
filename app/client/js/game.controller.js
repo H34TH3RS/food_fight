@@ -27,6 +27,7 @@
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
+    vm.currentEventName;
 
     vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;
@@ -127,18 +128,21 @@
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
         vm.image = treasures[treasurePick].image;
+        vm.currentEventName = treasures[treasurePick].treasure;
         unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
       }else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         battleBool = false;
         let eventPick = Math.floor(Math.random()* events.length);
+        vm.currentEventName = events[eventPick].nothing;
         vm.image = events[eventPick].image;
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
         botPick = Math.floor(Math.random()* bots.length);
+        vm.currentEventName = bots[botPick].enemy;
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
         vm.basicBotHealth = bots[botPick].health;
         vm.botBtlStr= bots[botPick].strength;

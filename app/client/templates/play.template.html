@@ -15,7 +15,7 @@
 
   <section class='enemyCardDisplay cardDisplay col-xs-6'>
     <img src='{{gameCtrl.image}}' height='200' width='200' class='image-box enemyAvatar'>
-    <p>{{gameCtrl.botName}}</p>
+    <p>{{gameCtrl.currentEventName}}</p>
     <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
       <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
       </aside>
