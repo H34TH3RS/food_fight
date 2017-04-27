@@ -17,18 +17,19 @@
     let treasureChance = 10;
     let nothing = 30;
     let atkClick = 0;
-    let basicPlayerItems =  player[0].items;
-    let basicBotHealth;
-    let botBtlStr = 0;
-    let botBtlDef = 0;
+    vm.basicPlayerItems =  player[0].items;
+    vm.basicBotHealth = 0;
+    vm.botBtlStr = 0;
+    vm.botBtlDef = 0;
     let battleRate = 30;
-    let playerDef =  player[0].defense;
-    let playerStr =  player[0].strength;
+    vm.playerDefense =  player[0].defense;
+    vm.playerStr =  player[0].strength;
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
+    vm.currentEventName = '';
 
-    let basicPlayerHealth = player[0].health;
+    vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;
     const itemSmallHP = 3;
 
@@ -43,16 +44,18 @@
     vm.messageArray =[];
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
+    vm.playerImage = player[0].image;
 
 
     vm.fullHealth = function fullHealth() {
-      let healthMod = 100/basicPlayerHealth;
-      return vm.playerHealth*healthMod;
+      let healthMod = 100/vm.basicPlayerHealth;
+      return Math.ceil(vm.playerHealth*healthMod);
     };
 
     vm.fullBotHealth = function fullBotHealth() {
-      let healthBotMod = 100/basicBotHealth;
-      return vm.botHealth*healthBotMod;
+      let healthBotMod = 100/vm.basicBotHealth;
+      return Math.ceil(vm.botHealth*healthBotMod);
+
     };
     /**
      * Generates a random number based on the chance variable
@@ -96,7 +99,7 @@
       if (vm.boardSize > 0){
         randomEncounter();
       }else{
-        player[0].health = basicPlayerHealth;
+        player[0].health = vm.basicPlayerHealth;
         $state.go('end');
       }
       return vm.roll, vm.boardSize;
@@ -125,21 +128,24 @@
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
         vm.image = treasures[treasurePick].image;
+        vm.currentEventName = treasures[treasurePick].treasure;
         unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
       }else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         battleBool = false;
         let eventPick = Math.floor(Math.random()* events.length);
+        vm.currentEventName = events[eventPick].nothing;
         vm.image = events[eventPick].image;
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
         botPick = Math.floor(Math.random()* bots.length);
+        vm.currentEventName = bots[botPick].enemy;
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
-        basicBotHealth = bots[botPick].health;
-        botBtlStr= bots[botPick].strength;
+        vm.basicBotHealth = bots[botPick].health;
+        vm.botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
       unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
@@ -180,7 +186,7 @@
         if(vm.botHealth <=0){
           unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
           battleBool = !battleBool;
-          bots[botPick].health = basicBotHealth;
+          bots[botPick].health = vm.basicBotHealth;
         }
       }else{
         unshiftMessages('It\'s ' + vm.botName + '\s turn...');
@@ -195,7 +201,7 @@
      */
     function playerDeathCheck(){
       if(player[0].health <= 0){
-        player[0].health = basicPlayerHealth;
+        player[0].health = vm.basicPlayerHealth;
         $state.go('lost');
       }
     }
@@ -207,7 +213,7 @@
      */
     vm.playerAtk = function playerAtk(){
       playerTurn = false;
-      vm.botHealth = vm.botHealth - playerStr;
+      vm.botHealth = vm.botHealth - vm.playerStr;
       bots[botPick].health = vm.botHealth;
       vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
        return fightFunc();
@@ -221,16 +227,16 @@
     function botAtk(){
       let botMiss = rngEncounter();
       if(botMiss >= HitChance && playerDefendBool === false){
-        vm.playerHealth = vm.playerHealth - botBtlStr;
+        vm.playerHealth = vm.playerHealth - vm.botBtlStr;
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  botBtlStr + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  vm.botBtlStr + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
-        vm.playerHealth = vm.playerHealth - (botBtlStr*0.5);
+        vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  (botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*0.5) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{

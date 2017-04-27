@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  let expect = chai.expect;
+
   describe ('UpcController', function() {
 
     let UpcController;
