@@ -48,11 +48,17 @@
 
 
     vm.fullHealth = function fullHealth() {
+      if(vm.playerHealth < 0) {
+        return;
+      }
       let healthMod = 100/vm.basicPlayerHealth;
       return Math.ceil(vm.playerHealth*healthMod);
     };
 
     vm.fullBotHealth = function fullBotHealth() {
+      if(vm.playerHealth < 0) {
+        return;
+      }
       let healthBotMod = 100/vm.basicBotHealth;
       return Math.ceil(vm.botHealth*healthBotMod);
 
@@ -173,10 +179,10 @@
     }
 
     /**
-     * Handles whether enemy or player goes first depending on the playerTurn
-     * value.
-     * @return {Void}
-     */
+    * Handles whether enemy or player goes first depending on the playerTurn
+    * value.
+    * @return {Void}
+    */
     function fightFunc(){
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
@@ -263,6 +269,9 @@
      * @return {Function}
      */
     vm.playerItems = function playerItems(){
+      if(typeof(player[0].items !== 'number')) {
+        return;
+      }
       if(player[0].items === 0){
         unshiftMessages('You are out of items');
       }else{
@@ -280,6 +289,9 @@
      * @return {Void} [description]
      */
     function playerHealthUpdate(){
+      if(typeof(player[0].health) !== 'number') {
+        return;
+      }
       player[0].health = vm.playerHealth;
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
@@ -291,6 +303,9 @@
      * @return {Void}
      */
     function unshiftMessages(string){
+      if(typeof(string) !== 'string') {
+        return;
+      }
       if(playerTurn === true){
         vm.messageArray.unshift('PLAYER: ' + string);
       }else{

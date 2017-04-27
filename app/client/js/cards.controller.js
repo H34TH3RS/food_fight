@@ -24,7 +24,12 @@
     * @return {Promise}
     */
     vm.getAllCards = function getAllCards() {
-
+      if(cards.length <=0 || !cards.card) {
+        return Promise.reject();
+      }
+      if(!Array.isArray(cards)) {
+        return;
+      }
       CardsService.getAllCards()
         .then(function handleResponse(response) {
           vm.card = response;
@@ -39,7 +44,12 @@
 
     // What does this do?
     vm.getOneCard = function getOneCard(card) {
-
+      if(typeof(card) !== 'object') {
+        return;
+      }
+      if(!card.food_name) {
+        return Promise.reject();
+      }
       CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
@@ -48,9 +58,6 @@
           vm.message = 'Something went wrong. Error ' + err.status;
         });
       };
-    // ???? on page boot show an individual card.  First card of deck??
-    vm.getOneCard();
-
   }
 
 }());
