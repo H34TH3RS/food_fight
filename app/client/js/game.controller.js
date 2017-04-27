@@ -18,7 +18,7 @@
     let nothing = 30;
     let atkClick = 0;
     vm.basicPlayerItems =  player[0].items;
-    vm.basicBotHealth;
+    vm.basicBotHealth = 0;
     vm.botBtlStr = 0;
     vm.botBtlDef = 0;
     let battleRate = 30;
@@ -27,7 +27,7 @@
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
-    vm.currentEventName;
+    vm.currentEventName = '';
 
     vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;

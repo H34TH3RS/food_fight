@@ -16,6 +16,7 @@
 
     let cards = [];
     vm.card = {};
+    vm.message = null;
 
    /**
     * Retrieves all character cards in an array
@@ -28,6 +29,10 @@
         .then(function handleResponse(response) {
           vm.card = response;
           return response.data;
+      })
+      .catch(function handleError(err) {
+        vm.message = 'Something went wrong. Error ' + err.status;
+
       });
     };
     vm.getAllCards();
@@ -37,8 +42,11 @@
       CardsService.getOneCard(cards.card)
         .then(function handleResponse(response) {
           return response.data;
+        })
+        .catch(function handleError(err) {
+          vm.message = 'Something went wrong. Error ' + err.status;
         });
-    };
+      };
     vm.getOneCard();
 
   }
