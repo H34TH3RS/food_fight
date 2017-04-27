@@ -97,11 +97,13 @@ module.exports = function(grunt) {
           ],
           singleRun: true,
           preprocessors: {
-            'app/client/js/**/*.js': ['coverage']
+            'app/client/js/**/*.js': ['coverage'],
+            'spec/client/**/*.js': ['coverage']
           },
           reporters: ['dots', 'coverage'],
           coverageReporter: {
-            type: 'text-summary'
+            type: 'html',
+            directory: 'coverage/'
           }
         }
       }

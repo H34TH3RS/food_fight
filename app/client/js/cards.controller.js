@@ -3,14 +3,14 @@
 
   angular.module('game').controller('CardsController', CardsController);
 
-  CardsController.$inject = ['$state', 'CardsController'];
+  CardsController.$inject = ['$state', 'CardsService'];
 
   /**
    * Creates Card Controllers
    * @param {Function} $state      Service that allows view routing
    * @param {Function} CardsController Service that contains character card functions
    */
-  function CardsController($state, CardsController) {
+  function CardsController($state, CardsService) {
 
     let vm = this;
 
@@ -23,9 +23,9 @@
     * @param  {Object} card Must contain {name: xxx}
     * @return {Promise}
     */
-    vm.getAllCards = function getAllCards(card) {
+    vm.getAllCards = function getAllCards() {
 
-      CardsService.getAllCards(cards.card)
+      CardsService.getAllCards()
         .then(function handleResponse(response) {
           vm.card = response;
           return response.data;
@@ -37,6 +37,7 @@
     };
     vm.getAllCards();
 
+    // What does this do?
     vm.getOneCard = function getOneCard(card) {
 
       CardsService.getOneCard(cards.card)
@@ -47,6 +48,7 @@
           vm.message = 'Something went wrong. Error ' + err.status;
         });
       };
+    // ???? on page boot show an individual card.  First card of deck??
     vm.getOneCard();
 
   }
