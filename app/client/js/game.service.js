@@ -8,19 +8,16 @@
 
   function GameService($http, CardsService){
 
-
-
-
     let card = CardsService.getCardPick();
 
-    let playerCard ={
+    let playerCard =[{
       name: 'Taco Cat',
       health: CardsService.getCardPick().health,
-      strength:CardsService.getCardPick().strength,
+      strength: CardsService.getCardPick().strength,
       defense: CardsService.getCardPick().defense,
       items:2,
       image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
-    };
+    }];
 
     let bots = [
       { enemy:'Deadly Daikon Dan',

@@ -62,8 +62,8 @@
       physical_resistance_debuff:2,
       salt:10,
       strength:7,
-
     };
+
     return fakeObj;
 
     }
