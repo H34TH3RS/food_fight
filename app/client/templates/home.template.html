@@ -3,6 +3,6 @@
   <h3 class='homepageHeaders'>A game of wits and grits</h2>
 </section>
 
-<section class='playBtn'>
+<section ng-show='userCtrl.loggedIn()' class='playBtn'>
   <a ui-sref='play'><button class='btn btn-info btn-lg playButton' name='playBtn'>Start Game</button></a>
 </section>
