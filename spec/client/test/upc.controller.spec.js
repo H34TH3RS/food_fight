@@ -7,7 +7,8 @@
 
     let UpcController;
     let mockUpcService = {};
-    let upcCode = {};
+
+
 
     beforeEach(module('game'));
 
@@ -15,11 +16,13 @@
       $provide.value('UpcService', mockUpcService);
     }));
 
+
+
     beforeEach(inject(function($controller) {
+
       mockUpcService.sendUpcData = function sendUpcData() {
-        return [
-          {upc: upcCode.upc}
-        ];
+        return Promise.resolve();
+
       };
 
     UpcController = $controller('UpcController');
@@ -35,9 +38,11 @@
     });
 
     it('should handle an empty object', function() {
-      let result = UpcController.sendUpcData({});
+      let result = UpcController.sendUpcData();
       expect(result).to.equal('undefined');
     });
+
+
 
     }));
   });
