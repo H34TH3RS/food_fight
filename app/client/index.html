@@ -16,6 +16,7 @@
     </header>
 
     <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+      <p class='navbar-brand'>Food Fight</p>
       <ul class='container'>
         <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>home</a></li>
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>

@@ -35,22 +35,17 @@
 
       });
     };
-    vm.getAllCards();
 
-    // What does this do?
     vm.getOneCard = function getOneCard(card) {
 
       CardsService.getOneCard(cards.card)
-        .then(function handleResponse(response) {
-          return response.data;
+        .then(function goToCreateCard() {
+          $state.go('cards');
         })
         .catch(function handleError(err) {
           vm.message = 'Something went wrong. Error ' + err.status;
         });
       };
-    // ???? on page boot show an individual card.  First card of deck??
-    vm.getOneCard();
-
   }
 
 }());

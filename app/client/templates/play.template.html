@@ -3,8 +3,10 @@
   <section class='playerCardDisplay cardDisplay'>
     <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar'>
     <p>{{gameCtrl.playerName}}</p>
-    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+    <section class='progress'>
+      <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+      </aside>
+      <aside ng-hide='gameCtrl.checkBattleBool()' class='progress-bar progress-bar-black' role='progressbar' aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
       </aside>
     </section>
     <ul class='list-group stats-group'>
@@ -17,8 +19,8 @@
   <section class='enemyCardDisplay cardDisplay'>
     <img src='{{gameCtrl.image}}' class='image-box enemyAvatar'>
     <p>{{gameCtrl.currentEventName}}</p>
-    <section ng-show='gameCtrl.checkBattleBool()' class='progress'>
-      <aside class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
+    <section class='progress'>
+      <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
       </aside>
     </section>
     <ul class='list-group stats-group'>
@@ -28,17 +30,15 @@
     </ul>
   </section>
 
-  <section ng-show='gameCtrl.checkBattleBool()' class='battle-box row'>
-    <button class='btn btn-danger ' ng-click='gameCtrl.playerAtk()'>Attack!</button>
-    <button class='btn btn-info' ng-click='gameCtrl.playerItems()'>Item</button>
-    <button class='btn btn-success' ng-click='gameCtrl.playerDef()'>Defense</button>
-  </section>
+  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
 
-  <section ng-show='!gameCtrl.checkBattleBool()'class='move-box row' >
-    <button class='btn btn-primary' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-    <button class='btn btn-primary dice'>You rolled a {{gameCtrl.roll}}</button>
-    <button class='btn btn-primary board-size'>You have {{gameCtrl.boardSize}} spaces left to go!</button>
-  </section>
+      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger ' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info' ng-click='gameCtrl.playerItems()'>Item</button>
+      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success' ng-click='gameCtrl.playerDef()'>Defense</button>
+
+  <button class='btn btn-primary dice'>You rolled a {{gameCtrl.roll}}</button>
+  <button class='btn btn-primary board-size'>You have {{gameCtrl.boardSize}} spaces left to go!</button>
+
 </main>
 
 <p ng-show='gameCtrl.message' class='alert alert-warning errMsg'>{{gameCtrl.message}}</p>
