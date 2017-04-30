@@ -30,4 +30,6 @@ public/
 
 .env
 
+/coverage
+
 .DS_Store

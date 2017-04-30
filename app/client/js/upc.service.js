@@ -13,12 +13,11 @@
   function UpcService($http, UserService) {
 
     let token = UserService.getToken();
+
     let upcInfo ={};
     console.log(token);
 
-
     function sendUpcData(upcCode) {
-      console.log('inside sendUpcData', token);
       return $http({
         url: '/api/cards',
         method: 'POST',
