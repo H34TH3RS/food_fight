@@ -1,4 +1,7 @@
 body {
   width: 100%;
   background-color: $background-color;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(http://aidanmoher.com/blog/wp-content/uploads/2015/08/bor_breakfist_by_nightblue_art-d6hf1sb.jpg);
+  background-size: cover;
 }
