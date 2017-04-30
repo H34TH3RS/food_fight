@@ -14,8 +14,9 @@
   function UpcController($state, UpcService) {
 
     let vm = this;
-
+    vm.hasError = false;
     vm.upcCode = {};
+    vm.message = null;
 
    /**
     * Retrieves UPC data from the api
@@ -23,14 +24,17 @@
     * @return {Promise}
     */
     vm.sendUpcData = function sendUpcData(upcCode) {
-      UpcService.sendUpcData(upcCode.upc)
+
+      UpcService.sendUpcData(upcCode)
       .then(function goToCards() {
         $state.go('cards');
       })
       .catch(function handleError(err) {
+          vm.hasError = true;
+          vm.message = 'There is a problem with the server. Please try again later.';
+
       });
     };
+
   }
-
-
 }());

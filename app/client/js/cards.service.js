@@ -40,11 +40,11 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log(response.data);
         return response.data;
       });
     }
 
+    //this will pull card data from UPC service??
     function getCardPick(){
       let fakeObj = {
       accuracy:2,
@@ -71,7 +71,7 @@
     return {
       getCardPick: getCardPick,
       getAllCards: getAllCards,
-      getOneCard: getOneCard
+      // getOneCard: getOneCard
     };
 
   }
