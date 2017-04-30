@@ -53,8 +53,17 @@
     });
 
     it('should reject an argument that is not an object', function() {
-      expect(CardsController.getAllCards(1)).to.equal(undefined);
+      let cards = CardsController.getAllCards(1);
+      let keys = Object.keys(cards).length;
+      expect(keys).to.equal(0);
     });
+
+    // it('should return an object', function() {
+    //   let result = CardsController.getOneCard();
+    //   console.info(result);
+    //
+    //   expect(result).to.be.an('object');
+    // });
 
   });
 

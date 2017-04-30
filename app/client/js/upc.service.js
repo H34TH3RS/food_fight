@@ -14,6 +14,9 @@
 
     let token = UserService.getToken();
 
+    let upcInfo ={};
+    console.log(token);
+
     function sendUpcData(upcCode) {
       return $http({
         url: '/api/cards',
@@ -27,12 +30,19 @@
         }
       })
       .then(function handleResponse(response) {
+        console.log(response.data);
+        upcInfo = response.data;
         return response.data;
       });
     }
 
+    function storedData(){
+      return upcInfo;
+    }
+
     return {
-      sendUpcData: sendUpcData
+      sendUpcData: sendUpcData,
+      storedData: storedData
     };
   }
 

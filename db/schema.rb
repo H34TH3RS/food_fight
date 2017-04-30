@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425150038) do
+ActiveRecord::Schema.define(version: 20170428145502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170425150038) do
     t.integer  "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "expires_at"
     t.index ["card_id"], name: "index_card_assignments_on_card_id", using: :btree
     t.index ["user_id"], name: "index_card_assignments_on_user_id", using: :btree
   end
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170425150038) do
     t.string   "upc"
     t.jsonb    "nutrition_data"
     t.integer  "salt"
+    t.index ["upc"], name: "index_cards_on_upc", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170425150038) do
     t.string   "auth_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
   add_foreign_key "card_assignments", "cards"

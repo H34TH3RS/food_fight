@@ -1,8 +1,13 @@
-.homeTemplate {
-  .homepageHeaders {
+.homepageHeaders {
     color: $warning-color;
     text-align: center;
-    padding-top: 2em;
-  }
+    padding-top: 1em;
+}
 
+.playButton {
+  margin: 1em;
+}
+
+.playBtn {
+  text-align: center;
 }

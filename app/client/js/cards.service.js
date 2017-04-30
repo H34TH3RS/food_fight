@@ -23,28 +23,30 @@
         }
       })
       .then(function handleResponse(response) {
-        return response.data;
-      });
-    }
-
-    function getOneCard(upc) {
-      return $http({
-        url: '/api/cards',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        data: {
-          upc: upc
-        }
-      })
-      .then(function handleResponse(response) {
         console.log(response.data);
         return response.data;
       });
     }
+    //
+    // function getOneCard(upc) {
+    //   return $http({
+    //     url: '/api/cards',
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': token
+    //     },
+    //     data: {
+    //       upc: upc
+    //     }
+    //   })
+    //   .then(function handleResponse(response) {
+    //     console.log(response.data);
+    //     return response.data;
+    //   });
+    // }
 
+    //this will pull card data from UPC service??
     function getCardPick(){
       let fakeObj = {
       accuracy:2,
@@ -71,7 +73,7 @@
     return {
       getCardPick: getCardPick,
       getAllCards: getAllCards,
-      getOneCard: getOneCard
+      // getOneCard: getOneCard
     };
 
   }

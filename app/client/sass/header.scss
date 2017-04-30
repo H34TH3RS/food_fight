@@ -1,6 +1,9 @@
 
-.jumbotron {
+.index-header {
     margin: 0;
+    padding: 1em;
+    background-color: $warning-color;
+    color: #000000;
     text-align: center;
     //backgrount color is set in the custom bootstrap.css file
 }
