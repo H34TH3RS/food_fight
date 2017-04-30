@@ -9,13 +9,14 @@
   </head>
   <body>
 
-    <header class='index-header'>
+    <header ng-controller='UserController as userCtrl' ng-hide='userCtrl.loggedIn()' class='index-header'>
       <h1>Food Fight</h1>
       <p class='lead'>a game of wits and grits</p>
 
     </header>
 
     <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+      <p class='navbar-brand'>Food Fight</p>
       <ul class='container'>
         <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>home</a></li>
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>
@@ -26,7 +27,7 @@
       </ul>
     </nav>
 
-    <main ui-view class='container'>
+    <main ui-view class='container-fluid'>
     </main>
 
     <footer>

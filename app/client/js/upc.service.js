@@ -30,7 +30,6 @@
         }
       })
       .then(function handleResponse(response) {
-        console.log(response.data);
         upcInfo = response.data;
         return response.data;
       });

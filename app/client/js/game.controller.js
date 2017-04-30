@@ -28,7 +28,7 @@
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
-    vm.currentEventName = '';
+    vm.currentEventName = 'Prepare for Battle!';
     vm.basicPlayerHealth = player[0].health;
     const HitChance = 40;
     const itemSmallHP = 3;
