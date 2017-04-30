@@ -35,7 +35,6 @@
 
       });
     };
-    vm.getAllCards();
 
     // What does this do?
     vm.getOneCard = function getOneCard(card) {
@@ -49,7 +48,6 @@
         });
       };
     // ???? on page boot show an individual card.  First card of deck??
-    vm.getOneCard();
 
   }
 

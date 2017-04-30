@@ -45,7 +45,7 @@
         expect(result.length).to.be.equal(1);
       });
 
-      
+
     });
   });
 
