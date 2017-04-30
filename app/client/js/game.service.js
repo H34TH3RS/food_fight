@@ -45,7 +45,7 @@
       image:'http://vignette4.wikia.nocookie.net/battlefordreamislandfanfiction/images/7/77/Salt.png/revision/latest?cb=20140331153921'}
     ];
     let nothings = [
-      {nothing:'Nothing here but some boneless chickens...',
+      {nothing:'Boneless Chickens',
       image:'https://hydra-media.cursecdn.com/zelda.gamepedia.com/thumb/1/14/HW_Cucco.png/200px-HW_Cucco.png?version=dfa0439718d5e856ae8f416812d3d858'},
       {nothing:'You can hear crickets in the background.',
       image:'http://www.pngmart.com/files/3/Grasshopper-Transparent-PNG.png'},
