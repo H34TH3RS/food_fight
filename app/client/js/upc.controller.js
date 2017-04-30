@@ -30,7 +30,6 @@
       .catch(function handleError(err) {
       });
     };
-
   }
 
 
