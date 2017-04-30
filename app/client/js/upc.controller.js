@@ -23,7 +23,7 @@
     * @return {Promise}
     */
     vm.sendUpcData = function sendUpcData(upcCode) {
-      UpcService.sendUpcData(upcCode.upc)
+      UpcService.sendUpcData(upcCode)
       .then(function goToCards() {
         $state.go('cards');
       })
