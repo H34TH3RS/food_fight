@@ -2,7 +2,7 @@
   'use strict';
   angular.module('game').factory('CardsService', CardsService);
 
-  CardsService.$inject = ['$http', 'UserService'];
+  CardsService.$inject = ['$http', 'UserService', 'UpcService'];
 
 
   /**
@@ -10,12 +10,12 @@
    * @param {Function} $http       Service that allows ajax calls
    * @param {Function} UserService Contains the function to retrieve the auth token
    */
-  function CardsService($http, UserService) {
+  function CardsService($http, UserService, UpcService) {
     let token = UserService.getToken();
 
     function getAllCards() {
       return $http({
-        url: '/api/cards',
+        url: '/api/card_assignments',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +29,7 @@
 
     function getOneCard(upc) {
       return $http({
-        url: '/api/cards',
+        url: '/api/card_assignments',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
