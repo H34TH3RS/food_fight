@@ -19,8 +19,11 @@ body {
     text-decoration: none;
     color: #772953; }
 
-.jumbotron {
+.index-header {
   margin: 0;
+  padding: 1em;
+  background-color: #efb73e;
+  color: #000000;
   text-align: center; }
 
 nav {
@@ -39,7 +42,9 @@ nav {
     padding-right: .5em; }
 
 .navbar {
-  border-radius: 0px; }
+  border-radius: 0px;
+  margin: 0;
+  border: 0; }
 
 main {
   height: 600px;
@@ -47,10 +52,16 @@ main {
   background-size: cover;
   font-size: 1.5em; }
 
-.homeTemplate .homepageHeaders {
+.homepageHeaders {
   color: #efb73e;
   text-align: center;
-  padding-top: 2em; }
+  padding-top: 1em; }
+
+.playButton {
+  margin: 1em; }
+
+.playBtn {
+  text-align: center; }
 
 .createUserForm {
   color: #efb73e;
@@ -69,29 +80,35 @@ main {
 .panel {
   padding: 0; }
 
-h2 {
-  color: #efb73e;
-  padding: 1em;
-  text-align: center; }
+.cardWrapper {
+  width: 50%; }
 
-.battleground {
-  margin: auto; }
+.image-box {
+  height: 200px;
+  width: 200px; }
 
 .cardDisplay {
   text-align: center;
   display: inline-block;
   box-sizing: border-box;
-  margin: 1em;
-  border: 2px solid red;
+  border: 5px solid #772953;
   border-radius: 5px;
-  background-color: white;
+  background-color: #000000;
   height: 15em;
-  width: 12em;
-  padding: 1em; }
+  width: 13em;
+  margin: 1em; }
+  .cardDisplay p {
+    font-family: Courier, Times, serif;
+    color: #00ff00;
+    font-size: 0.75em; }
   .cardDisplay .progress {
     margin: 10px; }
+  .cardDisplay .progress-bar-black {
+    background-color: #000000; }
   .cardDisplay .stats-group li {
-    font-size: 0.5em; }
+    font-size: 0.5em;
+    background-color: #efb73e;
+    border: 1px solid #772953; }
 
 .move-box {
   color: #00ff00;
@@ -112,6 +129,7 @@ h2 {
   font-family: Courier, Times, serif; }
 
 .terminal-box {
+  overflow: scroll;
   font-size: 0.75em;
   width: 100%;
   background-color: #000000;

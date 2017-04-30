@@ -129,6 +129,8 @@
         let treasurePick = Math.floor(Math.random()* treasures.length);
         vm.image = treasures[treasurePick].image;
         vm.currentEventName = treasures[treasurePick].treasure;
+        clearBotData();
+
         unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
       }else if(encounter < nothing && encounter > treasureChance ) {
@@ -137,6 +139,7 @@
         let eventPick = Math.floor(Math.random()* events.length);
         vm.currentEventName = events[eventPick].nothing;
         vm.image = events[eventPick].image;
+        clearBotData();
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
@@ -148,7 +151,7 @@
         vm.botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
-      unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
+        unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
         battle();
       }
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
@@ -295,6 +298,14 @@
         vm.messageArray.unshift('PLAYER: ' + string);
       }else{
         vm.messageArray.unshift('ENEMY: '+ string);
+      }
+    }
+
+    function clearBotData(){
+      if (battleBool === false){
+        vm.basicBotHealth = 0;
+        vm.botBtlStr = 0;
+        vm.botBtlDef = 0;
       }
     }
 
