@@ -15,8 +15,7 @@
       $httpBackend = _$httpBackend_;
 
       $httpBackend.whenPOST('/api/users')
-      .respond(
-        [{
+      .respond({
           data:{
             user: {
               email: 'user.email',
@@ -25,18 +24,15 @@
               password_confirmation: 'user.password_confirmation'
             }
           }
-        }]
-      );
+        });
 
       $httpBackend.whenPOST('/api/authorization')
-      .respond(
-        [{
+      .respond({
           data: {
             email: 'email',
             password: 'password'
           }
-        }]
-      );
+        });
 
 
     }));
