@@ -3,20 +3,22 @@
 
   angular.module('game').controller('CardsController', CardsController);
 
-  CardsController.$inject = ['$state', 'CardsService'];
+  CardsController.$inject = ['$state', 'CardsService', 'UpcService'];
 
   /**
    * Creates Card Controllers
    * @param {Function} $state      Service that allows view routing
    * @param {Function} CardsController Service that contains character card functions
    */
-  function CardsController($state, CardsService) {
+  function CardsController($state, CardsService, UpcService) {
 
     let vm = this;
 
     let cards = [];
     vm.card = {};
     vm.message = null;
+    vm.storedData = UpcService.storedData();
+    console.log(vm.storedData);
 
    /**
     * Retrieves all character cards in an array
@@ -28,6 +30,7 @@
       CardsService.getAllCards()
         .then(function handleResponse(response) {
           vm.card = response;
+          console.log(vm.card);
           return response.data;
       })
       .catch(function handleError(err) {
@@ -35,7 +38,6 @@
 
       });
     };
-    vm.getAllCards();
 
     // What does this do?
     vm.getOneCard = function getOneCard(card) {
@@ -49,7 +51,6 @@
         });
       };
     // ???? on page boot show an individual card.  First card of deck??
-    vm.getOneCard();
 
   }
 
