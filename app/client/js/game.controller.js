@@ -7,32 +7,30 @@
 
   function GameController($state, GameService){
 
+    const HitChance = 40;
+    const itemSmallHP = 3;
     let vm = this;
     let player = GameService.getUserCard();
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
-
     let botPick;
     let chance = 100;
     let treasureChance = 10;
     let nothing = 30;
     let atkClick = 0;
+    let battleRate = 30;
+    let playerDefendBool = false;
+    let battleBool = false;
+    let playerTurn = true;
     vm.basicPlayerItems =  player[0].items;
     vm.basicBotHealth = 0;
     vm.botBtlStr = 0;
     vm.botBtlDef = 0;
-    let battleRate = 30;
     vm.playerDefense =  player[0].defense;
     vm.playerStr =  player[0].strength;
-    let playerDefendBool = false;
-    let battleBool = false;
-    let playerTurn = true;
     vm.currentEventName = 'Prepare for Battle!';
     vm.basicPlayerHealth = player[0].health;
-    const HitChance = 40;
-    const itemSmallHP = 3;
-
     vm.playerName = player[0].name;
     vm.boardSize = 25;
     vm.roll = 0;
@@ -47,16 +45,24 @@
     vm.playerImage = player[0].image;
 
 
+    /**
+     * Changes the current health of the player to number out of 100
+     * @return {Number} [description]
+     */
     vm.fullHealth = function fullHealth() {
       let healthMod = 100/vm.basicPlayerHealth;
       return Math.ceil(vm.playerHealth*healthMod);
     };
 
+    /**
+     * Changes the current health of the bot to anumber out of 100
+     * @return {Number} [description]
+     */
     vm.fullBotHealth = function fullBotHealth() {
       let healthBotMod = 100/vm.basicBotHealth;
       return Math.ceil(vm.botHealth*healthBotMod);
-
     };
+
     /**
      * Generates a random number based on the chance variable
      * @return {Number} [description]
@@ -129,6 +135,7 @@
         let treasurePick = Math.floor(Math.random()* treasures.length);
         vm.image = treasures[treasurePick].image;
         vm.currentEventName = treasures[treasurePick].treasure;
+        clearBotData();
         unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
       }else if(encounter < nothing && encounter > treasureChance ) {
@@ -137,6 +144,7 @@
         let eventPick = Math.floor(Math.random()* events.length);
         vm.currentEventName = events[eventPick].nothing;
         vm.image = events[eventPick].image;
+        clearBotData();
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
@@ -148,7 +156,7 @@
         vm.botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
-      unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
+        unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
         battle();
       }
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
@@ -295,6 +303,18 @@
         vm.messageArray.unshift('PLAYER: ' + string);
       }else{
         vm.messageArray.unshift('ENEMY: '+ string);
+      }
+    }
+
+    /**
+     * Sets bot data to 0
+     * @return {Void} [used for clearing the data on non-bot encounters]
+     */
+    function clearBotData(){
+      if (battleBool === false){
+        vm.basicBotHealth = 0;
+        vm.botBtlStr = 0;
+        vm.botBtlDef = 0;
       }
     }
 
