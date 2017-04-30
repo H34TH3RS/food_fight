@@ -101,7 +101,8 @@ module.exports = function(grunt) {
           },
           reporters: ['dots', 'coverage'],
           coverageReporter: {
-            type: 'text-summary'
+            type : 'text-summary',
+            dir : 'coverage/'
           }
         }
       }

@@ -1,4 +1,5 @@
-<main class='battleground row'>
+<main class='battleground'>
+  
   <section class='playerCardDisplay cardDisplay col-xs-6'>
     <img src='{{gameCtrl.playerImage}}' height='200' width='200' class='image-box playerAvatar'>
     <p>{{gameCtrl.playerName}}</p>
@@ -26,7 +27,7 @@
       <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
     </ul>
   </section>
-  
+
   <p ng-show='gameCtrl.message' class='alert alert-warning errMsg'>{{gameCtrl.message}}</p>
 
   <section ng-show='gameCtrl.checkBattleBool()' class='battle-box row'>
