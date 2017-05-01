@@ -17,4 +17,8 @@ class User < ApplicationRecord
     set_auth_token
     save
   end
+
+  def admin?
+    role == "admin"
+  end
 end
