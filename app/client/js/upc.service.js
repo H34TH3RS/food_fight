@@ -31,11 +31,13 @@
       })
       .then(function handleResponse(response) {
         upcInfo = response.data;
+        console.log(upcInfo);
         return response.data;
       });
     }
 
     function storedData(){
+      console.log('line 40', upcInfo);
       return upcInfo;
     }
 

@@ -8,7 +8,9 @@
 
   function GameService($http, CardsService, UpcService){
 
-    let card = UpcService.storedData();
+    let card = CardsService.getCardPick();
+    console.log(CardsService.getCardPick());
+
 
     let playerCard =[{
       name: 'Taco Cat',

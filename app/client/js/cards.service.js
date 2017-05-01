@@ -12,7 +12,7 @@
    */
   function CardsService($http, UserService, UpcService) {
     let token = UserService.getToken();
-    let fakeObj= {};
+    let fakeObj= [];
 
     function getAllCards() {
       return $http({
@@ -48,25 +48,14 @@
 
     //this will pull card data from UPC service??
     function getCardPick(){
-      return $http({
-        url: '/api/card_assignments',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        }
-      })
-      .then(function handleResponse(response) {
-        console.log('getCardPick', response.data);
-        return response.data;
-      });
+      return fakeObj;
 
     }
 
     return {
       getCardPick: getCardPick,
       getAllCards: getAllCards,
-      // getOneCard: getOneCard
+      getOneCard: getOneCard
     };
 
   }
