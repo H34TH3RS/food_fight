@@ -24,6 +24,13 @@ class CardBuilder
 
     basic_card_data = CardConverter.new.convert!(nutrition_data)
     basic_card_data.transform_values! { |value| value || 0 }
+      if basic_card_data[:salt] > 360
+         basic_card_data[:klass] = "Salty"
+      elsif basic_card_data[:energy_debuff]
+         basic_card_data[:klass] = "Sugary" > 25
+      else
+        basic_card_data[:klass] = "Normal"
+      end
 
     added_data = {
       upc: upc,
