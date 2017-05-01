@@ -1,35 +1,40 @@
 
 <main class='battleground'>
-  <section class='playerCardDisplay cardDisplay'>
-    <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar'>
-    <p>{{gameCtrl.playerName}}</p>
-    <section class='progress'>
-      <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
-      </aside>
-      <aside ng-hide='gameCtrl.checkBattleBool()' class='progress-bar progress-bar-black' role='progressbar' aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-      </aside>
-    </section>
-    <ul class='list-group stats-group'>
-      <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
-      <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
-      <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
-    </ul>
+
+  <section class='col-lg-6 cardWrapper'>
+    <article class='playerCardDisplay cardDisplay col-lg-8 col-lg-offset-2'>
+      <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar'>
+      <p>{{gameCtrl.playerName}}</p>
+      <section class='progress'>
+        <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
+        </aside>
+        <aside ng-hide='gameCtrl.checkBattleBool()' class='progress-bar progress-bar-black' role='progressbar' aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+        </aside>
+      </section>
+      <ul class='list-group stats-group'>
+        <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
+        <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
+        <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
+      </ul>
+    </article>
   </section>
 
-  <section class='enemyCardDisplay cardDisplay'>
-    <img src='{{gameCtrl.image}}' class='image-box enemyAvatar'>
-    <p>{{gameCtrl.currentEventName}}</p>
-    <section class='progress'>
-      <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
-      </aside>
-      <aside ng-hide='gameCtrl.checkBattleBool()' class='progress-bar progress-bar-black' role='progressbar' aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-      </aside>
-    </section>
-    <ul class='list-group stats-group'>
-      <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
-      <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
-      <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
-    </ul>
+  <section class='col-lg-6 cardWrapper'>
+    <article class='enemyCardDisplay cardDisplay col-lg-8 col-lg-offset-2'>
+      <img src='{{gameCtrl.image}}' class='image-box enemyAvatar'>
+      <p>{{gameCtrl.currentEventName}}</p>
+      <section class='progress'>
+        <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
+        </aside>
+        <aside ng-hide='gameCtrl.checkBattleBool()' class='progress-bar progress-bar-black' role='progressbar' aria-valuenow='0' aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+        </aside>
+      </section>
+      <ul class='list-group stats-group'>
+        <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
+        <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
+        <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
+      </ul>
+    </article>
   </section>
 
   <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
