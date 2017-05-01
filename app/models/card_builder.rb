@@ -21,7 +21,6 @@ class CardBuilder
     return if api_data['status_code'] == 404
     # Remove the source data that we converted to card attributes.
     nutrition_data = api_data.to_h.slice(*CardConverter::CARD_KEYS.keys)
-
     basic_card_data = CardConverter.new.convert!(nutrition_data)
     basic_card_data.transform_values! { |value| value || 0 }
 
