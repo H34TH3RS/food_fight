@@ -4,7 +4,6 @@ class Api::CardsController < ApplicationController
   before_action :authorize!
   def create
     @card = CardBuilder.new(card_params['upc']).card
-
     if @card&.save
       current_user.cards << @card
       render json: @card.as_json(

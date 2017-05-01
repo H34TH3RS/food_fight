@@ -16,7 +16,9 @@
     </header>
 
     <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+
       <ul class='container'>
+
         <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>home</a></li>
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>
         <li ng-show='userCtrl.loggedIn()'><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
@@ -29,8 +31,8 @@
     <main ui-view class='main-view container'>
     </main>
 
-    <footer>
-      <p>&copy 2017</p>
+    <footer class='navbar navbar-footer'>
+      <p>&copy 2017 Sara Basile * Seth Brady * Molly Stoopler</p>
     </footer>
 
     <script src='/angular.min.js'></script>
