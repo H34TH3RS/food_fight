@@ -13,16 +13,20 @@
   function CardsService($http, UserService, UpcService) {
     let token = UserService.getToken();
 
-    function getAllCards() {
+    function getAllCards(upc) {
       return $http({
         url: '/api/card_assignments',
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token
+        },
+        data: {
+          upc: upc
         }
       })
       .then(function handleResponse(response) {
+        console.log(response.data);
         return response.data;
       });
     }
@@ -30,7 +34,7 @@
     function getOneCard(upc) {
       return $http({
         url: '/api/card_assignments',
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token
@@ -64,14 +68,34 @@
       strength:7,
     };
 
-    return fakeObj;
+      return fakeObj;
 
     }
 
+    function getLastCard(upc){
+      return $http({
+        url: '/api/card_assignments',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
+        data: {
+          upc: upc
+        }
+      })
+      .then(function handleResponse(response) {
+        let cards = response.data;
+        console.log(cards);
+        return cards;
+      });
+    }
+
     return {
+      getLastCard: getLastCard,
       getCardPick: getCardPick,
       getAllCards: getAllCards,
-      // getOneCard: getOneCard
+      getOneCard: getOneCard
     };
 
   }

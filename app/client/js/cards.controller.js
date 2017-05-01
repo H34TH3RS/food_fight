@@ -13,12 +13,12 @@
   function CardsController($state, CardsService, UpcService) {
 
     let vm = this;
-
-    let cards = [];
+    vm.last = {};
+    vm.cards = [];
     vm.card = {};
     vm.message = null;
     vm.storedData = UpcService.storedData();
-    console.log(vm.storedData);
+    // console.log(vm.storedData);
 
    /**
     * Retrieves all character cards in an array
@@ -49,6 +49,27 @@
           vm.message = 'Something went wrong. Error ' + err.status;
         });
     };
+
+
+
+    vm.getLastCard = function getLastCard(){
+
+    CardsService.getLastCard()
+        .then(function lastMath(card) {
+        console.log(card[0]);
+        let last = (card.length - 1);
+        console.log(card[last]);
+        return card[last];
+        })
+
+        .catch(function handleError(err) {
+          vm.message = 'Something went wrong. Error ' + err.status;
+        });
+    };
+
+    vm.last = vm.getLastCard();
+    console.log(vm.last);
+
   }
 
 }());
