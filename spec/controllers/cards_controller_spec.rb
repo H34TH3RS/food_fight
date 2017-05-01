@@ -27,7 +27,7 @@ RSpec.describe Api::CardsController, type: :controller do
 
       expect(response).to be_created
 
-      expect(JSON.parse(response.body)).to include('energy')
+      expect(JSON.parse(response.body)["food_name"]).to_not eq(nil)
     end
   end
   describe 'POST #create' do
