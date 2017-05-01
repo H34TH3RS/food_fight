@@ -26,7 +26,13 @@ coverage/
 
 .sass-cache
 
+/coverage
+
 public/
+
+!public/404.html
+!public/422.html
+!public/500.html
 
 .env
 
