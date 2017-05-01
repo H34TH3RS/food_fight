@@ -4,17 +4,17 @@
 
   angular.module('game').factory('GameService', GameService);
 
-  GameService.$inject =['$http', 'CardsService'];
+  GameService.$inject =['$http', 'CardsService', 'UpcService'];
 
-  function GameService($http, CardsService){
+  function GameService($http, CardsService, UpcService){
 
-    let card = CardsService.getCardPick();
+    let card = UpcService.storedData();
 
     let playerCard =[{
       name: 'Taco Cat',
-      health: CardsService.getCardPick().health,
-      strength: CardsService.getCardPick().strength,
-      defense: CardsService.getCardPick().defense,
+      health: UpcService.storedData().health,
+      strength: UpcService.storedData().strength,
+      defense: UpcService.storedData().defense,
       items:2,
       image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
     }];
