@@ -1,0 +1,17 @@
+.bio-wrapper {
+  padding: 3em;
+}
+.creators {
+  font-family: Courier, Times, serif;
+  text-align: justify;
+  color: $terminal-green;
+  background-color: $background-color;
+  padding: 2em;
+  border: 5px solid $info-color;
+  box-sizing: border-box;
+
+  h2 {
+    font-family: Courier, Times, serif;
+    text-align: center;
+  }
+}
