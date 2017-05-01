@@ -22,6 +22,11 @@
       controllerAs: 'userCtrl'
     })
     .state({
+      name: 'about-us',
+      url: '/about-us',
+      templateUrl: 'templates/about-us.template.html'
+    })
+    .state({
       name: 'login',
       url: '/login',
       templateUrl: 'templates/login.template.html',
