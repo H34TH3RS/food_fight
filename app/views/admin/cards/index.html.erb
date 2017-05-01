@@ -1,5 +1,5 @@
 <h1> All Admin Cards </h1>
-<table>
+<table class="table table-borderless">
   <thead>
     <tr>
       <th>food_name</th>
@@ -23,22 +23,22 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td>card.food_name</td>
-        <td>card.klass</td>
+        <td><%=card.food_name%></td>
+        <td><%=card.klass%></td>
         <td>card.energy</td>
-        <td>card.physical_resistance_debuff</td>
-        <td>card.health</td>
-        <td>card.accuracy</td>
-        <td>card.energy_debuff</td>
-        <td>card.strength</td>
-        <td>card.accuracy_buff</td>
-        <td>card.health_buff</td>
-        <td>card.defense</td>
-        <td>card.attack_buff</td>
-        <td>card.cleanse</td>
-        <td>card.created_at</td>
-        <td>card.updated_at</td>
-        <td>card.upc</td>
+        <td><%=card.physical_resistance_debuff%></td>
+        <td><%=card.health%></td>
+        <td><%=card.accuracy%></td>
+        <td><%=card.energy_debuff%></td>
+        <td><%=card.strength%></td>
+        <td><%=card.accuracy_buff%></td>
+        <td><%=card.health_buff%></td>
+        <td><%=card.defense%></td>
+        <td><%=card.attack_buff%></td>
+        <td><%=card.cleanse%></td>
+        <td><%=card.created_at%></td>
+        <td><%=card.updated_at%></td>
+        <td><%=card.upc%></td>
       </tr>
     <% end %>
   </tbody>
