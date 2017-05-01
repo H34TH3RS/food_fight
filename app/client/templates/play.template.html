@@ -15,6 +15,8 @@
         <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
         <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
         <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
+        <li class='list-group-item'>Class: put_class_here</li>
+        <li class='list-group-item'>Energy: put_energy_here</li>
       </ul>
     </article>
   </section>
@@ -33,20 +35,23 @@
         <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
         <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
         <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
+        <li class='list-group-item'>Class: put_class_here</li>
+        <li class='list-group-item'>Energy: put_energy_here</li>
       </ul>
     </article>
   </section>
-
-  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-
-      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger ' ng-click='gameCtrl.playerAtk()'>Attack!</button>
-      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info' ng-click='gameCtrl.playerItems()'>Item</button>
-      <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success' ng-click='gameCtrl.playerDef()'>Defense</button>
-
-  <button class='btn btn-primary dice'>You rolled a {{gameCtrl.roll}}</button>
-  <button class='btn btn-primary board-size'>You have {{gameCtrl.boardSize}} spaces left to go!</button>
-
 </main>
+
+
+<section class='play-buttons-wrapper row'>
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info col-lg-2' ng-click='gameCtrl.playerItems()'>Item</button>
+  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary col-lg-2 col-lg-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger col-lg-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success col-lg-2' ng-click='gameCtrl.playerDef()'>Defense</button>
+  <button ng-show='!gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-lg-6 col-lg-offset-2'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>
+  <button ng-show='gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-lg-6'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>
+</section>
 
 <p ng-show='gameCtrl.message' class='alert alert-warning errMsg'>{{gameCtrl.message}}</p>
 
