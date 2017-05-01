@@ -68,7 +68,7 @@
       strength:7,
     };
 
-      return fakeObj;
+    return fakeObj;
 
     }
 
@@ -90,6 +90,8 @@
         return cards;
       });
     }
+
+  
 
     return {
       getLastCard: getLastCard,

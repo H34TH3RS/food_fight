@@ -45,6 +45,8 @@
     vm.playerImage = player[0].image;
 
 
+
+
     /**
      * Changes the current health of the player to number out of 100
      * @return {Number} [description]
