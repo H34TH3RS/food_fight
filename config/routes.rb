@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :cards, only: [:index]
+  end
+
   namespace :api do
     resource :authorization, only: [:create, :destroy]
     resource :users, only: [:create]
