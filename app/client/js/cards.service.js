@@ -45,21 +45,18 @@
     * @param  {String} upc [description]
     * @return {Array}     [description]
     */
-    function getAllCards(upc){
+    function getAllCards() {
       return $http({
         url: '/api/card_assignments',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token
-        },
-        data: {
-          upc: upc
         }
       })
       .then(function handleResponse(response) {
-        let cards = response.data;
-        return cards;
+        console.log(response.data);
+        return response.data;
       });
     }
 
