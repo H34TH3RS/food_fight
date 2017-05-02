@@ -30,8 +30,7 @@
       .catch(function handleError(err) {
           vm.hasError = true;
           vm.message = 'There is a problem with the server. Please try again later.';
-
-      });
+        });
     };
   }
 }());
