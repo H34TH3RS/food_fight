@@ -2,10 +2,12 @@
 
 <h1>Admin Card Assignments</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Expires at</th>
+      <th>User</th>
+      <th>Card</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
     <% @card_assignments.each do |card_assignment| %>
       <tr>
         <td><%= card_assignment.expires_at %></td>
+        <td><%= card_assignment.user.username %></td>
+        <td><%= card_assignment.card.food_name %></td>
         <td><%= link_to 'Show', [:admin, card_assignment] %></td>
         <td><%= link_to 'Edit', edit_admin_card_assignment_path(card_assignment) %></td>
         <td><%= link_to 'Destroy', [:admin, card_assignment], method: :delete, data: { confirm: 'Are you sure?' } %></td>

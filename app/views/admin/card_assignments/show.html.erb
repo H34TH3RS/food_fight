@@ -5,5 +5,20 @@
   <%= @card_assignment.expires_at %>
 </p>
 
+<p>
+  <strong>Belongs to:</strong>
+  <%= @card_assignment.user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @card_assignment.user.email %>
+</p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @card_assignment.card.food_name %>
+</p>
+
 <%= link_to 'Edit', edit_admin_card_assignment_path(@card_assignment) %> |
 <%= link_to 'Back', admin_card_assignments_path %>
