@@ -17,9 +17,9 @@
     vm.cards = [];
     vm.card = {};
     vm.message = null;
-    vm.storedData = UpcService.storedData();
+    // vm.storedData = UpcService.storedData();
+    vm.lastCard = {};//this is used to put data in the template.
     // console.log(vm.storedData);
-
    /**
     * Retrieves all character cards in an array
     * @param  {Object} card Must contain {name: xxx}
@@ -29,17 +29,18 @@
 
       CardsService.getAllCards()
         .then(function handleResponse(response) {
-          vm.card = response;
-          console.log(vm.card);
-          return response.data;
+          vm.cards = response;
+          console.log(vm.cards);
+          return response;
       })
       .catch(function handleError(err) {
         vm.message = 'Something went wrong. Error ' + err.status;
 
       });
     };
+    vm.getAllCards();
 
-    vm.getOneCard = function getOneCard(card) {
+  vm.getOneCard = function getOneCard(card) {
 
       CardsService.getOneCard(cards.card)
         .then(function goToCreateCard() {
@@ -55,20 +56,19 @@
     vm.getLastCard = function getLastCard(){
 
     CardsService.getLastCard()
-        .then(function lastMath(card) {
-        console.log(card[0]);
+      .then(function lastMath(card) {
         let last = (card.length - 1);
-        console.log(card[last]);
+        vm.lastCard = card[last];
+        // console.log('last card', vm.lastCard);
         return card[last];
-        })
-
-        .catch(function handleError(err) {
-          vm.message = 'Something went wrong. Error ' + err.status;
-        });
+      })
+      .catch(function handleError(err) {
+        vm.message = 'Something went wrong. Error ' + err.status;
+      });
     };
 
-    vm.last = vm.getLastCard();
-    console.log(vm.last);
+
+    vm.getLastCard();
 
   }
 

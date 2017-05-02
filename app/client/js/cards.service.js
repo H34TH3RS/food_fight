@@ -91,7 +91,7 @@
       });
     }
 
-  
+
 
     return {
       getLastCard: getLastCard,
