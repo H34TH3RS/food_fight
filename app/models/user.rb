@@ -5,9 +5,9 @@ class User < ApplicationRecord
   has_many :cards, through: :card_assignments
   has_secure_password
   before_create :set_auth_token
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :password, confirmation: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
+  validates :email, presence: true, uniqueness: true, on: :create
 
   def set_auth_token
     self.auth_token = SecureRandom.hex

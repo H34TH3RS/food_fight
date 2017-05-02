@@ -1,4 +1,4 @@
-<h1> All Admin Cards </h1>
+<h1> All Users </h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,8 +18,6 @@
         <td><%=user.updated_at%></td>
         <td><%=user.role%></td>
         <td><%=link_to 'Change role', edit_admin_user_path(user)%></td>
-        <td><%=link_to 'Delete', admin_user_path(user), method: :delete, data:
-        { confirm: 'Are you sure you want to delete this user?'} %></td>
       </tr>
     <% end %>
   </tbody>

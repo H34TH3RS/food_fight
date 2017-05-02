@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get "/home", to: "home#index", as: "home"
     resources :cards, only: [:index, :new, :create, :show, :destroy]
     resources :card_assignments
     resources :users, except: [:new, :create, :show]

@@ -1,6 +1,10 @@
 <h1>Edit User Role</h1>
 
+<p><b>username:</b> <%= @user.username %></p>
+<p><b>email:</b> <%= @user.email %></p>
 <%= form_for @user, url: admin_user_path do |f| %>
   <%= f.label :role %>
   <%= f.text_field :role %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
+<%= link_to 'Back', admin_users_path %>

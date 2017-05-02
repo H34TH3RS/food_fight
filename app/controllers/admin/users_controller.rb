@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < Admin::BaseController
   before_action :admin_authorize!
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: %i[edit update]
 
   def index
     @users = User.all
@@ -9,10 +11,11 @@ class Admin::UsersController < Admin::BaseController
   def edit; end
 
   def update
-
-  end
-
-  def destroy
+    if @user.update(admin_user_params)
+      redirect_to admin_user_path, notice: 'User updated'
+    else
+      render :edit, @user.errors.full_messages
+    end
   end
 
   private
