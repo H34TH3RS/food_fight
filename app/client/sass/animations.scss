@@ -1,11 +1,21 @@
 @keyframes glow {
   0% {
       transform: scale(1);
-    }
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
 
-    100% {
-      transform: scale(1.05);
-    }
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 /* offset-x | offset-y | blur-radius | spread-radius | color */
@@ -16,4 +26,12 @@
   animation-name: glow;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }

@@ -22,7 +22,7 @@
   </section>
 
   <section class='col-xs-12 col-lg-6 cardWrapper'>
-    <article class='enemyCardDisplay cardDisplay col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
+    <article class='enemyCardDisplay cardDisplay col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2 slideInRight'>
       <img src='{{gameCtrl.image}}' class='image-box enemyAvatar enemyGlow'>
       <p>{{gameCtrl.currentEventName}}</p>
       <section class='progress'>
@@ -45,8 +45,8 @@
 
 <section class='play-buttons-wrapper row'>
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info col-xs-2' ng-click='gameCtrl.playerItems()'>Item</button>
-  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger col-xs-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary rollButton col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger attackButton col-xs-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
 
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success col-xs-2' ng-click='gameCtrl.playerDef()'>Defense</button>
   <button ng-show='!gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-xs-6 col-xs-offset-2'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>

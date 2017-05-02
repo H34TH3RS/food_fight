@@ -1,7 +1,9 @@
 .image-box {
-  margin: 1em;
+  margin: 2em;
   height: 200px;
   width: 200px;
+  padding: 1em;
+  border-radius: 10%;
 }
 .cardWrapper {
   padding: 0;
@@ -41,7 +43,25 @@
 }
 .play-buttons-wrapper {
   margin: 0.5em;
+
+  .rollButton {
+    box-shadow: 0 0 10px 5px white;
+  }
+
+  .attackButton {
+  }
+
+  .attackButton:focus {
+    box-shadow: 0 0 10px 5px white;
+    
+  }
+  button:focus {
+    box-shadow: 0 0 10px 5px white;
+    border: none;
+  }
 }
+
+
 .move-box {
   color: $terminal-green;
   font-family: Courier, Times, serif;
