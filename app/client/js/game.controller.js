@@ -10,7 +10,7 @@
     const HitChance = 40;
     const itemSmallHP = 3;
     let vm = this;
-    let player =GameService.getUserCard();
+    let player = GameService.getUserCard();
     console.log(player);
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();

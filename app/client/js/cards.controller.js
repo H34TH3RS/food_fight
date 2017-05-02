@@ -51,6 +51,7 @@
         });
     };
 
+    
 
 
     vm.getLastCard = function getLastCard(){
