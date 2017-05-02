@@ -1,0 +1,9 @@
+<%= form_for @user, url: sessions_path do |f| %>
+  <%= f.label :email, class: "form-control" %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password, class: "form-control" %>
+  <%= f.password_field :password %>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

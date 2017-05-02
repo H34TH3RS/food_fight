@@ -5,7 +5,6 @@
 
   UpcController.$inject = ['$state', 'UpcService'];
 
-
   /**
    * Creates UPC Controllers
    * @param {Function} $state     Allows view routing
@@ -31,8 +30,7 @@
       .catch(function handleError(err) {
           vm.hasError = true;
           vm.message = 'There is a problem with the server. Please try again later.';
-
-      });
+        });
     };
   }
 }());
