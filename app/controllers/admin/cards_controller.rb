@@ -2,7 +2,7 @@
 
 class Admin::CardsController < Admin::BaseController
   before_action :admin_authorize!
-  before_action :set_card, only: [:show, :destroy]
+  before_action :set_card, only: %i[show destroy]
 
   def index
     @cards = Card.all
@@ -14,8 +14,9 @@ class Admin::CardsController < Admin::BaseController
 
   def create
     @card = Card.new(card_params)
-    @card.save
+    current_user.cards << @card
     @card.card_assignments.last.expires_at = Time.current
+    @card.save
   end
 
   def show; end
