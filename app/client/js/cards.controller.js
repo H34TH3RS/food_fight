@@ -18,12 +18,11 @@
     vm.message = null;
     vm.lastCard = {};
 
-
     vm.getAllCards = function getAllCards() {
 
       CardsService.getAllCards()
-        .then(function handleResponse(card) {
-          vm.cards  = card;
+        .then(function handleResponse(cards) {
+          vm.cards  = cards;
           console.log(vm.cards);
           return vm.cards;
       })
@@ -32,6 +31,8 @@
       });
     };
     vm.getAllCards();
+
+
 
     /**
      * Need to re-evalute if we need this
