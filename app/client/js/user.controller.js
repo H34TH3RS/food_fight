@@ -61,7 +61,7 @@
     vm.createUser = function createUser(user) {
       return UserService.createUser(user)
       .then(function goHome() {
-        $state.go('home');
+        $state.go('login');
       })
       .catch(function handleError(err) {
         vm.hasError = true;
