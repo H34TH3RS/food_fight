@@ -12,28 +12,9 @@
   */
   function CardsService($http, UserService, UpcService) {
     let token = UserService.getToken();
-    let cardObj = {};
-
-    function getAllCards(upc) {
-      return $http({
-        url: '/api/card_assignments',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        data: {
-          upc: upc
-        }
-      })
-      .then(function handleResponse(response) {
-        console.log(response.data);
-        return response.data;
-      });
-    }
 
     /**
-     * Gets all the cards from the api
+     * Gets all the cards from the api then retrieves the last object
      * @param  {String} upc [description]
      * @return {Promise}     [description]
      */
@@ -54,7 +35,6 @@
         let cards = response.data;
         let lastIndex = (cards.length - 1);
         let card = cards[lastIndex];
-
         console.log("New Generated Card", card);
         return card;
       });
@@ -65,7 +45,7 @@
      * @param  {String} upc [description]
      * @return {Array}     [description]
      */
-    function getLastCard(upc){
+    function getAllCards(upc){
       return $http({
         url: '/api/card_assignments',
         method: 'GET',
@@ -84,14 +64,7 @@
       });
     }
 
-    function getCardPick(){
-        return cardObj;
-    }
-
-
     return {
-      getLastCard: getLastCard,
-      getCardPick: getCardPick,
       getAllCards: getAllCards,
       getOneCard: getOneCard
     };

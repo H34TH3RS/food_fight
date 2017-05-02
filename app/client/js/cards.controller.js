@@ -39,7 +39,11 @@
     };
     vm.getAllCards();
 
-
+    /**
+     * Need to re-evalute if we need this
+     * @param  {[type]} card [description]
+     * @return {[type]}      [description]
+     */
     vm.getOneCard = function getOneCard(card) {
       // TODO what is cards.card?
       console.log("cards.card",cards.card);
@@ -52,13 +56,16 @@
       });
     };
 
+    /**
+     * Get the array from getLastCard from CardsService
+     * @return {Object} [description]
+     */
     vm.getLastCard = function getLastCard(){
 
-      CardsService.getLastCard()
+      CardsService.getAllCards()
       .then(function lastMath(card) {
         let last = (card.length - 1);
         vm.lastCard = card[last];
-        // console.log('last card', vm.lastCard);
         return card[last];
       })
       .catch(function handleError(err) {
