@@ -30,7 +30,7 @@ class Admin::CardAssignmentsController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @card_assignment.update(admin_card_assignment_params)
+      if @card_assignment.update!(admin_card_assignment_params)
         format.html { redirect_to admin_card_assignments_path, notice: 'Card assignment was successfully updated.' }
       else
         format.html { render :edit }
