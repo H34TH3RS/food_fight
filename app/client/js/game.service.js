@@ -4,11 +4,9 @@
 
   angular.module('game').factory('GameService', GameService);
 
-  GameService.$inject =['$http', 'CardsService', 'UserService'];
+  GameService.$inject =['$http', 'CardsService'];
 
-  function GameService($http, CardsService, UserService){
-
-    let token = UserService.getToken();
+  function GameService($http, CardsService){
 
     let bots = [
       { enemy:'Deadly Daikon Dan',
@@ -63,21 +61,20 @@
           items:2,
           image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
         }];
-
         return playerCard;
       });
     }
 
     /**This will be the function that grabs bots
     * [getBots description]
-    * @return {[type]} [description]
+    * @return {Array} [description]
     */
     function getBots() {
       return bots;
     }
     /**
     * This will be the function that grabs the treasure
-    * @return {[type]} [description]
+    * @return {Array} [description]
     */
     function getTreasures() {
       return treasures;
@@ -85,7 +82,7 @@
 
     /**
     * The will be the function that grabs an event
-    * @return {[type]} [description]
+    * @return {Array} [description]
     */
     function getEvents() {
       return nothings;

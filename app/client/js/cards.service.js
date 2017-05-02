@@ -84,8 +84,6 @@
       });
     }
 
-
-
     function getCardPick(){
         return cardObj;
     }
