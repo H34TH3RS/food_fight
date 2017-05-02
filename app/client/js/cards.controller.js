@@ -24,13 +24,14 @@
       CardsService.getAllCards()
         .then(function handleResponse(card) {
           vm.cards  = card;
+          console.log(vm.cards);
           return vm.cards;
       })
       .catch(function handleError(err) {
         vm.message = 'Something went wrong. Error ' + err.status;
       });
     };
-
+    vm.getAllCards();
 
     /**
      * Need to re-evalute if we need this
