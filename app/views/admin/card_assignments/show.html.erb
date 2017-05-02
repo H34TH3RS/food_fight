@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expires at:</strong>
+  <%= @card_assignment.expires_at %>
+</p>
+
+<%= link_to 'Edit', edit_admin_card_assignment_path(@card_assignment) %> |
+<%= link_to 'Back', admin_card_assignments_path %>

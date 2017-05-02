@@ -21,7 +21,7 @@ class Admin::CardsController < Admin::BaseController
   def show; end
 
   def destroy
-    @card.card_assignments&.destroy
+    @card.card_assignments.destroy_all
     @card.destroy
     redirect_to admin_cards_path
   end
