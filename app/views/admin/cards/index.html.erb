@@ -6,18 +6,13 @@
       <th>upc</th>
       <th>klass</th>
       <th>energy</th>
-      <th>physical_resistance_debuff</th>
       <th>health</th>
-      <th>accuracy</th>
-      <th>energy_debuff</th>
       <th>strength</th>
-      <th>accuracy_buff</th>
-      <th>health_buff</th>
       <th>defense</th>
-      <th>attack_buff</th>
-      <th>cleanse</th>
       <th>created_at</th>
       <th>updated_at </th>
+      <th>Show</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -27,18 +22,14 @@
         <td><%=card.upc%></td>
         <td><%=card.klass%></td>
         <td><%=card.energy%></td>
-        <td><%=card.physical_resistance_debuff%></td>
         <td><%=card.health%></td>
-        <td><%=card.accuracy%></td>
-        <td><%=card.energy_debuff%></td>
         <td><%=card.strength%></td>
-        <td><%=card.accuracy_buff%></td>
-        <td><%=card.health_buff%></td>
         <td><%=card.defense%></td>
-        <td><%=card.attack_buff%></td>
-        <td><%=card.cleanse%></td>
         <td><%=card.created_at%></td>
         <td><%=card.updated_at%></td>
+        <td><%=link_to 'Details', admin_card_path(card)%></td>
+        <td><%=link_to 'Delete', admin_card_path(card), method: :delete, data:
+        { confirm: 'Are you sure you want to delete this card?'} %></td>
       </tr>
     <% end %>
   </tbody>

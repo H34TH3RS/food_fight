@@ -2,6 +2,8 @@
 
 class Admin::CardsController < Admin::BaseController
   before_action :admin_authorize!
+  before_action :set_card, only: [:show, :destroy]
+
   def index
     @cards = Card.all
   end
@@ -16,7 +18,15 @@ class Admin::CardsController < Admin::BaseController
     @card.card_assignments.last.expires_at = Time.current
   end
 
-  private def card_params
-    params.require(:card).permit
+  def show; end
+
+  def destroy
+    @card.card_assignments&.destroy
+    @card.destroy
+    redirect_to admin_cards_path
+  end
+
+  private def set_card
+    @card = Card.find(params[:id])
   end
 end

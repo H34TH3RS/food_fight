@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :cards, only: [:index, :new, :create]
+    resources :cards, only: [:index, :new, :create, :show, :destroy]
   end
 
   namespace :api do
