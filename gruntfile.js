@@ -106,18 +106,23 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['babel-preset-es2015']
+      },
+      dist: {
+        files: {
+          'public/js/app.js': 'public/js/app.js'
+        }
+      }
     }
 
   });
 
   require('load-grunt-tasks')(grunt);
-  // grunt.loadNpmTasks('grunt-karma');
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
-  // grunt.loadNpmTasks('grunt-contrib-clean');
-  // grunt.loadNpmTasks('grunt-contrib-concat');
-
-  grunt.registerTask('default', ['jshint', /*'karma',*/ 'clean', 'sass', 'copy', 'concat']);
+  grunt.registerTask('default', ['jshint', /*'karma',*/ 'clean', 'sass', 'copy', 'concat', 'babel']);
 
 };
