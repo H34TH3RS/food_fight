@@ -5,7 +5,6 @@
 
   UpcController.$inject = ['$state', 'UpcService'];
 
-
   /**
    * Creates UPC Controllers
    * @param {Function} $state     Allows view routing
