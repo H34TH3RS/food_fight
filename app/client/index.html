@@ -15,7 +15,7 @@
 
     </header>
 
-    <nav ng-controller='UserController as userCtrl' class='nav navbar navbar-inverse nav-pills'>
+    <nav ng-controller='UserController as userCtrl' class='nav navbar-fixed-top navbar navbar-inverse nav-pills'>
 
       <ul class='container'>
 
@@ -25,13 +25,14 @@
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='create-user'>create a user</a></li>
         <li ng-show='userCtrl.loggedIn()'><a ui-sref='upc'>UPC</a></li>
         <li ng-show='userCtrl.loggedIn()'><a ui-sref='cards'>View All Cards</a></li>
+        <li><a ui-sref='about-us'>Meet the Creators</a></li>
       </ul>
     </nav>
 
     <main ui-view class='main-view container-fluid'>
     </main>
 
-    <footer class='navbar navbar-footer'>
+    <footer class='navbar navbar-footer navbar-fixed-bottom'>
       <p>&copy 2017 Sara Basile * Seth Brady * Molly Stoopler</p>
     </footer>
 
