@@ -9,31 +9,43 @@
 
     const HitChance = 40;
     const itemSmallHP = 3;
+    const chance = 100;
+    const treasureChance = 10;
+    const nothing = 30;
+    const atkClick = 0;
+    const battleRate = 30;
+    const NUMBER_OF_MOVES_IN_GAME = 25;
+
     let vm = this;
-    let player = GameService.getUserCard();
+    let player;
+
+
+    GameService.getUserCard().then(function(playerCards) {
+       player = playerCards;
+       vm.playerDefense =  player[0].defense;
+       vm.basicPlayerItems =  player[0].items;
+       vm.playerStr =  player[0].strength;
+       vm.currentEventName = 'Prepare for Battle!';
+       vm.basicPlayerHealth = player[0].health;
+       vm.playerName = player[0].name;
+       vm.playerImage = player[0].image;
+    });
+
     console.log(player);
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
     let botPick;
-    let chance = 100;
-    let treasureChance = 10;
-    let nothing = 30;
-    let atkClick = 0;
-    let battleRate = 30;
+
     let playerDefendBool = false;
     let battleBool = false;
     let playerTurn = true;
-    vm.basicPlayerItems =  player[0].items;
+
     vm.basicBotHealth = 0;
     vm.botBtlStr = 0;
     vm.botBtlDef = 0;
-    vm.playerDefense =  player[0].defense;
-    vm.playerStr =  player[0].strength;
-    vm.currentEventName = 'Prepare for Battle!';
-    vm.basicPlayerHealth = player[0].health;
-    vm.playerName = player[0].name;
-    vm.boardSize = 25;
+
+    vm.boardSize = NUMBER_OF_MOVES_IN_GAME;
     vm.roll = 0;
     vm.status = '';
     vm.botHealth = localStorage.getItem('healthLocal') || null;
@@ -43,7 +55,7 @@
     vm.messageArray =[];
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
-    vm.playerImage = player[0].image;
+
 
 
 

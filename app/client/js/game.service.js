@@ -9,17 +9,6 @@
   function GameService($http, CardsService, UserService){
 
     let token = UserService.getToken();
-    console.log(CardsService.getOneCard());
-
-    let playerCard =[{
-      name: 'Taco Cat',
-      health: CardsService.getOneCard().health,//why are these undefined
-      strength: CardsService.getOneCard().strength,
-      defense: CardsService.getOneCard().defense,
-      items:2,
-      image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
-    }];
-
 
     let bots = [
       { enemy:'Deadly Daikon Dan',
@@ -38,6 +27,7 @@
       defense:1,
       image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
     ];
+
     let treasures = [
       {treasure:'a Golden Egg',
       image:'http://freepngimages.com/wp-content/uploads/2014/04/EasterGold_Egg_1.png'},
@@ -46,6 +36,7 @@
       {treasure:'some Salt',
       image:'http://vignette4.wikia.nocookie.net/battlefordreamislandfanfiction/images/7/77/Salt.png/revision/latest?cb=20140331153921'}
     ];
+
     let nothings = [
       {nothing:'Boneless Chickens',
       image:'https://hydra-media.cursecdn.com/zelda.gamepedia.com/thumb/1/14/HW_Cucco.png/200px-HW_Cucco.png?version=dfa0439718d5e856ae8f416812d3d858'},
@@ -62,8 +53,19 @@
     * @return {[type]} [description]
     */
     function getUserCard() {
-      console.log();
-      return playerCard;
+      return CardsService.getOneCard().then(function(card) {
+        console.log("Card from card service", card);
+        let playerCard =[{
+          name: 'Taco Cat',
+          health: card.health,//why are these undefined
+          strength: card.strength,
+          defense: card.defense,
+          items:2,
+          image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
+        }];
+
+        return playerCard;
+      });
     }
 
     /**This will be the function that grabs bots

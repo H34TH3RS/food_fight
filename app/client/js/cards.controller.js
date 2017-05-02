@@ -41,7 +41,8 @@
     vm.getAllCards();
 
   vm.getOneCard = function getOneCard(card) {
-
+      // TODO what is cards.card?
+      console.log("cards.card",cards.card);
       CardsService.getOneCard(cards.card)
         .then(function goToCreateCard() {
           $state.go('cards');
@@ -51,7 +52,7 @@
         });
     };
 
-    
+
 
 
     vm.getLastCard = function getLastCard(){
