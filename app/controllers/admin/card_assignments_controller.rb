@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Admin::CardAssignmentsController < ApplicationController
+class Admin::CardAssignmentsController < Admin::BaseController
   before_action :set_card_assignment, only: %i[show edit update destroy]
+  before_action :admin_authorize!
 
   def index
     @card_assignments = CardAssignment.all

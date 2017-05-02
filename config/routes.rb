@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :cards, only: [:index, :new, :create, :show, :destroy]
     resources :card_assignments
+    resources :users, except: [:new, :create, :show]
   end
 
   namespace :api do
