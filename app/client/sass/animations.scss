@@ -18,7 +18,7 @@
   }
 }
 
-@keyframes bounceInDown {
+@keyframes bounce {
   from, 60%, 75%, 90%, to {
     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
@@ -60,9 +60,22 @@
   animation-fill-mode: forwards;
 }
 
-.bounceInDown {
-  animation-name: bounceInDown;
+.bounceA {
+  animation-name: bounce;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+.bounceB {
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.bounceC {
+  animation-name: bounce;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
 }
