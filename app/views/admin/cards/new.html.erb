@@ -1,0 +1,34 @@
+<h1> Create a NPC card </h1>
+
+<%= form_for @card, url: admin_cards_path do |f| %>
+  <%= f.label :food_name %>
+  <%= f.text_field :food_name, class: "form-control" %>
+  <%= f.label :klass %>
+  <%= f.text_field :klass, class: "form-control" %>
+  <%= f.label :energy %>
+  <%= f.number_field :energy , class: "form-control" %>
+  <%= f.label :physical_resistance_debuff %>
+  <%= f.number_field :physical_resistance_debuff, class: "form-control" %>
+  <%= f.label :health %>
+  <%= f.number_field :health, class: "form-control" %>
+  <%= f.label :accuracy %>
+  <%= f.number_field :accuracy, class: "form-control" %>
+  <%= f.label :energy_debuff %>
+  <%= f.number_field :energy_debuff, class: "form-control" %>
+  <%= f.label :strength %>
+  <%= f.number_field :strength, class: "form-control" %>
+  <%= f.label :accuracy_buff %>
+  <%= f.number_field :accuracy_buff, class: "form-control" %>
+  <%= f.label :health_buff %>
+  <%= f.number_field :health_buff, class: "form-control" %>
+  <%= f.label :defense %>
+  <%= f.number_field :defense, class: "form-control" %>
+  <%= f.label :attack_buff %>
+  <%= f.number_field :attack_buff, class: "form-control" %>
+  <%= f.label :cleanse %>
+  <%= f.number_field :cleanse, class: "form-control" %>
+  <%= f.label :upc %>
+  <%= f.text_field :upc, class: "form-control" %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

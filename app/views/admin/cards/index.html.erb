@@ -1,0 +1,36 @@
+<h1> All Admin Cards </h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>food_name</th>
+      <th>upc</th>
+      <th>klass</th>
+      <th>energy</th>
+      <th>health</th>
+      <th>strength</th>
+      <th>defense</th>
+      <th>created_at</th>
+      <th>updated_at </th>
+      <th>Show</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%=card.food_name%></td>
+        <td><%=card.upc%></td>
+        <td><%=card.klass%></td>
+        <td><%=card.energy%></td>
+        <td><%=card.health%></td>
+        <td><%=card.strength%></td>
+        <td><%=card.defense%></td>
+        <td><%=card.created_at%></td>
+        <td><%=card.updated_at%></td>
+        <td><%=link_to 'Details', admin_card_path(card)%></td>
+        <td><%=link_to 'Delete', admin_card_path(card), method: :delete, data:
+        { confirm: 'Are you sure you want to delete this card?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
