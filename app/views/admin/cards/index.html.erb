@@ -1,8 +1,9 @@
 <h1> All Admin Cards </h1>
-<table class="table table-borderless">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>food_name</th>
+      <th>upc</th>
       <th>klass</th>
       <th>energy</th>
       <th>physical_resistance_debuff</th>
@@ -17,15 +18,15 @@
       <th>cleanse</th>
       <th>created_at</th>
       <th>updated_at </th>
-      <th>upc</th>
     </tr>
   </thead>
   <tbody>
     <% @cards.each do |card| %>
       <tr>
         <td><%=card.food_name%></td>
+        <td><%=card.upc%></td>
         <td><%=card.klass%></td>
-        <td>card.energy</td>
+        <td><%=card.energy%></td>
         <td><%=card.physical_resistance_debuff%></td>
         <td><%=card.health%></td>
         <td><%=card.accuracy%></td>
@@ -38,7 +39,6 @@
         <td><%=card.cleanse%></td>
         <td><%=card.created_at%></td>
         <td><%=card.updated_at%></td>
-        <td><%=card.upc%></td>
       </tr>
     <% end %>
   </tbody>
