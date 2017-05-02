@@ -144,6 +144,7 @@
      */
     function randomEncounter(){
       let encounter = rngEncounter();
+      
       if ( encounter < treasureChance){
         battleBool = false;
         vm.status = ' ';

@@ -18,6 +18,20 @@
     vm.message = null;
     vm.lastCard = {};
 
+
+    vm.getAllCards = function getAllCards() {
+
+      CardsService.getAllCards()
+        .then(function handleResponse(card) {
+          vm.cards  = card;
+          return vm.cards;
+      })
+      .catch(function handleError(err) {
+        vm.message = 'Something went wrong. Error ' + err.status;
+      });
+    };
+
+
     /**
      * Need to re-evalute if we need this
      * @param  {[type]} card [description]
