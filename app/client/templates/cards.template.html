@@ -1,16 +1,15 @@
 
 
-<section class='col-xs-12 col-lg-4 cardWrapper' ng-repeat='card in cardsCtrl.cards'>
+<section class='col-xs-12 col-lg-4 cardWrapper' ng-repeat='card in cardsCtrl.cards | orderBy:"-id" '>
   <article class='playerCardDisplay cardDisplay col-xs-10 col-xs-offset-1'>
     <img src='http://www.fillmurray.com/100/100' class='image-box playerAvatar'>
-    <p>Bill Murray</p>
+    <p>{{ card.food_name }}</p>
     <ul class='list-group stats-group'>
-      <li class='list-group-item'>NAME: {{ cardsCtrl.lastCard.food_name }} </li>
-      <li class='list-group-item'>ID: {{ cardsCtrl.lastCard.id }} </li>
-      <li class='list-group-item'>HEALTH: {{ cardsCtrl.lastCard.health }}</li>
-      <li class='list-group-item'>DEFENSE: {{ cardsCtrl.lastCard.defense }}</li>
-      <li class='list-group-item'>CLASS: {{ cardsCtrl.lastCard.klass }}</li>
-      <li class='list-group-item'>ENERGY: {{ cardsCtrl.lastCard.energy}}</li>
+      <li class='list-group-item'>Defense: {{ card.defense }}</li>
+      <li class='list-group-item'>Strength: {{ card.strength }}</li>
+      <li class='list-group-item'>HP: {{ card.health }}</li>
+      <li class='list-group-item'>Class: {{ card.klass }}</li>
+      <li class='list-group-item'>Energy: {{ card.energy}}</li>
     </ul>
   </article>
 </section>
