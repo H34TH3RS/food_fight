@@ -1,13 +1,16 @@
+
+
 <section class='col-xs-12 col-lg-4 cardWrapper'>
   <article class='playerCardDisplay cardDisplay col-xs-10 col-xs-offset-1'>
     <img src='http://www.fillmurray.com/100/100' class='image-box playerAvatar'>
     <p>Bill Murray</p>
     <ul class='list-group stats-group'>
-      <li class='list-group-item'>ID: {{ cardsCtrl.storedData.id }} </li>
-      <li class='list-group-item'>HEALTH: {{ cardsCtrl.storedData.health }}</li>
-      <li class='list-group-item'>DEFENSE: {{ cardsCtrl.storedData.defense }}</li>
-      <li class='list-group-item'>CLASS: {{ cardsCtrl.storedData.klass }}</li>
-      <li class='list-group-item'>ENERGY: {{ cardsCtrl.storedData.energy}}</li>
+      <li class='list-group-item'>NAME: {{ cardsCtrl.lastCard.food_name }} </li>
+      <li class='list-group-item'>ID: {{ cardsCtrl.lastCard.id }} </li>
+      <li class='list-group-item'>HEALTH: {{ cardsCtrl.lastCard.health }}</li>
+      <li class='list-group-item'>DEFENSE: {{ cardsCtrl.lastCard.defense }}</li>
+      <li class='list-group-item'>CLASS: {{ cardsCtrl.lastCard.klass }}</li>
+      <li class='list-group-item'>ENERGY: {{ cardsCtrl.lastCard.energy}}</li>
     </ul>
   </article>
 </section>
