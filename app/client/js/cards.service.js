@@ -14,10 +14,10 @@
     let token = UserService.getToken();
 
     /**
-     * Gets all the cards from the api then retrieves the last object
-     * @param  {String} upc [description]
-     * @return {Promise}     [description]
-     */
+    * Gets all the cards from the api then gets the last object inside
+    * @param  {String} upc  from the UPC data entered
+    * @return {Promise}     [description]
+    */
     function getOneCard(upc) {
       console.log(upc);
       return $http({
@@ -41,10 +41,10 @@
     }
 
     /**
-     * Retrieves the all the cards from the api
-     * @param  {String} upc [description]
-     * @return {Array}     [description]
-     */
+    * Retrieves the all the cards from the api
+    * @param  {String} upc [description]
+    * @return {Array}     [description]
+    */
     function getAllCards(upc){
       return $http({
         url: '/api/card_assignments',
@@ -59,7 +59,6 @@
       })
       .then(function handleResponse(response) {
         let cards = response.data;
-        console.log(cards);
         return cards;
       });
     }
