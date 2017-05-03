@@ -7,6 +7,11 @@
   background-color: $background-color;
   border: 5px solid grey;
   border-radius: 5px;
+
+  label {
+    color: $terminal-green;
+    font-family: Courier, Times, serif;
+  }
 }
 
 .createHeadings {
