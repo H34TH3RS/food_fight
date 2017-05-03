@@ -18,14 +18,15 @@
     vm.message = null;
     vm.lastCard = {};
 
-
     vm.getAllCards = function getAllCards() {
 
       CardsService.getAllCards()
-        .then(function handleResponse(card) {
-          vm.cards  = card;
+        .then(function handleResponse(cards) {
+          vm.cards  = cards;
           console.log(vm.cards);
           return vm.cards;
+      }).then(function gotoCard(){
+          $state.go('cards');
       })
       .catch(function handleError(err) {
         vm.message = 'Something went wrong. Error ' + err.status;
@@ -34,29 +35,13 @@
     vm.getAllCards();
 
     /**
-     * Need to re-evalute if we need this
-     * @param  {[type]} card [description]
-     * @return {[type]}      [description]
-     */
-    vm.getOneCard = function getOneCard(card) {
-      // TODO what is cards.card?
-      CardsService.getOneCard(cards.card)
-      .then(function goToCreateCard() {
-        $state.go('cards');
-      })
-      .catch(function handleError(err) {
-        vm.message = 'Something went wrong. Error ' + err.status;
-      });
-    };
-
-    /**
      * Get the array from getLastCard from CardsService
      * @return {Object} [description]
      */
     vm.getLastCard = function getLastCard(){
       CardsService.getAllCards()
       .then(function lastMath(card) {
-        let last = (card.length - 1);
+        let last = (card.length);
         vm.lastCard = card[last];
         return card[last];
       })
