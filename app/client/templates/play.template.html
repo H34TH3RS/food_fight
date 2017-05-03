@@ -3,7 +3,7 @@
 
   <section class='col-xs-12 col-lg-6 cardWrapper'>
     <article class='playerCardDisplay cardDisplay col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
-      <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar'>
+      <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar avatarGlow'>
       <p>{{gameCtrl.playerName}}</p>
       <section class='progress'>
         <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullHealth()}}%;">Player Health: {{gameCtrl.fullHealth()}}%
@@ -15,15 +15,14 @@
         <li class='list-group-item'>Defense: {{gameCtrl.playerDefense}}</li>
         <li class='list-group-item'>Strength: {{gameCtrl.playerStr}}</li>
         <li class='list-group-item'>HP: {{gameCtrl.basicPlayerHealth}}</li>
-        <li class='list-group-item'>Class: put_class_here</li>
-        <li class='list-group-item'>Energy: put_energy_here</li>
+        <li class='list-group-item'>Class: {{gameCtrl.playerClass}}</li>
       </ul>
     </article>
   </section>
 
-  <section class='col-xs-12 col-lg-6 cardWrapper'>
+  <section class='col-xs-12 col-lg-6 cardWrapper enemyCardWrapper'>
     <article class='enemyCardDisplay cardDisplay col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
-      <img src='{{gameCtrl.image}}' class='image-box enemyAvatar'>
+      <img src='{{gameCtrl.image}}' class='image-box enemyAvatar avatarGlow'>
       <p>{{gameCtrl.currentEventName}}</p>
       <section class='progress'>
         <aside ng-show='gameCtrl.checkBattleBool()' class='progress-bar' role='progressbar' aria-valuenow='{{gameCtrl.fullBotHealth()}}' aria-valuemin="0" aria-valuemax="100" style="width: {{gameCtrl.fullBotHealth()}}%;">Enemy Health: {{gameCtrl.fullBotHealth()}}%
@@ -35,8 +34,7 @@
         <li class='list-group-item'>Defense: {{gameCtrl.botBtlDef}}</li>
         <li class='list-group-item'>Strength: {{gameCtrl.botBtlStr}}</li>
         <li class='list-group-item'>HP: {{gameCtrl.basicBotHealth}}</li>
-        <li class='list-group-item'>Class: put_class_here</li>
-        <li class='list-group-item'>Energy: put_energy_here</li>
+        <li class='list-group-item'>Class: {{gameCtrl.botClass}}</li>
       </ul>
     </article>
   </section>
@@ -45,8 +43,8 @@
 
 <section class='play-buttons-wrapper row'>
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info col-xs-2' ng-click='gameCtrl.playerItems()'>Item</button>
-  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
-  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger col-xs-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
+  <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary rollButton col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger attackButton col-xs-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
 
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success col-xs-2' ng-click='gameCtrl.playerDef()'>Defense</button>
   <button ng-show='!gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-xs-6 col-xs-offset-2'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>

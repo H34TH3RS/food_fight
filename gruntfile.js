@@ -41,7 +41,15 @@ module.exports = function(grunt) {
           dest: 'public/',
           expand: true
         }]
-      }
+      },
+      images: {
+        files: [{
+          cwd: 'app/client/images/',
+          src: ['*.png', '*.gif', '*.jpg'],
+          dest: 'public/images/',
+          expand: true
+        }]
+      },
     },
     concat: {
       options: {

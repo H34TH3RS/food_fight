@@ -1,7 +1,9 @@
 .image-box {
-  margin: 1em;
+  margin: 2em;
   height: 200px;
   width: 200px;
+  padding: 1em;
+  border-radius: 10%;
 }
 .cardWrapper {
   padding: 0;
@@ -15,6 +17,9 @@
   border: 5px solid $info-color;
   border-radius: 5px;
   background-color: #000000;
+  animation-name: bounceInDown;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
 
   p {
     font-family: Courier, Times, serif;
@@ -35,13 +40,27 @@
       font-size: 1em;
       background-color: $warning-color;
       border: 1px solid $info-color;
-      padding: 0.25em
+      padding: 0.25em;
     }
   }
 }
 .play-buttons-wrapper {
   margin: 0.5em;
+
+  .rollButton {
+    box-shadow: 0 0 10px 5px white;
+  }
+
+  button:focus {
+    box-shadow: 0 0 10px 5px white;
+    border: none;
+  }
 }
+
+.addGlow {
+  box-shadow: 0 0 10px 5px white;
+}
+
 .move-box {
   color: $terminal-green;
   font-family: Courier, Times, serif;
