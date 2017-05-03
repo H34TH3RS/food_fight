@@ -29,6 +29,7 @@
        vm.basicPlayerHealth = player[0].health;
        vm.playerName = player[0].name;
        vm.playerImage = player[0].image;
+       vm.playerClass = player[0].klass;
     });
 
     console.log(player);
@@ -55,7 +56,7 @@
     vm.messageArray =[];
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
-
+    vm.botClass = '';
 
 
 
@@ -144,7 +145,7 @@
      */
     function randomEncounter(){
       let encounter = rngEncounter();
-      
+
       if ( encounter < treasureChance){
         battleBool = false;
         vm.status = ' ';
@@ -172,6 +173,7 @@
         vm.botBtlStr= bots[botPick].strength;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
+        vm.botClass = bots[botPick].klass;
         unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
         battle();
       }
