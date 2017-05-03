@@ -7,12 +7,17 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:user][:email])
-    session[:current_user_id] = @user.id
-    redirect_to admin_cards_path
+    if @user
+      session[:current_user_id] = @user.id
+      redirect_to admin_cards_path
+    else
+      redirect_to new_session_path, notice: 'No user found'
+
+    end
   end
 
   def destroy
-    session[:current_user_id] = @user.id
-    redirect_to new_session_path
+    session[:current_user_id] = nil
+    redirect_to "/"
   end
 end
