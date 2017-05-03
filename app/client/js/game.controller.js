@@ -21,15 +21,15 @@
 
     GameService.getUserCard().then(function(playerCards) {
 
-       player = playerCards;
-       vm.playerDefense =  player[0].defense;
-       vm.basicPlayerItems =  player[0].items;
-       vm.playerStr =  player[0].strength;
-       vm.currentEventName = 'Prepare for Battle!';
-       vm.basicPlayerHealth = player[0].health;
-       vm.playerName = player[0].name;
-       vm.playerImage = player[0].image;
-       vm.playerClass = player[0].klass;
+      player = playerCards;
+      vm.playerDefense =  player[0].defense;
+      vm.basicPlayerItems =  player[0].items;
+      vm.playerStr =  player[0].strength;
+      vm.currentEventName = 'Prepare for Battle!';
+      vm.basicPlayerHealth = player[0].health;
+      vm.playerName = player[0].name;
+      vm.playerImage = player[0].image;
+      vm.playerClass = player[0].klass;
 
     });
 
@@ -56,6 +56,7 @@
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
     vm.botClass = '';
+
 
 
     /**
@@ -107,48 +108,6 @@
       return vm.roll;
     };
 
-    function battleBoss(){
-      if(player[0].health <= 0){
-        playerHealthUpdate();
-        $state.go('end');
-      }else{
-        botPick = 0;
-        bots[botPick] = bosses[botPick];
-        vm.status = ' ';
-        battleBool = true; //this is set to true so that the fight menu can be displayed
-        vm.currentEventName = bots[botPick].enemy;
-        vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
-        vm.basicBotHealth = bots[botPick].health;
-        vm.botBtlStr= bots[botPick].strength;
-        vm.image = bots[botPick].image;
-        vm.botName = bots[botPick].enemy;
-        unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
-        battle();
-      }
-    }
-
-    /**
-    * Handles whether enemy or player goes first depending on the playerTurn
-    * value.
-    * @return {Void}
-    */
-    function fightFunc(){
-      vm.playerHealth = localStorage.getItem('playerHealthLocal');
-      vm.botHealth = localStorage.getItem('botHealthLocal');
-      if(playerTurn === true){
-        unshiftMessages('Make your move...');
-        bots[botPick].health = vm.botHealth;
-        if(vm.botHealth <=0){
-          unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
-          battleBool = !battleBool;
-          bots[botPick].health = vm.basicBotHealth;
-        }
-      }else{
-        unshiftMessages('It\'s ' + vm.botName + '\s turn...');
-        botAtk();
-      }
-    }
-
     /**
     * Handles the dice rolls and subtracts the number from the boardSize
     * @return {Number}
@@ -164,6 +123,85 @@
       }
       return vm.roll, vm.boardSize;
     };
+
+
+    /**
+     * Checks the players health and the against the boss if a boss battle has
+     * been initiated. Sets the boss to the current bot to use the same battle
+     * logic.
+     * @return {Void}
+     */
+    function battleBoss(){
+      if(player[0].health <= 0){
+        playerHealthUpdate();
+        $state.go('lost');
+      }else{
+        botPick = 0;
+        bots[botPick] = bosses[0];
+        bosses[0].health = bots[botPick].health;
+        battleBool = true; //this is set to true so that the fight menu can be displayed
+        vm.status = ' ';
+        vm.currentEventName = bots[botPick].enemy;
+        vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
+        vm.basicBotHealth = bots[botPick].health;
+        vm.botBtlStr= bots[botPick].strength;
+        vm.image = bots[botPick].image;
+        vm.botName = bots[botPick].enemy;
+        unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
+        battle();
+      }
+    }
+
+    /**
+     * Checks the health of the boss. If zero, goes to the end game view.
+     * @return {Void} [description]
+     */
+    function bossHealthCheck(){
+      if (bosses[0].health <=0){
+        playerHealthUpdate();
+        $state.go('end');
+      }
+    }
+
+    /**
+    * This handles the battle mechanics based on the value returned from the const
+    * var battleRoll
+    * @return {VOID}
+    */
+    function battle(){
+      playerDeathCheck();
+      vm.canRollCheck = true;
+      vm.battleRoll = Math.floor(Math.random()*100)+1;
+      const BattleRoll = vm.battleRoll;
+      if(vm.battleRoll < battleRate){
+        playerTurn = false;
+      }else{
+        playerTurn = true;
+      }
+    }
+
+    /**
+    * Handles whether enemy or player goes first depending on the playerTurn
+    * value.
+    * @return {Void}
+    */
+    function fightFunc(){
+      bossHealthCheck();
+      vm.playerHealth = localStorage.getItem('playerHealthLocal');
+      vm.botHealth = localStorage.getItem('botHealthLocal');
+      if(playerTurn === true){
+        unshiftMessages('Make your move...');
+        bots[botPick].health = vm.botHealth;
+        if(vm.botHealth <=0){
+          unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
+          battleBool = !battleBool;
+          bots[botPick].health = vm.basicBotHealth;
+        }
+      }else{
+        unshiftMessages('It\'s ' + vm.botName + '\s turn...');
+        botAtk();
+      }
+    }
 
     /**
     * Add and item to the players inventory if the item count is less than 3
@@ -220,25 +258,6 @@
     }
 
     /**
-    * This handles the battle mechanics based on the value returned from the const
-    * var battleRoll
-    * @return {VOID}
-    */
-    function battle(){
-      playerDeathCheck();
-      vm.canRollCheck = true;
-      vm.battleRoll = Math.floor(Math.random()*100)+1;
-      const BattleRoll = vm.battleRoll;
-      if(vm.battleRoll < battleRate){
-        playerTurn = false;
-      }else{
-        playerTurn = true;
-      }
-    }
-
-
-
-    /**
     * Check is the players HP isat or below 0. If it is, sends the use to the
     * 'view'.
     * @return {Void}
@@ -290,7 +309,6 @@
       }
       fightFunc();
     }
-
 
     /**
     * Sets the playerDefendBool to true and returns to the fightFunc
