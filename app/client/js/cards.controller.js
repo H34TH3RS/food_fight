@@ -49,8 +49,18 @@
         vm.message = 'Something went wrong. Error ' + err.status;
       });
     };
-
     vm.getLastCard();
+
+    /**
+     * Get the cards from card service;
+     * @return {Promise}
+     */
+    vm.getOneCard = function getOneCard(){
+      CardsService.getOneCard()
+      .then(function showCards(){
+      });
+    };
+    vm.getOneCard();
 
   }
 
