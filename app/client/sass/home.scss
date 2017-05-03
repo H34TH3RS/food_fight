@@ -4,6 +4,15 @@
     padding-top: 1em;
 }
 
+.homeButtons {
+  margin-top: 2em;
+  font-size: 2em;
+  animation-name: borderPulse;
+  animation-duration: 1.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 .playButton {
   margin: 1em;
 }

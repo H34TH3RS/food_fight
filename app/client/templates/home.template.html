@@ -1,7 +1,8 @@
 
-<section class='homeTemplate'>
-  <h2 class='homepageHeaders'>Welcome to the Food Fight!</h1>
-  <h3 class='homepageHeaders'>A game of wits and grits</h2>
+<section class='homeTemplate row'>
+  <a ui-sref='login'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-3 homeButtons'>Log In</button></a>
+
+  <a ui-sref='create'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-2 homeButtons'>Create an Account</button></a>
 </section>
 
 <section ng-show='userCtrl.loggedIn()' class='playBtn'>
