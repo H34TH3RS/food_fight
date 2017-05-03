@@ -26,6 +26,14 @@
       image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
     ];
 
+    let bosses = [
+      { enemy:'Kevin Bacon and Eggz',
+      health: 100,
+      strength: 23,
+      defense:10,
+      image:'https://s-media-cache-ak0.pinimg.com/736x/86/07/37/86073779879c4777c617c6cea2e9eac6.jpg'},
+    ];
+
     let treasures = [
       {treasure:'a Golden Egg',
       image:'http://freepngimages.com/wp-content/uploads/2014/04/EasterGold_Egg_1.png'},
@@ -72,6 +80,13 @@
     function getBots() {
       return bots;
     }
+    /**This will be the function that grabs boss enemies
+    * [getBots description]
+    * @return {Array} [description]
+    */
+    function getBosses() {
+      return bosses;
+    }
     /**
     * This will be the function that grabs the treasure
     * @return {Array} [description]
@@ -89,6 +104,7 @@
     }
 
     return {
+      getBosses: getBosses,
       getEvents: getEvents,
       getTreasures: getTreasures,
       getUserCard: getUserCard,
