@@ -1,8 +1,24 @@
 .createUserForm {
   color: $warning-color;
-  padding: 5%;
 }
 
 .form-group {
   text-align: left;
+  background-color: $background-color;
+  border: 5px solid grey;
+  border-radius: 5px;
+
+  label {
+    color: $terminal-green;
+    font-family: Courier, Times, serif;
+  }
+}
+
+.createHeadings {
+  color: $warning-color;
+  text-align: center;
+}
+
+.createButton {
+  padding: 1em;
 }
