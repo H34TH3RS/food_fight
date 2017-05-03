@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="/admin/home"><i class="fa fa-home fa-1x" aria-hidden="true"></i></a></li>
+          <li><%= link_to "Show All Cards", admin_cards_path %></li>
+          <li><%= link_to 'View Users', admin_users_path %></li>
+          <% if current_user&.admin? %>
+            <li><%= link_to 'Logout', session_path(id: current_user.id), method: :delete %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -10,20 +10,31 @@
 
     let bots = [
       { enemy:'Deadly Daikon Dan',
+      klass: 'Normal',
       health: 10,
       strength: 2,
       defense:1,
       image:'https://blocksworld-production.s3.amazonaws.com/user_model_c4c20a13-d296-487b-a734-315449712234_image-768x768.png'},
       { enemy:'Crazy Carrotina',
+      klass: 'Normal',
       health: 12,
       strength: 4,
       defense:1,
       image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
       { enemy:'Eggploding Eggbert',
+      klass: 'Normal',
       health: 14,
       strength: 6,
       defense:1,
       image:'http://orig03.deviantart.net/1039/f/2012/008/7/5/8bit_egg_by_xxx515xxx-d4ls0ll.png'}
+    ];
+
+    let bosses = [
+      { enemy:'Kevin Bacon and Eggz',
+      health: 100,
+      strength: 23,
+      defense:10,
+      image:'https://s-media-cache-ak0.pinimg.com/736x/86/07/37/86073779879c4777c617c6cea2e9eac6.jpg'},
     ];
 
     let treasures = [
@@ -54,7 +65,7 @@
       return CardsService.getOneCard().then(function(card) {
         console.log("Card from card service", card);
         let playerCard =[{
-          name: 'Taco Cat',
+          name: card.food_name,
           health: card.health,//why are these undefined
           strength: card.strength,
           defense: card.defense,
@@ -71,6 +82,13 @@
     */
     function getBots() {
       return bots;
+    }
+    /**This will be the function that grabs boss enemies
+    * [getBots description]
+    * @return {Array} [description]
+    */
+    function getBosses() {
+      return bosses;
     }
     /**
     * This will be the function that grabs the treasure
@@ -89,6 +107,7 @@
     }
 
     return {
+      getBosses: getBosses,
       getEvents: getEvents,
       getTreasures: getTreasures,
       getUserCard: getUserCard,

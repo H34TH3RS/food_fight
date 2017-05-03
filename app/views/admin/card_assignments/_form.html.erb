@@ -1,0 +1,22 @@
+<%= form_for([:admin, admin_card_assignment]) do |f| %>
+  <% if admin_card_assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_card_assignment.errors.count, "error") %> prohibited this admin_card_assignment from being saved:</h2>
+
+      <ul>
+      <% admin_card_assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :expires_at %>
+    <%= f.datetime_select :expires_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
