@@ -28,8 +28,11 @@
         $state.go('cards');
       })
       .catch(function handleError(err) {
+        if(err.status === 422) {
+          vm.message = 'Please enter a valid UPC';
+        }
           vm.hasError = true;
-          vm.message = 'There is a problem with the server. Please try again later.';
+          vm.message = 'Whoops! Something went wrong. Error ' + err;
         });
     };
   }
