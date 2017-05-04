@@ -23,7 +23,6 @@
       CardsService.getAllCards()
         .then(function handleResponse(cards) {
           vm.cards  = cards;
-          console.log(vm.cards);
           return vm.cards;
       }).then(function gotoCard(){
           $state.go('cards');

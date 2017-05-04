@@ -82,10 +82,9 @@
     */
     function getUserCard() {
       return CardsService.getOneCard().then(function(card) {
-        console.log("Card from card service", card);
         let playerCard =[{
           name: card.food_name,
-          health: card.health,//why are these undefined
+          health: card.health,
           strength: card.strength,
           defense: card.defense,
           klass: card.klass,

@@ -6,16 +6,14 @@
   UpcService.$inject = ['$http', 'UserService'];
 
   /**
-   * Creates the UPC Service
-   * @param {Function} $http Service that allows ajax calls
-   * @return {Promise}
-   */
+  * Creates the UPC Service
+  * @param {Function} $http Service that allows ajax calls
+  * @return {Promise}
+  */
   function UpcService($http, UserService) {
 
     let token = UserService.getToken();
-
     let upcInfo ={};
-    console.log(token);
 
     function sendUpcData(upcCode) {
       return $http({

@@ -108,7 +108,7 @@
     */
     vm.checkBattleBool = function checkBattleBool(){
       vm.canRollCheck = true;
-      let counter = 0;//resets the counter evertime the fn is called
+      let counter = 0;
       counter = counter ++;
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
@@ -150,15 +150,12 @@
     function battleBoss(){
       if(player[0].health <= 0){
         playerHealthUpdate();
-        //do I need to reset the boss here???
         $state.go('lost');
       }else{
         bossCounter ++;
         botPick = 0;
-        // bots[botPick] = bosses[0];
         bots.unshift(bosses[0]);
-        // bosses[0].health = bots[botPick].health;
-        battleBool = true; //this is set to true so that the fight menu can be displayed
+        battleBool = true;
         vm.status = ' ';
         vm.currentEventName = bots[botPick].enemy;
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
@@ -243,7 +240,7 @@
     function randomEncounter(){
       let encounter = rngEncounter();
 
-      if ( encounter < treasureChance){
+      if (encounter < treasureChance){
         battleBool = false;
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
@@ -262,7 +259,7 @@
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
       }else{
         vm.status = ' ';
-        battleBool = true; //this is set to true so that the fight menu can be displayed
+        battleBool = true;
         rngBotPick();
         vm.currentEventName = bots[botPick].enemy;
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
@@ -287,7 +284,6 @@
       if (botPick === 0){
         botPick = Math.floor(Math.random()* bots.length);
       }else{
-        console.log(botPick);
         return botPick;
       }
       return botPick;
@@ -336,7 +332,6 @@
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
         playerDefendTrue();
-        // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
         unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
         playerDeathCheck();

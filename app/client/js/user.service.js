@@ -60,14 +60,14 @@
       })
       .then(function handleResponse(response) {
         token = 'token ' + response.data.auth_token;
-        localStorage.setItem('token', token);//auth_token
+        localStorage.setItem('token', token);
         return token;
       });
     }
     /**
-     * Sets the token to null an removes the token from localStorage
-     * @return {Void}
-     */
+    * Sets the token to null an removes the token from localStorage
+    * @return {Void}
+    */
     function logout() {
       token = null;
       localStorage.removeItem('token');

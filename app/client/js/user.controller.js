@@ -38,7 +38,6 @@
         vm.hasError = true;
         if (err.status === 404) {
           vm.message = 'Unable to log in. Page not found.';
-          // use $state.go('not-found') instead of message on the page?
         } else {
           vm.message = 'There is a problem with the server. Please try again later.';
         }
@@ -67,7 +66,6 @@
         vm.hasError = true;
         if (err.status === 404) {
           vm.message = 'Unable to create a new user. Page not found.';
-          // use $state.go('not-found') instead of message on the page?
         } else {
           vm.message = 'There is a problem with the server. Please try again later.';
         }
