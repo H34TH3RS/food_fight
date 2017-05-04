@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(admin_user_params)
-      redirect_to admin_user_path, notice: 'User updated'
+      redirect_to admin_users_path, notice: 'User updated'
     else
       render :edit, @user.errors.full_messages
     end
