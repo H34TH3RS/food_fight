@@ -1,8 +1,8 @@
 
 <section ng-cloak ng-show='!userCtrl.loggedIn()' class='homeTemplate row'>
-  <a ui-sref='login'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-3 homeButtons'>Log In</button></a>
+  <a ui-sref='login'><button class='btn btn-primary btn-lg col-lg-2 col-lg-offset-3 homeButtons'>Log In</button></a>
 
-  <a ui-sref='create-user'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-2 homeButtons'>Create an Account</button></a>
+  <a ui-sref='create-user'><button class='btn btn-primary btn-lg col-lg-2 col-lg-offset-2 homeButtons'>Create an Account</button></a>
 </section>
 <section ng-cloak ng-show='userCtrl.loggedIn()' class='logo'>
   <a ui-sref='play'><img src='/images/food_fight_logo.png' alt='food fight logo'></a>

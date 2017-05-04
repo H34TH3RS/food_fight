@@ -16,11 +16,16 @@
 
   a:hover {
     text-decoration: none;
-    color: $primary-color;
+    color: $warning-color;
   }
 
   a:focus {
     text-decoration: none;
     color: $info-color;
   }
+}
+
+a:hover {
+  text-decoration: none;
+  color: $warning-color;
 }

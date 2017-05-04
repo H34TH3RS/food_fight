@@ -8,14 +8,11 @@
 
     <section class='col-lg-6 col-lg-offset-3 loginSubmit'>
       <input class='form-control btn btn-info submitLogin' type='submit' name='submitLogin' val='Log In' >
+
+
     </section>
-
+    <a class='col-lg-12 makeAcctLink' ui-sref='create-user'>Don't have an account? Make one!</a>
   </form>
-
-  <section class='makeAcctLink'>
-    <p>Don't have an account?</p>
-    <h3><a ui-sref='create-user'>Make one!</a></h3>
-  </section>
 
   <section class='errMsg'>
     <p class='alert alert-warning' ng-cloak ng-show='loginform.email.$touched && !loginform.email.$valid'>Please enter a valid email address.</p>
