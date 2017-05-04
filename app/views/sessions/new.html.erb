@@ -1,9 +1,13 @@
-<%= form_for @user, url: sessions_path do |f| %>
-  <%= f.label :email, class: "form-control" %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password, class: "form-control" %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Log In", class: "btn btn-primary" %>
-<% end %>
+  <%= form_for @user, url: sessions_path, html: {class: "new-form"} do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: "form-control" %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: "form-control" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Log In", class: "btn btn-primary" %>
+    </div>
+  <% end %>
