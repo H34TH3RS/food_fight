@@ -39,3 +39,9 @@ public/
 /coverage
 
 .DS_Store
+
+css/
+
+less/
+
+scss/

@@ -50,6 +50,14 @@ module.exports = function(grunt) {
           expand: true
         }]
       },
+      fonts: {
+        files: [{
+          cwd: 'app/fonts/',
+          src: ['*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2', '*.otf'],
+          dest: 'public/fonts/',
+          expand: true,
+        }]
+      },
     },
     concat: {
       options: {
