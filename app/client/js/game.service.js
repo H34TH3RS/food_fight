@@ -37,6 +37,7 @@
 
     let bosses = [
       { enemy:'Kevin Bacon and Eggz',
+      klass: 'Salty',
       health: 100,
       strength: 23,
       defense:10,
