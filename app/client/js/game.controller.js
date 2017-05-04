@@ -7,17 +7,22 @@
 
   function GameController($state, GameService){
 
+    let vm = this;
+    let player, botPick;
+
+
     const HitChance = 40;
-    const itemSmallHP = 3;
+    const itemSmallHP = 0.20;
     const chance = 100;
-    const treasureChance = 10;
+    const treasureChance = 15;
     const nothing = 30;
     const atkClick = 0;
     const battleRate = 30;
-    const NUMBER_OF_MOVES_IN_GAME = 900;
+    const NUMBER_OF_MOVES_IN_GAME = 25;
+    const DEFENSE_VAR = 0.7;
 
-    let vm = this;
-    let player, botPick;
+
+
 
     GameService.getUserCard().then(function(playerCards) {
 
@@ -32,8 +37,6 @@
       vm.playerClass = player[0].klass;
 
     });
-
-    console.log(player);
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
@@ -55,7 +58,6 @@
     vm.messageArray =[];
     vm.botName= ' ';
     vm.image = 'http://24.media.tumblr.com/2b614d23b694e6a843b3f59d7e1cda41/tumblr_mn1ytcEZS81s84p5fo1_500.gif';
-
 
 
     /**
@@ -297,9 +299,10 @@
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
-        vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
+        playerDefendTrue();
+        // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{
@@ -307,6 +310,10 @@
         playerTurn = true;
       }
       fightFunc();
+    }
+
+    function playerDefendTrue(){
+      vm.playerHealth = vm.playerHealth - (vm.botBtlStr*DEFENSE_VAR);
     }
 
     /**
@@ -330,7 +337,7 @@
       }else{
         unshiftMessages(player[0].name + ' uses an item and recovers ' + itemSmallHP + ' hp');
         player[0].items = player[0].items - 1;
-        vm.playerHealth = player[0].health + itemSmallHP;
+        vm.playerHealth = player[0].health + (vm.basicPlayerHealth * itemSmallHP);
         playerHealthUpdate();
         playerTurn = false;
       }
