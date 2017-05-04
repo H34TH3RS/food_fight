@@ -9,6 +9,12 @@
   function GameService($http, CardsService){
 
     let bots = [
+      {enemy:'RESERVED FOR BOSS',
+      klass: 'NULL',
+      health: 0,
+      strength: 0,
+      defense:0,
+      image:'http://www.verticaljumping.com/images/redcross.png'},
       { enemy:'Not so Mellow Marshall',
       klass: 'Sugary',
       health: 13,
