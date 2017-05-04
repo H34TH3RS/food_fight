@@ -16,6 +16,8 @@
             <li><a href="/admin/home"><i class="fa fa-home fa-1x" aria-hidden="true"></i></a></li>
             <li><%= link_to "Show All Cards", admin_cards_path %></li>
             <li><%= link_to 'View Users', admin_users_path %></li>
+            <li><%= link_to 'Add a Card', new_admin_card_path %></li>
+            <li><%= link_to 'See All Card Assignments', admin_card_assignments_path %></li>
             <li><%= link_to 'Logout', session_path(id: current_user.id), method: :delete %></li>
           <% end %>
         </ul>
