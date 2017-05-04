@@ -299,6 +299,7 @@
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
+        playerDefendTrue();
         // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
         unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
