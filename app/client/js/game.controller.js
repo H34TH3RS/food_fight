@@ -14,7 +14,7 @@
     const nothing = 30;
     const atkClick = 0;
     const battleRate = 30;
-    const NUMBER_OF_MOVES_IN_GAME = 25;
+    const NUMBER_OF_MOVES_IN_GAME = 900;
 
     let vm = this;
     let player, botPick;
@@ -54,8 +54,7 @@
     vm.message = '';
     vm.messageArray =[];
     vm.botName= ' ';
-    vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
-    vm.botClass = '';
+    vm.image = 'http://24.media.tumblr.com/2b614d23b694e6a843b3f59d7e1cda41/tumblr_mn1ytcEZS81s84p5fo1_500.gif';
 
 
 
