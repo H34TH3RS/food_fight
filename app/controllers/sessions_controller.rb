@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user
       session[:current_user_id] = @user.id
-      redirect_to admin_cards_path
+      redirect_to "/admin/home"
     else
       redirect_to new_session_path, notice: 'No user found'
 
