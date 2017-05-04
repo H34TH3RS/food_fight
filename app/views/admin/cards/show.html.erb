@@ -15,8 +15,8 @@
       <p><b>cleanse:</b> <%=@card.cleanse%></p>
       <p><b>created_at:</b> <%=@card.created_at%></p>
       <p><b>updated_at:</b> <%=@card.updated_at%></p>
-      <% @card.card_assignment.each do |card_assignment| %>
+      <% @card.card_assignments.each do |card_assignment| %>
         <ul> <b> Owned by: </b>
-          <li> <%= @card.card_assignment.username %> </li>
+          <li> <%= card_assignment.user.username %> </li>
         </ul>
       <% end %>
