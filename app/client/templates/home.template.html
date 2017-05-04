@@ -1,12 +1,13 @@
 
-<section ng-show='!userCtrl.loggedIn()' class='homeTemplate row'>
+<section ng-cloak ng-show='!userCtrl.loggedIn()' class='homeTemplate row'>
   <a ui-sref='login'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-3 homeButtons'>Log In</button></a>
 
   <a ui-sref='create'><button class='btn btn-primary bnt-lg col-lg-2 col-lg-offset-2 homeButtons'>Create an Account</button></a>
 </section>
+<section ng-cloak ng-show='userCtrl.loggedIn()' class='logo'>
+  <a ui-sref='play'><img src='/images/food_fight_logo.png' alt='food fight logo'></a>
+</section>
 
-<a ui-sref='play'><img ng-show='userCtrl.loggedIn()' src='/images/food_fight_logo.png' alt='food fight logo' class='logo'></a>
-
-<section ng-show='userCtrl.loggedIn()' class='playBtn'>
+<section ng-cloak ng-show='userCtrl.loggedIn()' class='playBtn'>
   <a ui-sref='play'><button class='btn btn-info btn-lg playButton' name='playBtn'>Start Game</button></a>
 </section>
