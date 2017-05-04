@@ -51,7 +51,7 @@
   <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary rollButton col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-danger attackButton col-xs-2' ng-click='gameCtrl.playerAtk()'>Attack!</button>
 
-  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success col-xs-2' ng-click='gameCtrl.playerDef()'>Defense</button>
+  <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-success col-xs-2' ng-click='gameCtrl.playerDef()'>Defend</button>
   <button ng-show='!gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-xs-6 col-xs-offset-2'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>
   <button ng-show='gameCtrl.checkBattleBool()'class='un-btn btn btn-primary board-size col-xs-6'>You rolled a {{gameCtrl.roll}}.  You have {{gameCtrl.boardSize}} spaces left to go!</button>
 </section>

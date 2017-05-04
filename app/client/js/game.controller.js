@@ -8,9 +8,9 @@
   function GameController($state, GameService){
 
     const HitChance = 40;
-    const itemSmallHP = 3;
+    const itemSmallHP = 0.20;
     const chance = 100;
-    const treasureChance = 10;
+    const treasureChance = 15;
     const nothing = 30;
     const atkClick = 0;
     const battleRate = 30;
@@ -33,7 +33,6 @@
 
     });
 
-    console.log(player);
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
@@ -331,7 +330,7 @@
       }else{
         unshiftMessages(player[0].name + ' uses an item and recovers ' + itemSmallHP + ' hp');
         player[0].items = player[0].items - 1;
-        vm.playerHealth = player[0].health + itemSmallHP;
+        vm.playerHealth = player[0].health + (vm.basicPlayerHealth * itemSmallHP);
         playerHealthUpdate();
         playerTurn = false;
       }
