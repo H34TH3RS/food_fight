@@ -30,6 +30,10 @@
       vm.playerName = player[0].name;
       vm.playerImage = player[0].image;
       vm.playerClass = player[0].klass;
+      let nameShort1 = player[0].name.slice(0, 3);
+      let nameShort2 = player[0].name.slice(-3);
+      vm.playerName = nameShort1.concat(nameShort2);
+      console.log(vm.playerName);
 
     });
 
@@ -371,6 +375,10 @@
         vm.botBtlDef = 0;
       }
     }
+
+
+
+
 
   }
 
