@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     if @user.save
       render json: { auth_token: @user.auth_token }, status: :created
     else
-      error = @user.errors.messages # TODO: Make this error less hackable/ugly
+      error = @user.errors.messages
       render json: { message: error.to_s }, status: :unprocessable_entity
     end
   end
