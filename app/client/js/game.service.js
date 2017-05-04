@@ -9,18 +9,24 @@
   function GameService($http, CardsService){
 
     let bots = [
-      { enemy:'Deadly Daikon Dan',
+      { enemy:'Not so Mellow Marshall',
       klass: 'Normal',
-      health: 10,
-      strength: 2,
-      defense:1,
-      image:'https://blocksworld-production.s3.amazonaws.com/user_model_c4c20a13-d296-487b-a734-315449712234_image-768x768.png'},
+      health: 13,
+      strength: 14,
+      defense:2,
+      image:'https://s-media-cache-ak0.pinimg.com/originals/52/fe/36/52fe36be92c7cf64bab91d9fb49f6827.gif'},
       { enemy:'Crazy Carrotina',
       klass: 'Normal',
       health: 12,
       strength: 4,
       defense:1,
       image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
+      {enemy:'Cheeky Cherries',
+      klass: 'Suagry',
+      health: 12,
+      strength: 3,
+      defense:1,
+      image:'http://rs1190.pbsrc.com/albums/z460/wxndx/Kawaii%20Icons/Food/Pixel_Cherry__Free_Avatar_by_TheStripedUnicorn.gif~c200'},
       { enemy:'Eggploding Eggbert',
       klass: 'Normal',
       health: 14,
@@ -38,21 +44,27 @@
     ];
 
     let treasures = [
-      {treasure:'a Golden Egg',
-      image:'http://freepngimages.com/wp-content/uploads/2014/04/EasterGold_Egg_1.png'},
-      {treasure:'some Cool Beans',
-      image:'http://waycoolbeans.com/wp-content/uploads/2016/06/Way-Cool-Beans-Logo-Small.png'},
-      {treasure:'some Salt',
-      image:'http://vignette4.wikia.nocookie.net/battlefordreamislandfanfiction/images/7/77/Salt.png/revision/latest?cb=20140331153921'}
+      {treasure: 'a chocolate  golden egg',
+      image:'http://lunamatic.net/wp-content/uploads/2013/04/easter-egg.gif'},
+      {treasure:' some hot hot pizza',
+      image:'https://68.media.tumblr.com/567f3e4a905f3a2011513dfb67016bac/tumblr_o1vrrdMQ7x1uf5cjoo1_500.gif'},
+      {treasure: 'refreshing watermelon',
+      image:'http://pa1.narvii.com/6142/57b600d3f3a611a78b4efc3440b81a9e3a3baa5d_hq.gif'},
+      {treasure: 'a strange fizzy drink',
+      image:'https://68.media.tumblr.com/21cccbb9171708acb9304a1c6a921e5c/tumblr_n8vn79Bn6b1snc5kxo1_500.gif'},
+      {treasure: 'a cat dressed up us a pop-tart?',
+      image:'http://www.nyan.cat/cats/slomo.gif'}
     ];
 
     let nothings = [
-      {nothing:'Boneless Chickens',
-      image:'https://hydra-media.cursecdn.com/zelda.gamepedia.com/thumb/1/14/HW_Cucco.png/200px-HW_Cucco.png?version=dfa0439718d5e856ae8f416812d3d858'},
-      {nothing:'Crickets',
-      image:'http://www.pngmart.com/files/3/Grasshopper-Transparent-PNG.png'},
-      {nothing:'just some wilted lettuce.',
-      image:'http://greensaver.oxo.com/wp-content/uploads/2015/02/lettuce_rotten.png'}
+      {nothing:'a chicken....maybe?',
+      image:'http://rs1195.pbsrc.com/albums/aa399/SKiTTLeS-taste-THE-fricken-RAINBOW/CUTE%20PIXEL%20ART%20ICONS%20AND%20GRAPHICS/cute-122.gif~c200'},
+      {nothing:' tumble weeds go by...',
+      image:'http://orig11.deviantart.net/8b5e/f/2016/138/9/7/tumbleweed_animation__game_jam_asset__by_jaylastar-da2plh2.png'},
+      {nothing:'just some wilted lettuce',
+      image:'http://orig09.deviantart.net/ed44/f/2012/140/1/c/salad_bowl_pixel_art_by_tacticalsmurf-d50hqwk.png'},
+      {nothing:'something jiggly',
+      image:'http://data.whicdn.com/images/189801943/original.gif'}
     ];
 
 
