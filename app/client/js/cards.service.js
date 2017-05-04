@@ -33,8 +33,7 @@
       })
       .then(function handleResponse(response) {
         let cards = response.data;
-        let lastIndex = (cards.length - 1);
-        let card = cards[lastIndex];
+        let card = cards[0];
         return card;
       });
     }
