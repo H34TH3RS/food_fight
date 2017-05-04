@@ -7,6 +7,10 @@
 
   function GameController($state, GameService){
 
+    let vm = this;
+    let player, botPick;
+
+
     const HitChance = 40;
     const itemSmallHP = 0.20;
     const chance = 100;
@@ -15,9 +19,9 @@
     const atkClick = 0;
     const battleRate = 30;
     const NUMBER_OF_MOVES_IN_GAME = 25;
+    const DEFENSE_VAR = 0.7;
 
-    let vm = this;
-    let player, botPick;
+
 
     GameService.getUserCard().then(function(playerCards) {
 
@@ -32,7 +36,6 @@
       vm.playerClass = player[0].klass;
 
     });
-
     let bots = GameService.getBots();
     let treasures = GameService.getTreasures();
     let events = GameService.getEvents();
@@ -55,7 +58,6 @@
     vm.botName= ' ';
     vm.image = 'https://thoughtuncommon.files.wordpress.com/2013/09/the-necronomicon23.jpg';
     vm.botClass = '';
-
 
 
     /**
@@ -297,9 +299,9 @@
         playerTurn = true;
       }else if (botMiss >= HitChance && playerDefendBool === true){
         playerDefendBool = false;
-        vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
+        // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
-        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*0.5) + ' damage');
+        unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
         playerDeathCheck();
         playerTurn = true;
       }else{
@@ -307,6 +309,10 @@
         playerTurn = true;
       }
       fightFunc();
+    }
+
+    function playerDefendTrue(){
+      vm.playerHealth = vm.playerHealth - (vm.botBtlStr*DEFENSE_VAR);
     }
 
     /**
