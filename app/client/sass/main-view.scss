@@ -2,3 +2,17 @@
   padding: 0;
   background-color: #000000;
 }
+
+.start {
+  color: $terminal-green;
+  font-family: Courier, Times, serif;
+  font-size: 4em;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+}
