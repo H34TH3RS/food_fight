@@ -26,7 +26,7 @@
           'Authorization': token
         },
         data: {
-          upc: upcCode
+          upc: upcCode.upc
         }
       })
       .then(function handleResponse(response) {
