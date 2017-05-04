@@ -60,6 +60,20 @@
     vm.botName= ' ';
     vm.image = 'http://24.media.tumblr.com/2b614d23b694e6a843b3f59d7e1cda41/tumblr_mn1ytcEZS81s84p5fo1_500.gif';
 
+    /**
+    * [Resets the boss health and removes it from the array of enemies
+    * after winning or losing.
+    * @return {VOID}
+    */
+    function bossReset(){
+      bossCounter = 0;
+      bots = GameService.getBots();
+      bosses = GameService.getBosses();
+      bosses[0].health = KevinBaconHealthInitial;
+      if(bots.length > 4){
+        bots.shift();
+      }
+    }
 
     /**
     * Changes the current health of the player to number out of 100
@@ -141,7 +155,9 @@
       }else{
         bossCounter ++;
         botPick = 0;
+        // bots[botPick] = bosses[0];
         bots.unshift(bosses[0]);
+        // bosses[0].health = bots[botPick].health;
         battleBool = true; //this is set to true so that the fight menu can be displayed
         vm.status = ' ';
         vm.currentEventName = bots[botPick].enemy;
@@ -162,6 +178,7 @@
     */
     function bossHealthCheck(){
       if (bosses[0].health <=0){
+        bossReset();
         playerHealthUpdate();
         $state.go('end');
       }
@@ -209,7 +226,6 @@
 
     /**
     * Add and item to the players inventory if the item count is less than 3
-    * @return{Void}
     */
     function addItem(){
       if (player[0].items < 3){
@@ -263,9 +279,9 @@
     }
 
     /**
-     * Makes sure the RNG never rolls a 0
-     * @return {NUMBER} [Will never allow a zero to be rolled]
-     */
+    * Returns a number greater between from 1 and the length of the bot array;
+    * @return {Number} Will never be zero
+    */
     function rngBotPick(){
       botPick = Math.floor(Math.random()* bots.length);
       if (botPick === 0){
@@ -285,6 +301,7 @@
     function playerDeathCheck(){
       if(player[0].health <= 0){
         bossCounter = 0;
+        bossReset();
         playerHealthUpdate();
         $state.go('lost');
       }

@@ -10,7 +10,7 @@
 
     let bots = [
       {enemy:'RESERVED FOR BOSS',
-      klass: 'NULL',
+      klass: 'XXXX',
       health: 0,
       strength: 0,
       defense:0,
