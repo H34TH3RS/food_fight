@@ -1,22 +1,23 @@
-
-      <p><b>food_name:</b> <%=@card.food_name%></p>
-      <p><b>upc:</b> <%=@card.upc%></p>
-      <p><b>klass:</b> <%=@card.klass%></p>
-      <p><b>energy:</b> <%=@card.energy%></p>
-      <p><b>physical_resistance_debuff:</b> <%=@card.physical_resistance_debuff%></p>
-      <p><b>health:</b> <%=@card.health%></p>
-      <p><b>accuracy:</b> <%=@card.accuracy%></p>
-      <p><b>energy_debuff:</b> <%=@card.energy_debuff%></p>
-      <p><b>strength:</b> <%=@card.strength%></p>
-      <p><b>accuracy_buff:</b> <%=@card.accuracy_buff%></p>
-      <p><b>healp_buff:</b> <%=@card.health_buff%></p>
-      <p><b>defense:</b> <%=@card.defense%></p>
-      <p><b>attack_buff:</b> <%=@card.attack_buff%></p>
-      <p><b>cleanse:</b> <%=@card.cleanse%></p>
-      <p><b>created_at:</b> <%=@card.created_at%></p>
-      <p><b>updated_at:</b> <%=@card.updated_at%></p>
-      <% @card.card_assignments.each do |card_assignment| %>
-        <ul> <b> Owned by: </b>
-          <li> <%= card_assignment.user.username %> </li>
-        </ul>
-      <% end %>
+<section>
+    <p><b>food_name:</b> <%=@card.food_name%></p>
+    <p><b>upc:</b> <%=@card.upc%></p>
+    <p><b>klass:</b> <%=@card.klass%></p>
+    <p><b>energy:</b> <%=@card.energy%></p>
+    <p><b>physical_resistance_debuff:</b> <%=@card.physical_resistance_debuff%></p>
+    <p><b>health:</b> <%=@card.health%></p>
+    <p><b>accuracy:</b> <%=@card.accuracy%></p>
+    <p><b>energy_debuff:</b> <%=@card.energy_debuff%></p>
+    <p><b>strength:</b> <%=@card.strength%></p>
+    <p><b>accuracy_buff:</b> <%=@card.accuracy_buff%></p>
+    <p><b>healp_buff:</b> <%=@card.health_buff%></p>
+    <p><b>defense:</b> <%=@card.defense%></p>
+    <p><b>attack_buff:</b> <%=@card.attack_buff%></p>
+    <p><b>cleanse:</b> <%=@card.cleanse%></p>
+    <p><b>created_at:</b> <%=@card.created_at%></p>
+    <p><b>updated_at:</b> <%=@card.updated_at%></p>
+    <% @card.card_assignments.each do |card_assignment| %>
+      <ul> <b> Owned by: </b>
+        <li> <%= card_assignment.user.username %> </li>
+      </ul>
+    <% end %>
+</section>
