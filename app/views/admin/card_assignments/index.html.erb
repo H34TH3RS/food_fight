@@ -18,9 +18,9 @@
         <td><%= card_assignment.expires_at %></td>
         <td><%= card_assignment.user.username %></td>
         <td><%= card_assignment.card.food_name %></td>
-        <td><%= link_to 'Show', [:admin, card_assignment] %></td>
+        <td><%= link_to 'Details', [:admin, card_assignment] %></td>
         <td><%= link_to 'Edit', edit_admin_card_assignment_path(card_assignment) %></td>
-        <td><%= link_to 'Destroy', [:admin, card_assignment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', [:admin, card_assignment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Admin Card Assignment', new_admin_card_assignment_path %>
+<section>
+  <%= link_to 'New Admin Card Assignment', new_admin_card_assignment_path %>
+</section>
