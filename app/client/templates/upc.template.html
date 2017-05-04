@@ -10,3 +10,7 @@
   <input class='form-control btn btn-info' type='submit' name='upcSubmit' value='find UPC'>
 
 </form>
+
+<section class='errorBox col-lg-4 col-lg-offset-4'>
+  <p ng-show='upcCtrl.hasError' class='alert alert-warning'>{{upcCtrl.message}}</p>
+</section>
