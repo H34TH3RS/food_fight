@@ -10,7 +10,7 @@
 
     let bots = [
       { enemy:'Not so Mellow Marshall',
-      klass: 'Normal',
+      klass: 'Sugary',
       health: 13,
       strength: 14,
       defense:2,
@@ -22,11 +22,11 @@
       defense:1,
       image:'http://piq.codeus.net/static/media/userpics/piq_80344_400x400.png'},
       {enemy:'Cheeky Cherries',
-      klass: 'Suagry',
+      klass: 'Sugary',
       health: 12,
       strength: 3,
       defense:1,
-      image:'http://rs1190.pbsrc.com/albums/z460/wxndx/Kawaii%20Icons/Food/Pixel_Cherry__Free_Avatar_by_TheStripedUnicorn.gif~c200'},
+      image:'http://orig12.deviantart.net/4ba0/f/2014/238/5/3/53faec0367b50eb9b65b5b2455bdfccf-d7wtb1e.png'},
       { enemy:'Eggploding Eggbert',
       klass: 'Normal',
       health: 14,
@@ -61,9 +61,9 @@
       image:'http://rs1195.pbsrc.com/albums/aa399/SKiTTLeS-taste-THE-fricken-RAINBOW/CUTE%20PIXEL%20ART%20ICONS%20AND%20GRAPHICS/cute-122.gif~c200'},
       {nothing:' tumble weeds go by...',
       image:'http://orig11.deviantart.net/8b5e/f/2016/138/9/7/tumbleweed_animation__game_jam_asset__by_jaylastar-da2plh2.png'},
-      {nothing:'just some wilted lettuce',
+      {nothing:'just some wilted lettuce..',
       image:'http://orig09.deviantart.net/ed44/f/2012/140/1/c/salad_bowl_pixel_art_by_tacticalsmurf-d50hqwk.png'},
-      {nothing:'something jiggly',
+      {nothing:'it jiggles...',
       image:'http://data.whicdn.com/images/189801943/original.gif'}
     ];
 
@@ -81,6 +81,7 @@
           health: card.health,//why are these undefined
           strength: card.strength,
           defense: card.defense,
+          klass: card.klass,
           items:2,
           image:'http://24.media.tumblr.com/tumblr_mcq3a2gqOb1r5sz4co1_400.gif'
         }];

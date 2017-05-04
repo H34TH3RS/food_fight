@@ -146,6 +146,7 @@
         vm.botHealth = localStorage.setItem('botHealthLocal', bots[botPick].health);
         vm.basicBotHealth = bots[botPick].health;
         vm.botBtlStr= bots[botPick].strength;
+        vm.botClass = bots[botPick].klass;
         vm.image = bots[botPick].image;
         vm.botName = bots[botPick].enemy;
         unshiftMessages( player[0].name + ' fights ' + bots[botPick].enemy + ' !');
