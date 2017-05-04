@@ -20,8 +20,8 @@ module.exports = function(grunt) {
       },
       css:{
         files:[{
-          cwd: 'app/client/',
-          src: ['bootstrap.css'],
+          cwd: 'app/',
+          src: ['*.css'],
           dest: 'public/',
           expand: true
         }]
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     babel: {
       options: {
         sourceMap: true,
