@@ -18,13 +18,13 @@
 
       <ul class='container'>
 
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>home</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>food fight home</a></li>
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>
         <li ng-show='userCtrl.loggedIn()'><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
         <li ng-hide='userCtrl.loggedIn()'><a ui-sref='create-user'>create a user</a></li>
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='upc'>UPC</a></li>
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='cards'>View All Cards</a></li>
-        <li><a ui-sref='about-us'>Meet the Creators</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='upc'>create a character</a></li>
+        <li ng-show='userCtrl.loggedIn()'><a ui-sref='cards'>view all cards</a></li>
+        <li><a ui-sref='about-us'>meet the creators</a></li>
       </ul>
     </nav>
 
