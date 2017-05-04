@@ -3,19 +3,29 @@
 }
 .creators {
   font-family: Courier, Times, serif;
-  text-align: justify;
+  text-align: left;
   color: $terminal-green;
   background-color: $background-color;
   padding: 2em;
   border: 5px solid $info-color;
   box-sizing: border-box;
 
+  img {
+    height: 200px;
+  }
+
   h2 {
     font-family: Courier, Times, serif;
     text-align: center;
+    margin: 0.25em;
   }
 
   a{
     color: #ffffff;
   }
+}
+
+.bioLead {
+  text-align: center;
+  margin: 0.25em;
 }

@@ -20,8 +20,8 @@ module.exports = function(grunt) {
       },
       css:{
         files:[{
-          cwd: 'app/client/',
-          src: ['bootstrap.css'],
+          cwd: 'app/',
+          src: ['*.css'],
           dest: 'public/',
           expand: true
         }]
@@ -48,6 +48,14 @@ module.exports = function(grunt) {
           src: ['*.png', '*.gif', '*.jpg'],
           dest: 'public/images/',
           expand: true
+        }]
+      },
+      fonts: {
+        files: [{
+          cwd: 'app/fonts/',
+          src: ['*.eot', '*.svg', '*.ttf', '*.woff', '*.woff2', '*.otf'],
+          dest: 'public/fonts/',
+          expand: true,
         }]
       },
     },
@@ -115,7 +123,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    
+
     babel: {
       options: {
         sourceMap: true,
