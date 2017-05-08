@@ -14,7 +14,7 @@ Encounter food-based villains, collect special food items that bump up your heal
 - [Nutritionix API](#nutritionix-api)
 - [Admin Layer](#admin Layer)
 - [FAQ / Troubleshooting](#faq-/-troubleshooting)
-- [Why We Made Such A Ridiculous Game](#why-on-earth-would-we-make-such-a-silly-game?)
+- [Why We Made Such A Ridiculous Game](#why-we-made-such-a-ridiculous-game)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
 
