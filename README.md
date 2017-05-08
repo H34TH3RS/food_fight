@@ -22,7 +22,6 @@ Encounter food-based villains, collect special food items that bump up your heal
 ### How to Get Started
 
 1. Clone this repo.
-<<<<<<< HEAD
 2. Run `npm install` in your terminal. This will install the dependencies needed for this application.
 3. Run `bundle` in the terminal to install the necessary ruby gems.
 4. Run the grunt command from the root directory of the project. This will execute the automated build process.
@@ -45,15 +44,21 @@ API](app/client/images/poweredby_nutritionix_api.png)](https://www.nutritionix.c
 
 UPC data is sent to the Nutritionix API in order to create character cards. In order to use the application you will need to get your own Nutritionix API key, which are available for free if you require less than 50 UPC searches per day.
 
-The application is configured to install `dotenv-rails` with bundler for storing  secrets. Set your Nutritionix APP ID equal to NUTRITIONIX_APP_ID and your APP KEY equal to NUTRITIONIX_APP_KEY in the .env file.
+The application is configured to install `dotenv-rails` with bundler for storing  secrets. Set your Nutritionix APP ID equal to NUTRITIONIX_APP_ID and your APP KEY equal to NUTRITIONIX_APP_KEY in the .env file located in your project root directory.
 
  ```
- NUTRITIONIX_APP_ID=(youridhere)
- NUTRITIONIX_APP_KEY=(yourappkeyhere)
+ NUTRITIONIX_APP_ID=(yourAppIdHere)
+ NUTRITIONIX_APP_KEY=(yourAppKeyHere)
  ```
 
-### Food Fight API
+### Admin Layer
+The application comes equipped with an administrative layer for keeping track of player cards and basic user information. You must set up your first administrator via rails console. To get started with as an admin:
 
+1. Enter your terminal and run `rails c`.
+2. Query for the user you would like to make an administrator.
+3. Update the "role" to be "admin".
+
+Once the user has been updated, head to /sessions/new to log in. Once logged in you will have access to the ability to manually make cards and card assignments, as well as track users. To make future users administrators, simply select "change role" on the users index and enter "admin".
 
 ### FAQ / Troubleshooting
 
@@ -78,6 +83,7 @@ latest UPC scan-not the actual card selected.
 2. Bill Murray populates the card image in the "View All Cards" rather than the actual food item. We asked nicely that he leave but he seems to like being there.
 3. Occasionally index 0 of the enemy array will be selected for a random battle. This index is reserved for boss data and if boss data has not been loaded in, then this will show a card titled 'reserved for boss'.
 4. The 'defend' button works but will not be useful until the option to fight with more than one character is implemented.
+5. The application currently crashes if the UPC search limit from Nutritionix is exceeded. Attempts to upload more UPCs will result in an object error and no data will be returned.
 
 
 ### Contributing
