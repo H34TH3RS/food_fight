@@ -63,7 +63,7 @@ The application comes equipped with an administrative layer for keeping track of
 Once the user has been updated, head to /sessions/new to log in. Once logged in you will have access to the ability to manually make cards and card assignments, as well as track users. To make future users administrators, simply select "change role" on the users index and enter "admin".
 
 
-#### Why We Made Such A Ridiculous Game
+### Why We Made Such A Ridiculous Game
 
 Studies have shown that billions of people on this planet eat food. We've been eating food our entire lives. When we were tasked with coming up with an idea for a final project at The Iron Yard DC, we decided to take our love of food and our love of video games and combine them into this game.
 
