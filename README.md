@@ -1,3 +1,9 @@
+# ![pageres](app/client/images/food_fight_logo.png)
+
+
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -8,6 +14,7 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+
 
 * Configuration
 
@@ -22,3 +29,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+[![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
+---|---|---
+[Sara Basile](https://github.com/WatchTheGap) | [Seth Brady](http://www.sethgabrielbrady.com) | [Molly Stoopler](https://github.com/mstoople532)
