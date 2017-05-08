@@ -12,11 +12,11 @@ Encounter food-based villains, collect special food items that bump up your heal
 - [How to Get Started](#how-to-get-started)
 - [Application Deployment & Dependencies](#application-deployment-&-dependencies)
 - [Nutritionix API](#nutritionix-api)
-- [Admin Layer](#admin Layer)
-- [FAQ / Troubleshooting](#faq-/-troubleshooting)
-- [Why on earth would we make such a silly game?](#why-on-earth-would-we-make-such-a-silly-game?)
+- [Admin Layer](#admin-layer)
+- [Why on earth would we make such a silly game?](#why-on-earth-would-we-make-such-a-silly-game-?)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
+- [Creators](#creators)
 
 
 ### How to Get Started
@@ -62,7 +62,6 @@ The application comes equipped with an administrative layer for keeping track of
 
 Once the user has been updated, head to /sessions/new to log in. Once logged in you will have access to the ability to manually make cards and card assignments, as well as track users. To make future users administrators, simply select "change role" on the users index and enter "admin".
 
-### FAQ / Troubleshooting
 
 #### Why on earth would we make such a silly game?
 
@@ -103,7 +102,7 @@ Like our game? Think it could be better? Share your ideas!
 
 
 
-
+### Creators
 [![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
 ---|---|---
 [<center>Sara Basile](https://github.com/WatchTheGap) | [<center>Seth Brady](https://github.com/sethgabrielbrady) | [<center>Molly Stoopler](https://github.com/mstoople532)
