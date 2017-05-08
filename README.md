@@ -51,3 +51,14 @@ The testing suite is run through Karma. Heroku does not currently support runnin
 Nutritionix API
 
 Food Fight API
+
+Contributing
+
+Like our game? Think it could be better? Share your ideas!
+1) Think up an awesome idea.
+2) Fork this repo. (link)
+3) Create a branch for your feature. (git checkout -b feature-name)
+4) Add and commit your changes. (git add file_name) (git commit -m "I added a thing!")
+5) Push your feature to your branch. (git push origin feature-name)
+6) Create a Pull Request.
+7) Profit!
