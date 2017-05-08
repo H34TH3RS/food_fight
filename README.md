@@ -91,4 +91,4 @@ Like our game? Think it could be better? Share your ideas!
 
 [![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
 ---|---|---
-[<center>Sara Basile](https://github.com/WatchTheGap) | [<center>Seth Brady](http://www.sethgabrielbrady.com) | [<center>Molly Stoopler](https://github.com/mstoople532)
+[<center>Sara Basile](https://github.com/WatchTheGap) | [<center>Seth Brady](https://github.com/sethgabrielbrady) | [<center>Molly Stoopler](https://github.com/mstoople532)
