@@ -24,7 +24,7 @@ Encounter food-based villains, collect special food items that bump up your heal
 1. Clone this repo.
 2. Run npm install in your terminal. This will install the dependencies needed for this application.
 3. Run the grunt command from the root directory of the project. This will execute the automated build process.
-4. Start up your rails server and got to http://localhost:3000/
+4. Start up your rails server and go to http://localhost:3000/
 
 
 ### Application Deployment & Dependencies
@@ -85,6 +85,8 @@ Like our game? Think it could be better? Share your ideas!
 7. Profit!
 
 
+
+
 [![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
 ---|---|---
-[Sara Basile](https://github.com/WatchTheGap) | [Seth Brady](http://www.sethgabrielbrady.com) | [Molly Stoopler](https://github.com/mstoople532)
+[<center>Sara Basile](https://github.com/WatchTheGap) | [<center>Seth Brady](http://www.sethgabrielbrady.com) | [<center>Molly Stoopler](https://github.com/mstoople532)
