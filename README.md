@@ -2,6 +2,7 @@
 
 # <center> A Game of Wits & Grits
 ### <center> [https://food-fight-ssm.herokuapp.com](https://food-fight-ssm.herokuapp.com)
+# ![pageres](app/client/images/play_demo.gif)
 
 
 Battle your way to victory with characters created from UPC nutrition data!
@@ -13,10 +14,9 @@ Encounter food-based villains, collect special food items that bump up your heal
 - [Nutritionix API](#nutritionix-api)
 - [Food Fight API](#food-fight-api)
 - [FAQ / Troubleshooting](#faq-/-troubleshooting)
-- [Why on earth would we make such a silly game?](#hhy-on-earth-would-we-make-such-a-silly-game?)
+- [Why on earth would we make such a silly game?](#why-on-earth-would-we-make-such-a-silly-game?)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
-- [License](#license)
 
 
 ### How to Get Started
@@ -83,6 +83,8 @@ Like our game? Think it could be better? Share your ideas!
 5. Push your feature to your branch. (git push origin feature-name)
 6. Create a Pull Request.
 7. Profit!
+
+
 
 
 
