@@ -16,10 +16,12 @@ Live URL: https://food-fight-ssm.herokuapp.com
 
 How to Get Started
 
-1) Clone this repo.
-2) Run npm install in your terminal. This will install the dependencies needed for this application.
-3) Run the grunt command from the root directory of the project. This will execute the automated build process.
-4) Start up your rails server and got to http://localhost:3000/
+1. Clone this repo.
+2. Run `npm install` in your terminal. This will install the dependencies needed for this application.
+3. Run `bundle` in the terminal to install the necessary ruby gems.
+4. Run the grunt command from the root directory of the project. This will execute the automated build process.
+5. Start the rails server by typing `rails s` into your terminal.
+6. Go to http://localhost:3000/ to view your application locally.
 
 
 Application Deployment & Dependencies
@@ -30,11 +32,19 @@ Due to this automated deployment system, all dependencies must be installed as r
 
 The testing suite is run through Karma. Heroku does not currently support running Karma through its automatic deployment feature. Run the grunt karma command prior to committing or merging to the master branch to ensure that the code has been tested properly.
 
+Back-end testing is performed via Rspec. In order to run the tests, simply type `rspec` into the command-line. By default, the Simplecov gem is installed to analyze test coverage. Code coverage will be logged in a separate log file, a link to which will be displayed each time rspec is run.
 
-Nutritionix API
 
+#### Nutritionix API
+UPC data is sent to the Nutritionix API in order to create character cards. In order to use the application you will need to get your own Nutritionix API key, which are available for free if you require less than 50 UPC searches per day.
 
-Food Fight API
+The application is configured to install `dotenv-rails` with bundler for storing  secrets. Set your Nutritionix APP ID equal to NUTRITIONIX_APP_ID and your APP KEY equal to NUTRITIONIX_APP_KEY in the .env file.
+
+ ```
+ NUTRITIONIX_APP_ID=(youridhere)
+ NUTRITIONIX_APP_KEY=(yourappkeyhere)
+ ```
+
 
 
 FAQ / Troubleshooting
@@ -53,7 +63,7 @@ Future Features
 3) A new card will drop in on every roll for all enemies, items, and neutral spaces.
 4) The ability to display multiple player cards and drag and drop them into battle as needed, or determine the battle outcome of the group of cards vs the enemy or enemies.
 5) More defensive and offensive buffs from available nutrition data such as percentages of daily vitamins.
-6) Character leveling and enemy stats scaling based on the character level. 
+6) Character leveling and enemy stats scaling based on the character level.
 
 
 Known Issues
@@ -62,13 +72,13 @@ Known Issues
 Contributing
 
 Like our game? Think it could be better? Share your ideas!
-1) Think up an awesome idea.
-2) Fork this repo. (link)
-3) Create a branch for your feature. (git checkout -b feature-name)
-4) Add and commit your changes. (git add file_name) (git commit -m "I added a thing!")
-5) Push your feature to your branch. (git push origin feature-name)
-6) Create a Pull Request.
-7) Profit!
+1. Think up an awesome idea.
+2. Fork this repo. (link)
+3. Create a branch for your feature. (git checkout -b feature-name)
+4. Add and commit your changes. (git add file_name) (git commit -m "I added a thing!")
+5. Push your feature to your branch. (git push origin feature-name)
+6. Create a Pull Request.
+7. Profit!
 
 
 [![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
