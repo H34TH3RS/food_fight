@@ -1,19 +1,20 @@
 # ![pageres](app/client/images/food_fight_logo.png)
 
 # <center> A Game of Wits & Grits
+### <center> [https://food-fight-ssm.herokuapp.com](https://food-fight-ssm.herokuapp.com)
+
 
 Battle your way to victory with characters created from UPC nutrition data!
 Encounter food-based villains, collect special food items that bump up your health and stats, and face off with the evil final boss, Kevin Bacon & Eggs.
 
-Live URL: https://food-fight-ssm.herokuapp.com
 
-- [How to Get Started](#How-to-Get-Started)
-- [Application Deployment & Dependencies](#Application-Deployment-&-Dependencies)
-- [Nutritionix API](#Nutritionix-API)
-- [Food Fight API](#Food-Fight-API)
-- [FAQ / Troubleshooting](#FAQ-/-Troubleshooting)
-- [Why on earth would we make such a silly game?](#Why-on-earth-would-we-make-such-a-silly-game?)
-- [Future Features](#Future-Features)
+- [How to Get Started](#how-to-get-started)
+- [Application Deployment & Dependencies](#application-deployment-&-dependencies)
+- [Nutritionix API](#nutritionix-api)
+- [Food Fight API](#food-fight-api)
+- [FAQ / Troubleshooting](#faq-/-troubleshooting)
+- [Why on earth would we make such a silly game?](#hhy-on-earth-would-we-make-such-a-silly-game?)
+- [Future Features](#future-features)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -36,7 +37,10 @@ The testing suite is run through Karma. Heroku does not currently support runnin
 
 
 ### Nutritionix API
-![pageres](app/client/images/poweredby_nutritionix_api.png)
+[![Nutritionix
+API](app/client/images/poweredby_nutritionix_api.png)](https://www.nutritionix.com/)
+
+
 
 
 
@@ -62,6 +66,11 @@ The inspiration for using UPC data was a vintage Japanese handheld video game ca
 
 
 ### Known Issues
+1. Selecting a card in the "View All Cards" tab only selects the card with the
+latest UPC scan-not the actual card selected.
+2. Bill Murray populates the card image in the "View All Cards" rather than the actual food item. We asked nicely that he leave but he seems to like being there.
+3. Occasionally index 0 of the enemy array will be selected for a random battle. This index is reserved for boss data and if boss data has not been loaded in, then this will show a card titled 'reserved for boss'.
+4. The 'defend' button works but will not be useful until the option to fight with more than one character is implemented.
 
 
 ### Contributing
