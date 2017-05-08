@@ -2,6 +2,7 @@
 
 # <center> A Game of Wits & Grits
 ### <center> [https://food-fight-ssm.herokuapp.com](https://food-fight-ssm.herokuapp.com)
+# ![pageres](app/client/images/play_demo.gif)
 
 
 Battle your way to victory with characters created from UPC nutrition data!
@@ -13,10 +14,9 @@ Encounter food-based villains, collect special food items that bump up your heal
 - [Nutritionix API](#nutritionix-api)
 - [Food Fight API](#food-fight-api)
 - [FAQ / Troubleshooting](#faq-/-troubleshooting)
-- [Why on earth would we make such a silly game?](#hhy-on-earth-would-we-make-such-a-silly-game?)
+- [Why on earth would we make such a silly game?](#why-on-earth-would-we-make-such-a-silly-game?)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
-- [License](#license)
 
 
 ### How to Get Started
@@ -27,6 +27,7 @@ Encounter food-based villains, collect special food items that bump up your heal
 4. Run the grunt command from the root directory of the project. This will execute the automated build process.
 5. Start the rails server by typing `rails s` into your terminal.
 6. Go to http://localhost:3000/ to view your application locally.
+
 
 ### Application Deployment & Dependencies
 
@@ -98,6 +99,10 @@ Like our game? Think it could be better? Share your ideas!
 7. Profit!
 
 
+
+
+
+
 [![Sara Basile](app/client/images/sara_pic.jpg)](https://github.com/WatchTheGap) | [![Seth Brady](app/client/images/seth.jpg)](http://www.sethgabrielbrady.com) | [![Molly Stoopler](app/client/images/molly_pic.png)](https://github.com/mstoople532)
 ---|---|---
-[Sara Basile](https://github.com/WatchTheGap) | [Seth Brady](http://www.sethgabrielbrady.com) | [Molly Stoopler](https://github.com/mstoople532)
+[<center>Sara Basile](https://github.com/WatchTheGap) | [<center>Seth Brady](https://github.com/sethgabrielbrady) | [<center>Molly Stoopler](https://github.com/mstoople532)
