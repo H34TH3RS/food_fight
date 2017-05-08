@@ -31,11 +31,11 @@ Encounter food-based villains, collect special food items that bump up your heal
 
 ### Application Deployment & Dependencies
 
-This application features continuous integration that automatically deploys to the live site any time a commit or merge to the master branch is made. Heroku will run the automated grunt build prior to deploying the updated code. If the build command fails, the live site will not be updated.
+This application features continuous integration that automatically deploys to the live site any time a commit or merge to the `master` branch is made. Heroku will run the automated `grunt` build prior to deploying the updated code. If the build command fails, the live site will not be updated.
 
-Due to this automated deployment system, all dependencies must be installed as regular application dependencies and NOT as devDependencies. When adding additional dependencies, use --save and not --save-dev.
+Due to this automated deployment system, all dependencies must be installed as regular application dependencies and NOT as devDependencies. When adding additional dependencies, use `--save` and not `--save-dev`.
 
-The testing suite is run through Karma. Heroku does not currently support running Karma through its automatic deployment feature. Run the grunt karma command prior to committing or merging to the master branch to ensure that the code has been tested properly.
+The testing suite is run through Karma. Heroku does not currently support running Karma through its automatic deployment feature. Run the `grunt karma` command prior to committing or merging to the `master` branch to ensure that the code has been tested properly.
 
 Back-end testing is performed via Rspec. In order to run the tests, simply type `rspec` into the command-line. By default, the Simplecov gem is installed to analyze test coverage. Code coverage will be logged in a separate log file, a link to which will be displayed each time rspec is run.
 
@@ -43,7 +43,7 @@ Back-end testing is performed via Rspec. In order to run the tests, simply type 
 [![Nutritionix
 API](app/client/images/poweredby_nutritionix_api.png)](https://www.nutritionix.com/)
 
-UPC data is sent to the Nutritionix API in order to create character cards. In order to use the application you will need to get your own Nutritionix API key, which are available for free if you require less than 50 UPC searches per day.
+UPC data is sent to the Nutritionix API in order to create character cards. In order to use the application you will need to get your own Nutritionix API key, which is available for free if you require less than 50 UPC searches per day.
 
 The application is configured to install `dotenv-rails` with bundler for storing  secrets. Set your Nutritionix APP ID equal to NUTRITIONIX_APP_ID and your APP KEY equal to NUTRITIONIX_APP_KEY in the .env file located in your project root directory.
 
@@ -67,7 +67,7 @@ Once the user has been updated, head to /sessions/new to log in. Once logged in 
 
 Studies have shown that billions of people on this planet eat food. We've been eating food our entire lives. When we were tasked with coming up with an idea for a final project at The Iron Yard DC, we decided to take our love of food and our love of video games and combine them into this game.
 
-The inspiration for using UPC data was a vintage Japanese handheld video game called Barcode Battler. (https://en.wikipedia.org/wiki/Barcode_Battler) This console allowed the player to scan barcodes from any product to create characters, enemies and power-ups.
+The inspiration for using UPC data was a vintage Japanese handheld video game called [Barcode Battler]. (https://en.wikipedia.org/wiki/Barcode_Battler) This console allowed the player to scan barcodes from any product to create characters, enemies and power-ups.
 
 ### Future Features
 1. Character cards created by users have an expiration date. Upon reaching this date, the food will "go bad" and be converted into an enemy card, against which the user's "fresh" cards will battle.
@@ -91,10 +91,10 @@ latest UPC scan-not the actual card selected.
 
 Like our game? Think it could be better? Share your ideas!
 1. Think up an awesome idea.
-2. Fork this repo. (link)
-3. Create a branch for your feature. (git checkout -b feature-name)
-4. Add and commit your changes. (git add file_name) (git commit -m "I added a thing!")
-5. Push your feature to your branch. (git push origin feature-name)
+2. [Fork this repo.] (https://github.com/H34TH3RS/food_fight#fork-destination-box)
+3. Create a branch for your feature. `git checkout -b feature-name`
+4. Add and commit your changes. (git add file_name) `git commit -m "I added a thing!"``
+5. Push your feature to your branch. `git push origin feature-name`
 6. Create a Pull Request.
 7. Profit!
 
