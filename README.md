@@ -10,11 +10,11 @@ Encounter food-based villains, collect special food items that bump up your heal
 
 
 - [How to Get Started](#how-to-get-started)
-- [Application Deployment & Dependencies](#application-deployment-&-dependencies)
+- [Application Deployment and Dependencies](#application-deployment-&-dependencies)
 - [Nutritionix API](#nutritionix-api)
 - [Admin Layer](#admin Layer)
 - [FAQ / Troubleshooting](#faq-/-troubleshooting)
-- [Why on earth would we make such a silly game?](#why-on-earth-would-we-make-such-a-silly-game?)
+- [Why We Made Such A Ridiculous Game](#why-on-earth-would-we-make-such-a-silly-game?)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
 
@@ -64,7 +64,7 @@ Once the user has been updated, head to /sessions/new to log in. Once logged in 
 
 ### FAQ / Troubleshooting
 
-#### Why on earth would we make such a silly game?
+#### Why We Made Such A Ridiculous Game
 
 Studies have shown that billions of people on this planet eat food. We've been eating food our entire lives. When we were tasked with coming up with an idea for a final project at The Iron Yard DC, we decided to take our love of food and our love of video games and combine them into this game.
 
