@@ -2,8 +2,9 @@
 .index-header {
     margin: 0;
     padding: 1em;
-    background-color: #000000;
-    font-family: Courier, Times, serif;
-    color: $terminal-green;    text-align: center;
+    background-color: #$background-color;
+    font-family: $terminal-fonts;
+    color: $terminal-green;
+    text-align: center;
     font-size: 2em;
 }

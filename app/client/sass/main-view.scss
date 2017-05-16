@@ -1,11 +1,11 @@
 .main-view {
   padding: 0;
-  background-color: #000000;
+  background-color: $background-color;
 }
 
 .start {
   color: $terminal-green;
-  font-family: Courier, Times, serif;
+  font-family: $terminal-fonts;
   font-size: 4em;
 }
 

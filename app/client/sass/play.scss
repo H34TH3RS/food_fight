@@ -16,13 +16,13 @@
   box-sizing: border-box;
   border: 5px solid $info-color;
   border-radius: 5px;
-  background-color: #000000;
+  background-color: $background-color;
   animation-name: bounceInDown;
   animation-duration: 2s;
   animation-iteration-count: 1;
 
   p {
-    font-family: Courier, Times, serif;
+    font-family: $terminal-fonts;
     color: $terminal-green;
     font-size: 1.25em;
   }
@@ -36,7 +36,7 @@
   }
 
   .progress-bar-black {
-    background-color: #000000;
+    background-color: $background-color;
   }
 
   ul {
@@ -58,22 +58,22 @@
   margin: 0.25em;
 
   .rollButton {
-    box-shadow: 0 0 10px 5px white;
+    box-shadow: 0 0 10px 5px $light-text;
   }
 
   button:focus {
-    box-shadow: 0 0 10px 5px white;
+    box-shadow: 0 0 10px 5px $light-text;
     border: none;
   }
 }
 
 .addGlow {
-  box-shadow: 0 0 10px 5px white;
+  box-shadow: 0 0 10px 5px $light-text;
 }
 
 .move-box {
   color: $terminal-green;
-  font-family: Courier, Times, serif;
+  font-family: $terminal-fonts;
 }
 
 .battle-box {
@@ -89,7 +89,7 @@
 .message-board {
   list-style: none;
   color: $terminal-green;
-  font-family: Courier, Times, serif;
+  font-family: $terminal-fonts;
 }
 
 .terminal-box {
@@ -98,12 +98,12 @@
   border-radius: 5px;
   font-size: 1em;
   background-color: $background-color;
-  border: 2px solid gray;
+  border: 2px solid $terminal-border;
   margin: 0.5em;
   height: 13em;
 
   .terminal-header {
     font-size: 1em;
-    font-family: Courier, Times, serif;
+    font-family: $terminal-fonts;
   }
 }
