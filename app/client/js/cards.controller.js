@@ -6,9 +6,9 @@
   CardsController.$inject = ['$state', 'CardsService'];
 
   /**
-  * Creates Card Controllers
-  * @param {Function} $state      Service that allows view routing
-  * @param {Function} CardsController Service that contains character card functions
+  * Creates Cards Controllers.
+  * @param {Function} $state          The service that allows view routing.
+  * @param {Function} CardsController The service that contains character card functions.
   */
   function CardsController($state, CardsService) {
 
@@ -19,14 +19,13 @@
     vm.lastCard = {};
 
     vm.getAllCards = function getAllCards() {
-
       CardsService.getAllCards()
-        .then(function handleResponse(cards) {
-          vm.cards  = cards;
-          console.log(vm.cards);
-          return vm.cards;
-      }).then(function gotoCard(){
-          $state.go('cards');
+      .then(function handleResponse(cards) {
+        vm.cards  = cards;
+        console.log(vm.cards);
+        return vm.cards;
+      }).then(function gotoCard() {
+        $state.go('cards');
       })
       .catch(function handleError(err) {
         vm.message = 'Something went wrong. Error ' + err.status;
@@ -35,10 +34,10 @@
     vm.getAllCards();
 
     /**
-     * Get the array from getLastCard from CardsService
-     * @return {Object} [description]
-     */
-    vm.getLastCard = function getLastCard(){
+    * Gets the array containing the last card created from CardsService.
+    * @return {Object}
+    */
+    vm.getLastCard = function getLastCard() {
       CardsService.getAllCards()
       .then(function lastMath(card) {
         let last = (card.length);
@@ -52,12 +51,12 @@
     vm.getLastCard();
 
     /**
-     * Get the cards from card service;
-     * @return {Promise}
-     */
-    vm.getOneCard = function getOneCard(){
+    * Gets one card from CardsService.
+    * @return {Promise}
+    */
+    vm.getOneCard = function getOneCard() {
       CardsService.getOneCard()
-      .then(function showCards(){
+      .then(function showCards() {
       });
     };
     vm.getOneCard();

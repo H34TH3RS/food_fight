@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
 
@@ -6,7 +5,7 @@
 
   GameService.$inject =['$http', 'CardsService'];
 
-  function GameService($http, CardsService){
+  function GameService($http, CardsService) {
 
     let bots = [
       {enemy:'RESERVED FOR BOSS',
@@ -15,13 +14,13 @@
       strength: 0,
       defense:0,
       image:'http://www.verticaljumping.com/images/redcross.png'},
-      { enemy:'Not so Mellow Marshall',
+      {enemy:'Not so Mellow Marshall',
       klass: 'Sugary',
       health: 13,
       strength: 14,
       defense:2,
       image:'https://s-media-cache-ak0.pinimg.com/originals/52/fe/36/52fe36be92c7cf64bab91d9fb49f6827.gif'},
-      { enemy:'Crazy Carrotina',
+      {enemy:'Crazy Carrotina',
       klass: 'Normal',
       health: 12,
       strength: 4,
@@ -33,7 +32,7 @@
       strength: 3,
       defense:1,
       image:'http://orig12.deviantart.net/4ba0/f/2014/238/5/3/53faec0367b50eb9b65b5b2455bdfccf-d7wtb1e.png'},
-      { enemy:'Eggploding Eggbert',
+      {enemy:'Eggploding Eggbert',
       klass: 'Normal',
       health: 14,
       strength: 6,
@@ -74,18 +73,16 @@
       image:'http://data.whicdn.com/images/189801943/original.gif'}
     ];
 
-
     /**
-    * This will be the function that grabs the card used by the user to pla
-    *  the game.
-    * @return {[type]} [description]
+    * Gets the character card used by the user to play the game.
+    * @return {Array} An array containing one object that represents one indivudual character card.
     */
     function getUserCard() {
       return CardsService.getOneCard().then(function(card) {
         console.log("Card from card service", card);
         let playerCard =[{
           name: card.food_name,
-          health: card.health,//why are these undefined
+          health: card.health,
           strength: card.strength,
           defense: card.defense,
           klass: card.klass,
@@ -96,31 +93,30 @@
       });
     }
 
-    /**This will be the function that grabs bots
-    * [getBots description]
-    * @return {Array} [description]
+    /**Gets the enemy bots against which the user will play.
+    * @return {Array} The array containing the enemy bots.
     */
     function getBots() {
       return bots;
     }
-    /**This will be the function that grabs boss enemies
-    * [getBots description]
-    * @return {Array} [description]
+
+    /**Gets the boss enemies to be battled.
+    * @return {Array} The Array containing the final bosses.
     */
     function getBosses() {
       return bosses;
     }
-    /**
-    * This will be the function that grabs the treasure
-    * @return {Array} [description]
+
+    /**Gets the treasure items that the user can collect.
+    * @return {Array} The array containing found items.
     */
     function getTreasures() {
       return treasures;
     }
 
     /**
-    * The will be the function that grabs an event
-    * @return {Array} [description]
+    * The will be the function that grabs a neutral event.
+    * @return {Array} The array containing neutral events.
     */
     function getEvents() {
       return nothings;
@@ -135,4 +131,5 @@
     };
 
   }
+
 }());

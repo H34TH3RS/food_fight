@@ -5,11 +5,17 @@
 
   GameController.$inject =['$state', 'GameService'];
 
-  function GameController($state, GameService){
+
+  /**
+  * Creates Game Controllers.
+  * @param {Function} $state       Service that facilitates specifying views for routing.
+  * @param {Function} GameService  Service that contains game logic functions.
+  * @return {void}
+  */
+  function GameController($state, GameService) {
 
     let vm = this;
     let player, botPick;
-
 
     const HitChance = 40;
     const itemSmallHP = 0.20;
@@ -21,7 +27,11 @@
     const NUMBER_OF_MOVES_IN_GAME = 25;
     const DEFENSE_VAR = 0.7;
 
-
+    /**
+    * Brings the selected character card into the current gameplay session.
+    * @param  {Object} playerCards The object containing current player stats.
+    * @return {void}
+    */
     GameService.getUserCard().then(function(playerCards) {
 
       player = playerCards;
@@ -61,23 +71,23 @@
     vm.image = 'http://24.media.tumblr.com/2b614d23b694e6a843b3f59d7e1cda41/tumblr_mn1ytcEZS81s84p5fo1_500.gif';
 
     /**
-    * [Resets the boss health and removes it from the array of enemies
+    * Resets the boss's health and removes the boss from the array of enemies
     * after winning or losing.
     * @return {VOID}
     */
-    function bossReset(){
+    function bossReset() {
       bossCounter = 0;
       bots = GameService.getBots();
       bosses = GameService.getBosses();
       bosses[0].health = KevinBaconHealthInitial;
-      if(bots.length > 4){
+      if(bots.length > 4) {
         bots.shift();
       }
     }
 
     /**
-    * Changes the current health of the player to number out of 100
-    * @return {Number} [description]
+    * Changes the current health of the player to number from 0-100.
+    * @return {Number} The player's new remaining percentage of health.
     */
     vm.fullHealth = function fullHealth() {
       let healthMod = 100/vm.basicPlayerHealth;
@@ -85,8 +95,8 @@
     };
 
     /**
-    * Changes the current health of the bot to anumber out of 100
-    * @return {Number} [description]
+    * Changes the current health of the enemy bot to a number from 0-100.
+    * @return {Number} The enemy's new remaining percentage of health.
     */
     vm.fullBotHealth = function fullBotHealth() {
       let healthBotMod = 100/vm.basicBotHealth;
@@ -94,21 +104,21 @@
     };
 
     /**
-    * Generates a random number based on the chance variable
-    * @return {Number} [description]
+    * Generates a random number based on the chance variable.
+    * @return {Number}
     */
-    function rngEncounter(){
+    function rngEncounter() {
       return  Math.floor(Math.random()*chance)+1;
     }
 
     /**
-    * checks whether the battlebool var is true or not. Also retrieves the current
-    * health of the player and enemy obj
+    * Checks whether battleBool is true or false. Also retrieves the current
+    * health of the player and enemy objects.
     * @return {Boolean}
     */
-    vm.checkBattleBool = function checkBattleBool(){
+    vm.checkBattleBool = function checkBattleBool() {
       vm.canRollCheck = true;
-      let counter = 0;//resets the counter evertime the fn is called
+      let counter = 0; //resets the counter evertime the fn is called
       counter = counter ++;
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
@@ -116,30 +126,29 @@
     };
 
     /**
-    * Generates a random number between 1 and 6
+    * Generates a random number between 1 and 6.
     * @return {Number}
     */
-    vm.rollRNG = function rollRNG(){
+    vm.rollRNG = function rollRNG() {
       vm.roll = Math.floor(Math.random()*6)+1;
       return vm.roll;
     };
 
     /**
-    * Handles the dice rolls and subtracts the number from the boardSize
+    * Handles the dice rolls and subtracts the number from the boardSize.
     * @return {Number}
     */
-    vm.rollCtrl = function rollCtrl(){
+    vm.rollCtrl = function rollCtrl() {
       vm.rollRNG();
       vm.boardSize = vm.boardSize - vm.roll;
 
-      if (vm.boardSize > 0){
+      if (vm.boardSize > 0) {
         randomEncounter();
-      }else{
+      } else {
         battleBoss();
       }
       return vm.roll, vm.boardSize;
     };
-
 
     /**
     * Checks the players health and the against the boss if a boss battle has
@@ -147,17 +156,15 @@
     * logic.
     * @return {Void}
     */
-    function battleBoss(){
-      if(player[0].health <= 0){
+    function battleBoss() {
+      if(player[0].health <= 0) {
         playerHealthUpdate();
         //do I need to reset the boss here???
         $state.go('lost');
-      }else{
+      } else {
         bossCounter ++;
         botPick = 0;
-        // bots[botPick] = bosses[0];
         bots.unshift(bosses[0]);
-        // bosses[0].health = bots[botPick].health;
         battleBool = true; //this is set to true so that the fight menu can be displayed
         vm.status = ' ';
         vm.currentEventName = bots[botPick].enemy;
@@ -173,11 +180,11 @@
     }
 
     /**
-    * Checks the health of the boss. If zero, goes to the end game view.
-    * @return {Void} [description]
+    * Checks the health of the boss. If zero, it takes the user to the end game view.
+    * @return {Void}
     */
-    function bossHealthCheck(){
-      if (bosses[0].health <=0){
+    function bossHealthCheck() {
+      if (bosses[0].health <=0) {
         bossReset();
         playerHealthUpdate();
         $state.go('end');
@@ -186,64 +193,64 @@
 
     /**
     * This handles the battle mechanics based on the value returned from the const
-    * var battleRoll
+    * varibale battleRoll
     * @return {VOID}
     */
-    function battle(){
+    function battle() {
       playerDeathCheck();
       vm.canRollCheck = true;
       vm.battleRoll = Math.floor(Math.random()*100)+1;
       const BattleRoll = vm.battleRoll;
-      if(vm.battleRoll < battleRate){
+      if(vm.battleRoll < battleRate) {
         playerTurn = false;
-      }else{
+      } else {
         playerTurn = true;
       }
     }
 
     /**
-    * Handles whether enemy or player goes first depending on the playerTurn
+    * Handles whether the enemy or player goes first depending on the playerTurn
     * value.
     * @return {Void}
     */
-    function fightFunc(){
+    function fightFunc() {
       bossHealthCheck();
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
       vm.botHealth = localStorage.getItem('botHealthLocal');
-      if(playerTurn === true){
+      if(playerTurn === true) {
         unshiftMessages('Make your move...');
         bots[botPick].health = vm.botHealth;
-        if(vm.botHealth <=0){
+        if(vm.botHealth <=0) {
           unshiftMessages(player[0].name + ' destroyed ' + vm.botName);
           battleBool = !battleBool;
           bots[botPick].health = vm.basicBotHealth;
         }
-      }else{
+      } else {
         unshiftMessages('It\'s ' + vm.botName + '\s turn...');
         botAtk();
       }
     }
 
     /**
-    * Add and item to the players inventory if the item count is less than 3
+    * Adds an item to the players inventory if the item count is less than 3.
     */
-    function addItem(){
-      if (player[0].items < 3){
+    function addItem() {
+      if (player[0].items < 3) {
         player[0].items = player[0].items + 1;
-      }else{
+      } else {
         unshiftMessages('You have too many items');
       }
     }
 
     /**
-    * Will determine what type of encounter the player comes across depending
-    * on the generated number
+    * Determines what type of encounter the player comes across depending
+    * on the number generated.
     * @return {Void}
     */
-    function randomEncounter(){
+    function randomEncounter() {
       let encounter = rngEncounter();
 
-      if ( encounter < treasureChance){
+      if ( encounter < treasureChance) {
         battleBool = false;
         vm.status = ' ';
         let treasurePick = Math.floor(Math.random()* treasures.length);
@@ -252,7 +259,7 @@
         clearBotData();
         unshiftMessages(player[0].name +' finds' + treasures[treasurePick].treasure + '! Neato....');
         addItem();
-      }else if(encounter < nothing && encounter > treasureChance ) {
+      } else if(encounter < nothing && encounter > treasureChance ) {
         vm.status = ' ';
         battleBool = false;
         let eventPick = Math.floor(Math.random()* events.length);
@@ -260,7 +267,7 @@
         vm.image = events[eventPick].image;
         clearBotData();
         unshiftMessages(events[eventPick].nothing + ' I guess you should move on...');
-      }else{
+      } else {
         vm.status = ' ';
         battleBool = true; //this is set to true so that the fight menu can be displayed
         rngBotPick();
@@ -282,11 +289,11 @@
     * Returns a number greater between from 1 and the length of the bot array;
     * @return {Number} Will never be zero
     */
-    function rngBotPick(){
+    function rngBotPick() {
       botPick = Math.floor(Math.random()* bots.length);
-      if (botPick === 0){
+      if (botPick === 0) {
         botPick = Math.floor(Math.random()* bots.length);
-      }else{
+      } else {
         console.log(botPick);
         return botPick;
       }
@@ -298,8 +305,8 @@
     * 'view'.
     * @return {Void}
     */
-    function playerDeathCheck(){
-      if(player[0].health <= 0){
+    function playerDeathCheck() {
+      if(player[0].health <= 0) {
         bossCounter = 0;
         bossReset();
         playerHealthUpdate();
@@ -312,7 +319,7 @@
     * after turn.
     * @return {Function} [description]
     */
-    vm.playerAtk = function playerAtk(){
+    vm.playerAtk = function playerAtk() {
       playerTurn = false;
       vm.botHealth = vm.botHealth - vm.playerStr;
       bots[botPick].health = vm.botHealth;
@@ -325,15 +332,15 @@
     * hitChance var.
     * @return {Function} [description]
     */
-    function botAtk(){
+    function botAtk() {
       let botMiss = rngEncounter();
-      if(botMiss >= HitChance && playerDefendBool === false){
+      if(botMiss >= HitChance && playerDefendBool === false) {
         vm.playerHealth = vm.playerHealth - vm.botBtlStr;
         playerHealthUpdate();
         unshiftMessages(vm.botName + ' does ' +  vm.botBtlStr + ' damage');
         playerDeathCheck();
         playerTurn = true;
-      }else if (botMiss >= HitChance && playerDefendBool === true){
+      } else if (botMiss >= HitChance && playerDefendBool === true) {
         playerDefendBool = false;
         playerDefendTrue();
         // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
@@ -341,14 +348,14 @@
         unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
         playerDeathCheck();
         playerTurn = true;
-      }else{
+      } else {
         unshiftMessages(vm.botName + ' misses the attack ');
         playerTurn = true;
       }
       fightFunc();
     }
 
-    function playerDefendTrue(){
+    function playerDefendTrue() {
       vm.playerHealth = vm.playerHealth - (vm.botBtlStr*DEFENSE_VAR);
     }
 
@@ -356,7 +363,7 @@
     * Sets the playerDefendBool to true and returns to the fightFunc
     * @return {Function} [description]
     */
-    vm.playerDef = function playerDef(){
+    vm.playerDef = function playerDef() {
       unshiftMessages(player[0].name + ' defends!');
       playerDefendBool = true;
       playerTurn = false;
@@ -367,10 +374,10 @@
     * Adds an item if you encounter a treasure and your item invetory is not full.
     * @return {Function}
     */
-    vm.playerItems = function playerItems(){
-      if(player[0].items === 0){
+    vm.playerItems = function playerItems() {
+      if(player[0].items === 0) {
         unshiftMessages('You are out of items');
-      }else{
+      } else {
         unshiftMessages(player[0].name + ' uses an item and recovers ' + itemSmallHP + ' hp');
         player[0].items = player[0].items - 1;
         vm.playerHealth = player[0].health + (vm.basicPlayerHealth * itemSmallHP);
@@ -384,7 +391,7 @@
     * Updtates the player's health  in localStorage
     * @return {Void} [description]
     */
-    function playerHealthUpdate(){
+    function playerHealthUpdate() {
       player[0].health = vm.playerHealth;
       vm.playerHealth = localStorage.setItem('playerHealthLocal', player[0].health);
       vm.playerHealth = localStorage.getItem('playerHealthLocal');
@@ -395,10 +402,10 @@
     * @param  {String} string message string
     * @return {Void}
     */
-    function unshiftMessages(string){
-      if(playerTurn === true){
+    function unshiftMessages(string) {
+      if(playerTurn === true) {
         vm.messageArray.unshift('PLAYER: ' + string);
-      }else{
+      } else {
         vm.messageArray.unshift('ENEMY: '+ string);
       }
     }
@@ -407,8 +414,8 @@
     * Sets bot data to 0
     * @return {Void} [used for clearing the data on non-bot encounters]
     */
-    function clearBotData(){
-      if (battleBool === false){
+    function clearBotData() {
+      if (battleBool === false) {
         vm.basicBotHealth = 0;
         vm.botBtlStr = 0;
         vm.botBtlDef = 0;

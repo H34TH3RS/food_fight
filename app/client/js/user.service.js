@@ -7,15 +7,18 @@
 
   /**
   * Creates the user service
-  * @param {function} $http the service for ajax calls
-  * @return {Object} contains functions for use in the user controller
+  * @param {function} $http The service for AJAX calls.
+  * @return {Object} Contains functions for use in the user controller.
   */
   function UserService($http) {
+
     let token  = localStorage.getItem('token') || null;
 
     /**
     * Creates a new user account
-    * @param  {Object} user must contain {email: xxx, username: xxx, password: xxx, password_confirmation: xxx}
+    * @param  {Object} user The user account information.
+    *                     Must contain {email: string, username: string,
+    *                     password: string, password_confirmation: string}    *
     * @return {void}
     */
     function createUser(user) {
@@ -42,9 +45,9 @@
 
     /**
     * Retrieves an auth token to allow the user to log in to their account.
-    * @param  {String} email    the user's email address
-    * @param  {String} password the user's password
-    * @return {Promise}          the authorization token
+    * @param  {String} email    The user's email address.
+    * @param  {String} password The user's password.
+    * @return {Promise}         To obtain the authorization token.
     */
     function login(email, password) {
       return $http({
@@ -65,9 +68,9 @@
       });
     }
     /**
-     * Sets the token to null an removes the token from localStorage
-     * @return {Void}
-     */
+    * Sets the token to null an removes the token from localStorage
+    * @return {Void}
+    */
     function logout() {
       token = null;
       localStorage.removeItem('token');
@@ -90,4 +93,5 @@
     };
 
   }
+
 }());

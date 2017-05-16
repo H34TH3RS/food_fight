@@ -1,9 +1,9 @@
 (function() {
   'use strict';
+
   angular.module('game').factory('CardsService', CardsService);
 
   CardsService.$inject = ['$http', 'UserService', 'UpcService'];
-
 
   /**
   * Creates the Card Service
@@ -11,6 +11,7 @@
   * @param {Function} UserService Contains the function to retrieve the auth token
   */
   function CardsService($http, UserService, UpcService) {
+
     let token = UserService.getToken();
 
     /**
@@ -63,4 +64,5 @@
     };
 
   }
+  
 }());

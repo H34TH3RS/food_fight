@@ -1,10 +1,7 @@
-
-
 (function() {
   'use strict';
 
-  angular.module('game', ['ui.router'])
-  .config(routerConfig);
+  angular.module('game', ['ui.router']).config(routerConfig);
 
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -78,6 +75,7 @@
       url: '/not-found',
       templateUrl: 'templates/not-found.template.html',
     });
-}
+    
+  }
 
 }());

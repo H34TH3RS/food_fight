@@ -6,17 +6,21 @@
   UpcService.$inject = ['$http', 'UserService'];
 
   /**
-   * Creates the UPC Service
-   * @param {Function} $http Service that allows ajax calls
-   * @return {Promise}
-   */
+  * Creates the UPC Service
+  * @param {Function} $http Service that allows ajax calls
+  * @param {Function} UserService Service that obtains the user auth token.
+  * @return {Promise}
+  */
   function UpcService($http, UserService) {
 
     let token = UserService.getToken();
-
     let upcInfo ={};
-    console.log(token);
 
+    /**
+    * Sends the UPC to the database in order to retrieve nutritional information for populating character cards.
+    * @param  {Object} upcCode The object containing the UPC. Must contain {upc: 999}
+    * @return {Function}     The AJAX call that contains the nutritional information.
+    */
     function sendUpcData(upcCode) {
       return $http({
         url: '/api/cards',
@@ -35,6 +39,10 @@
       });
     }
 
+    /**
+    * Returns the response data obtained by sendUpcData.
+    * @return {Object} The object containing nutritional info.
+    */
     function storedData(){
       return upcInfo;
     }
@@ -43,6 +51,7 @@
       sendUpcData: sendUpcData,
       storedData: storedData
     };
+
   }
 
 }());

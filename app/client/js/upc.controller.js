@@ -6,10 +6,10 @@
   UpcController.$inject = ['$state', 'UpcService'];
 
   /**
-   * Creates UPC Controllers
-   * @param {Function} $state     Allows view routing
-   * @param {Function} UpcService The UPC Service functions
-   */
+  * Creates UPC Controllers
+  * @param {Function} $state     Allows view routing
+  * @param {Function} UpcService The UPC Service functions
+  */
   function UpcController($state, UpcService) {
 
     let vm = this;
@@ -17,7 +17,7 @@
     vm.upcCode = {};
     vm.message = null;
 
-   /**
+    /**
     * Retrieves UPC data from the api
     * @param  {Object} upcCode Must have {upc: 999}
     * @return {Promise}
@@ -35,7 +35,9 @@
         } else {
           vm.message = 'Whoops! Something went wrong. Error ' + err;
         }
-        });
+      });
     };
+
   }
+
 }());
