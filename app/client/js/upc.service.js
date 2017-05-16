@@ -7,7 +7,7 @@
 
   /**
   * Creates the UPC Service
-  * @param {Function} $http Service that allows ajax calls
+  * @param {Function} $http Service that allows AJAX calls
   * @param {Function} UserService Service that obtains the user auth token.
   * @return {Promise}
   */

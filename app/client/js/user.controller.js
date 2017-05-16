@@ -22,10 +22,10 @@
 
     /**
     * Allows a user to log in to their account.
-    * @param  {Object} userLogin must contain {email: x@x.com, password: ***}
+    * @param  {Object} userLogin Must contain {email: string, password: string}
     * @return {void}
     */
-    vm.login = function login(userLogin){
+    vm.login = function login(userLogin) {
 
       if (!userLogin.email || !userLogin.password) {
         return Promise.reject();
@@ -39,7 +39,6 @@
         vm.hasError = true;
         if (err.status === 401) {
           vm.message = 'Unable to log in. Page not found.';
-          // use $state.go('not-found') instead of message on the page?
         } else {
           vm.message = 'Unable to log in. Page not found.';
         }

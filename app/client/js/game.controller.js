@@ -159,7 +159,6 @@
     function battleBoss() {
       if(player[0].health <= 0) {
         playerHealthUpdate();
-        //do I need to reset the boss here???
         $state.go('lost');
       } else {
         bossCounter ++;
@@ -286,8 +285,8 @@
     }
 
     /**
-    * Returns a number greater between from 1 and the length of the bot array;
-    * @return {Number} Will never be zero
+    * Returns a number greater between from 1 and the length of the bot array.
+    * @return {Number} Will never be zero.
     */
     function rngBotPick() {
       botPick = Math.floor(Math.random()* bots.length);
@@ -328,8 +327,8 @@
     };
 
     /**
-    * Handles the bots attack. Will determine if the bot misses or hits based on
-    * hitChance var.
+    * Handles the bot attack. Will determine if the bot misses or hits based on
+    * hitChance variable..
     * @return {Function} [description]
     */
     function botAtk() {
@@ -343,7 +342,6 @@
       } else if (botMiss >= HitChance && playerDefendBool === true) {
         playerDefendBool = false;
         playerDefendTrue();
-        // vm.playerHealth = vm.playerHealth - (vm.botBtlStr*0.5);
         playerHealthUpdate();
         unshiftMessages(vm.botName + ' does ' +  (vm.botBtlStr*DEFENSE_VAR) + ' damage');
         playerDeathCheck();
