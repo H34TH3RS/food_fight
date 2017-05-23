@@ -1,22 +1,47 @@
 <h2 class='createHeadings'>Create An Account</h2>
 
 <section class='createUserFormBox'>
-  <form class='form-group createUserForm col-lg-6 col-lg-offset-3' ng-submit='userCtrl.createUser(userCtrl.user)' name='createUserForm'>
+  <form class='form-group createUserForm col-lg-6 col-lg-offset-3'
+        ng-submit='userCtrl.createUser(userCtrl.user)'
+        name='createUserForm'>
 
     <label class='control-label' for='email'>Email</label>
-    <input class='form-control' ng-model='userCtrl.user.email' type='email' name='email' required placeholder='food@fight.com'>
+    <input class='form-control'
+           ng-model='userCtrl.user.email'
+           required
+           type='email'
+           name='email'
+           placeholder='food@fight.com'>
 
     <label class='control-label' for='username'>Username</label>
-    <input class='form-control' ng-model='userCtrl.user.username' type='text' name='username' required placeholder='Choose a username'>
+    <input class='form-control'
+           ng-model='userCtrl.user.username'
+           required
+           type='text'
+           name='username'
+           placeholder='Choose a username'>
 
     <label class='control-label' for='password'>Password</label>
-    <input class='form-control' ng-model='userCtrl.user.password' type='password' name='password' required placeholder='********'>
+    <input class='form-control'
+           ng-model='userCtrl.user.password'
+           required
+           type='password'
+           name='password'
+           placeholder='********'>
 
     <label class='control-label' for='password_confirmation'>Please re-enter your password</label>
-    <input class='form-control' ng-model='userCtrl.user.password_confirmation' type='password' name='password_confirmation' required placeholder='********'>
+    <input class='form-control'
+           ng-model='userCtrl.user.password_confirmation'
+           required
+           type='password'
+           name='password_confirmation'
+           placeholder='********'>
 
     <aside class='createButton row col-lg-4 col-lg-offset-4'>
-      <input class='form-control btn btn-info btn-lg' type='submit' name='newUserSubmit' value='Create Account'>
+      <input class='form-control btn btn-info btn-lg'
+             type='submit'
+             name='newUserSubmit'
+             value='Create Account'>
     </aside>
 
   </form>
