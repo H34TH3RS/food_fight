@@ -1,6 +1,5 @@
 
 <main class='battleground'>
-
   <section class='col-xs-12 col-lg-6 cardWrapper'>
     <article class='playerCardDisplay cardDisplay col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2'>
       <img src='{{gameCtrl.playerImage}}' class='image-box playerAvatar avatarGlow'>
@@ -45,7 +44,6 @@
   </section>
 </main>
 
-
 <section class='play-buttons-wrapper row'>
   <button ng-show='gameCtrl.checkBattleBool()' class='btn btn-info col-xs-2' ng-click='gameCtrl.playerItems()'>Item</button>
   <button ng-show='!gameCtrl.checkBattleBool()' class='btn btn-primary rollButton col-xs-2 col-xs-offset-2' ng-click='gameCtrl.rollCtrl()'>ROLL!</button>
@@ -58,9 +56,7 @@
 
 <p ng-show='gameCtrl.message' class='alert alert-warning errMsg'>{{gameCtrl.message}}</p>
 
-
 <section class='terminal-box'>
-
   <ul class='message-board'>
     <li><h3 class='terminal-header'>{{gameCtrl.messageArray[0]}}</h3></li>
     <li><p>{{gameCtrl.messageArray[1]}} </p></li>
@@ -69,5 +65,4 @@
     <li><p>{{gameCtrl.messageArray[4]}} </p></li>
     <li><p>{{gameCtrl.messageArray[5]}} </p></li>
   </ul>
-
 </section>
