@@ -47,19 +47,24 @@
   </form>
 </section>
 
-
 <section class='errMsg col-lg-6'>
-  <p ng-cloak ng-show='createUserForm.email.$touched && !createUserForm.email.$valid'>
+  <p ng-cloak
+     ng-show='createUserForm.email.$touched && !createUserForm.email.$valid'>
     Please enter a valid email.
   </p>
-  <p ng-cloak ng-show='createUserForm.username.$touched && !createUserForm.password.$valid'>
+  <p ng-cloak
+     ng-show='createUserForm.username.$touched && !createUserForm.password.$valid'>
     Please enter a valid username.
   </p>
-  <p ng-cloak ng-show='createUserForm.password.$touched && !createUserForm.password.$valid'>
+  <p ng-cloak
+     ng-show='createUserForm.password.$touched && !createUserForm.password.$valid'>
     Please enter a valid password. Passwords must match.
   </p>
-  <p ng-cloak ng-show='createUserForm.password_confirmation.$touched && !createUserForm.password_confirmation.$valid'>
+  <p ng-cloak
+     ng-show='createUserForm.password_confirmation.$touched && !createUserForm.password_confirmation.$valid'>
     Please enter a valid password. Passwords must match.
   </p>
-  <p ng-cloak ng-show='userCtrl.hasError'>{{userCtrl.message}}</p>
+  <p ng-cloak
+     ng-show='userCtrl.hasError'>{{userCtrl.message}}
+  </p>
 </section>
