@@ -1,9 +1,9 @@
 (function() {
   'use strict';
+
   angular.module('game').factory('CardsService', CardsService);
 
   CardsService.$inject = ['$http', 'UserService', 'UpcService'];
-
 
   /**
   * Creates the Card Service
@@ -11,12 +11,13 @@
   * @param {Function} UserService Contains the function to retrieve the auth token
   */
   function CardsService($http, UserService, UpcService) {
+
     let token = UserService.getToken();
 
     /**
-    * Gets all the cards from the api then gets the last object inside
-    * @param  {String} upc  from the UPC data entered
-    * @return {Promise}     [description]
+    * Gets all the cards from the api, then gets the last object inside.
+    * @param  {String} upc  The UPC obtained from user input.
+    * @return {Promise}
     */
     function getOneCard(upc) {
       console.log(upc);
@@ -40,8 +41,7 @@
 
     /**
     * Retrieves the all the cards from the api
-    * @param  {String} upc [description]
-    * @return {Array}     [description]
+    * @return {Array}     Tne array containing all card objects for a specific user.
     */
     function getAllCards() {
       return $http({
@@ -63,4 +63,5 @@
     };
 
   }
+
 }());

@@ -1,6 +1,6 @@
 @keyframes glow {
   0% {
-      transform: scale(1);
+    transform: scale(1);
   }
   100% {
     transform: scale(1.05);
@@ -79,8 +79,8 @@
 
 .avatarGlow {
   box-shadow: 0 0 30px 10px white;
-  animation-duration: 1s;
   animation-name: glow;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }

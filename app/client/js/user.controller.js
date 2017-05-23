@@ -1,13 +1,14 @@
 (function() {
   'use strict';
+
   angular.module('game').controller('UserController', UserController);
 
   UserController.$inject = ['$state', 'UserService'];
 
   /**
-  * creates the user controller
-  * @param {function} $state  the service for routing views
-  * @param {function} UserService the service containing user functions
+  * Creates User Controllers
+  * @param {function} $state  The service for routing views.
+  * @param {function} UserService The service containing user functions.
   */
   function UserController($state, UserService) {
 
@@ -21,24 +22,23 @@
 
     /**
     * Allows a user to log in to their account.
-    * @param  {Object} userLogin must contain {email: x@x.com, password: ***}
+    * @param  {Object} userLogin Must contain {email: string, password: string}
     * @return {void}
     */
-    vm.login = function login(userLogin){
+    vm.login = function login(userLogin) {
 
       if (!userLogin.email || !userLogin.password) {
         return Promise.reject();
       }
 
       UserService.login(userLogin.email, userLogin.password)
-      .then(function goToHome(){
+      .then(function goToHome() {
         $state.go('home');
       })
       .catch(function handleError(err) {
         vm.hasError = true;
         if (err.status === 401) {
           vm.message = 'Unable to log in. Page not found.';
-          // use $state.go('not-found') instead of message on the page?
         } else {
           vm.message = 'Unable to log in. Page not found.';
         }
@@ -54,10 +54,21 @@
       $state.go('home');
     };
 
+    /**
+    * If the user is logged in, this changes the truthy value to true.
+    * @return {Boolean}
+    */
     vm.loggedIn = function loggedIn(){
       return !!UserService.getToken();
     };
 
+    /**
+    * Creates a new user account.
+    * @param  {Object} user The user account information.
+    *                       Must contain {email: string, username: string,
+    *                       password: string, password_confirmation: string}
+    * @return {Promise}
+    */
     vm.createUser = function createUser(user) {
       return UserService.createUser(user)
       .then(function goHome() {
@@ -73,6 +84,7 @@
         }
       });
     };
+
   }
 
 }());
