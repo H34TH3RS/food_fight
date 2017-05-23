@@ -1,11 +1,25 @@
 <section class='logo'>
-  <img src='/images/food_fight_logo.png' alt='food fight logo' class='logo'>
+  <img src='/images/food_fight_logo.png'
+       alt='food fight logo'
+       class='logo'>
 </section>
-<form class='form-group form-inline upcForm col-lg-4 col-lg-offset-4' ng-submit='upcCtrl.sendUpcData(upcCtrl.upcCode)' name='findupc'>
+<form class='form-group form-inline upcForm col-lg-4 col-lg-offset-4'
+      ng-submit='upcCtrl.sendUpcData(upcCtrl.upcCode)'
+      name='findupc'>
   <label for='upc'>Enter a UPC</label>
-  <input class='form-control' ng-model='upcCtrl.upcCode.upc' type='text' name='upc' required placeholder='Enter a UPC'>
-  <input class='form-control btn btn-info' type='submit' name='upcSubmit' value='find UPC'>
+  <input class='form-control'
+         ng-model='upcCtrl.upcCode.upc'
+         required
+         type='text'
+         name='upc'
+         placeholder='Enter a UPC'>
+  <input class='form-control btn btn-info'
+         type='submit'
+         name='upcSubmit'
+         value='find UPC'>
 </form>
 <section class='errorBox col-lg-4 col-lg-offset-4'>
-  <p ng-show='upcCtrl.hasError' class='alert alert-warning'>{{upcCtrl.message}}</p>
+  <p ng-show='upcCtrl.hasError'
+     class='alert alert-warning'>{{upcCtrl.message}}
+  </p>
 </section>
