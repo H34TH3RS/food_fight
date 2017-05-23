@@ -11,32 +11,51 @@
   </head>
   <body>
 
-    <header ng-cloak ng-controller='UserController as userCtrl' ng-hide='userCtrl.loggedIn()' class='index-header'>
-      <img src='/images/food_fight_logo.png' alt='food fight logo' class='logo'>
+    <header ng-cloak
+            ng-controller='UserController as userCtrl'
+            ng-hide='userCtrl.loggedIn()'
+            class='index-header'>
+      <img src='/images/food_fight_logo.png'
+           alt='food fight logo'
+           class='logo'>
       <p>a game of wits and grits</p>
     </header>
 
-    <nav ng-controller='UserController as userCtrl' class='nav navbar-fixed-top navbar navbar-inverse nav-pills'>
-
+    <nav ng-controller='UserController as userCtrl'
+         class='nav navbar-fixed-top navbar navbar-inverse nav-pills'>
       <ul class='container'>
-
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='home'>food fight home</a></li>
-        <li ng-hide='userCtrl.loggedIn()'><a ui-sref='login'>log in</a></li>
-        <li ng-show='userCtrl.loggedIn()'><a href='#' ng-click='userCtrl.logout()'>log out</a></li>
-        <li ng-hide='userCtrl.loggedIn()'><a ui-sref='create-user'>create an account</a></li>
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='upc'>create a character</a></li>
-        <li ng-show='userCtrl.loggedIn()'><a ui-sref='cards'>view all cards</a></li>
-        <li><a ui-sref='about-us'>meet the creators</a></li>
+        <li ng-show='userCtrl.loggedIn()'>
+          <a ui-sref='home'>food fight home</a>
+        </li>
+        <li ng-hide='userCtrl.loggedIn()'>
+          <a ui-sref='login'>log in</a>
+        </li>
+        <li ng-show='userCtrl.loggedIn()'>
+          <a href='#' ng-click='userCtrl.logout()'>log out</a>
+        </li>
+        <li ng-hide='userCtrl.loggedIn()'>
+          <a ui-sref='create-user'>create an account</a>
+        </li>
+        <li ng-show='userCtrl.loggedIn()'>
+          <a ui-sref='upc'>create a character</a>
+        </li>
+        <li ng-show='userCtrl.loggedIn()'>
+          <a ui-sref='cards'>view all cards</a>
+        </li>
+        <li>
+          <a ui-sref='about-us'>meet the creators</a>
+        </li>
       </ul>
     </nav>
 
-    <main ui-view class='main-view container-fluid'>
-    </main>
+    <main ui-view class='main-view container-fluid'></main>
 
     <footer class='navbar navbar-footer navbar-fixed-bottom'>
       <p class='footerText col-lg-6'>&copy 2017 Sara Basile * Seth Brady * Molly Stoopler </p>
       <a href='http://www.nutritionix.com/api'>
-        <img class='cite col-lg-2 col-lg-offset-4' src='/images/poweredby_nutritionix_api.png' alt='nutritionix api'>
+        <img class='cite col-lg-2 col-lg-offset-4'
+             src='/images/poweredby_nutritionix_api.png'
+             alt='nutritionix api'>
       </a>
     </footer>
 
